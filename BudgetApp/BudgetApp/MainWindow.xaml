@@ -1,0 +1,77 @@
+﻿<Window x:Class="BudgetApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetApp"
+        xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+        xmlns:cvtrs="clr-namespace:IvieConverters;assembly=IvieConverters"
+        xmlns:views="clr-namespace:BudgetApp.Views"
+        mc:Ignorable="d"
+        x:Name="AppWindow"
+        Title="MainWindow">
+
+    <Window.DataContext>
+        <vms:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <!--<WrapPanel>
+            <ListView ItemsSource="{Binding BTList}" SelectedItem="{Binding CurrentBT}" Height="280" Width="310" VerticalAlignment="Top"/>
+        </WrapPanel>-->
+
+
+        <ListView x:Name="BTListView" Height="{Binding ElementName=AppWindow, Path=Height}" ItemsSource="{Binding BTList}" Background="Transparent"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="Transparent"
+                  SelectedItem="{Binding CurrentBT}">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Vertical" Height="{Binding ElementName=AppWindow, Path=Height}"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        
+        
+        
+        <!--dfglkndflgkndglkmndfg -->
+        <!--<Border x:Name="BillListBorder" Grid.Column="1" BorderBrush="Black" BorderThickness="3" MinWidth="150" Height="150" VerticalAlignment="Top">
+            <ListView  ItemsSource="{Binding Bills}" Background="{Binding ElementName=BillListBorder, Path=Background}" 
+                       ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"
+                       />
+        </Border>-->
+        <!--<Button Content="Add Company" Command="{Binding AddCompanyCommand}" Grid.Row="2"/>
+        <Button Content="Remove Company" Command="{Binding RemoveCompanyCommand}" Grid.Row="2" Grid.Column="1"/>
+
+        <ListView ItemsSource="{Binding Bills}" SelectedItem="{Binding CurrentBill}" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" 
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" Width="310" Height="162" VerticalAlignment="Top"/>-->
+        <ContentControl Content="{Binding BTVM}" Grid.Row="0" Grid.Column="1"/>
+        <!--<ContentControl Content="{Binding BVM}" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2"/>-->
+        <!--<Button Content="Add Bill" Command="{Binding AddBillCommand}" Grid.Row="2" Grid.Column="6"/>
+        <Button Content="Save Bill" Command="{Binding BillChangedCommand}" Grid.Row="2" Grid.Column="7"/>
+        <TextBox Text="{Binding NewCompany}" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Content="Edit Bill" Command="{Binding EditBillCommand}" Grid.Row="2" Grid.Column="4"/>
+        <Button Content="Remove Bill" Command="{Binding RemoveBillCommand}" Grid.Row="2" Grid.Column="5"/>
+        <Button Content="Save" Command="{Binding SaveCommand}" Grid.Row="3" Grid.Column="0"/>
+        <Button Content="Load" Command="{Binding LoadCommand}" Grid.Row="3" Grid.Column="1"/>-->
+
+        <!--<Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter= {cvtrs:ApplicationPageValueConverter}}" Grid.ColumnSpan="20" Grid.RowSpan="20" Visibility="Hidden"/>-->
+    </Grid>
+</Window>

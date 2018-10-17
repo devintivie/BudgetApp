@@ -1,0 +1,20 @@
+﻿<Application x:Class="BudgetApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             xmlns:views="clr-namespace:BudgetApp.Views"
+
+             Startup="Application_Startup">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vms:BillViewModel}">
+            <views:BillView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:BillTrackerDataViewModel}">
+            <views:BillTrackerDataView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:BillTrackerViewModel}">
+            <views:BillTrackerView/>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,127 @@
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.dll
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.pdb
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojResolveAssemblyReference.cache
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\MainWindow.g.cs
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillView.g.cs
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\App.g.cs
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\MainWindow.baml
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillView.baml
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.g.resources
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.Cache
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\App.baml
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.g.cs
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.baml
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\IvieConverters.dll
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\bin\Debug\IvieConverters.pdb
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.g.cs
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.baml
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.g.cs
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.baml
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.g.cs
+C:\Users\devin\Source\Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.dll
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\IvieConverters.dll
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.pdb
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\bin\Debug\IvieConverters.pdb
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\MainWindow.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillView.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\App.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\App.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\MainWindow.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\BillView.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.baml
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.g.resources
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.cache
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+F:\ROG September Backup\Source Repos\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\BudgetApp.exe.config
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\BudgetApp.exe
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\IvieBaseClasses.dll
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\IvieConverters.dll
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\IvieBaseClasses.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\bin\Debug\IvieConverters.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\MainWindow.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillTrackerDataView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillTrackerView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\CalendarDay.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\CalendarTwoWeek.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\App.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\App.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\MainWindow.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillTrackerDataView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillTrackerView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\BillView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\CalendarDay.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\Views\CalendarTwoWeek.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.g.resources
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.exe
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp_Old\BudgetApp\obj\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.dll
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\IvieConverters.dll
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\bin\Debug\IvieConverters.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\MainWindow.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\App.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\App.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\MainWindow.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerDataView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\BillView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\CalendarDay.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.g.resources
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb

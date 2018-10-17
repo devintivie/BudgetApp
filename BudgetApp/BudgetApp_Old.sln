@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieBaseClasses", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieBaseClasses\IvieBaseClasses.csproj", "{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvieInterfaces", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieInterfaces\IvieInterfaces.csproj", "{3CBFFC39-1758-4589-9B32-7769AD876C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieControls", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieControls\IvieControls.csproj", "{A4F94586-51F8-414F-AAF4-FB3BDE751CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieConverters", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieConverters\IvieConverters.csproj", "{530339B4-B662-4706-9734-3119867DA34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetApp", "BudgetApp\BudgetApp.csproj", "{76C319A4-C587-40C9-AE30-5006EAE5BFED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CBFFC39-1758-4589-9B32-7769AD876C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CBFFC39-1758-4589-9B32-7769AD876C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CBFFC39-1758-4589-9B32-7769AD876C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CBFFC39-1758-4589-9B32-7769AD876C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F94586-51F8-414F-AAF4-FB3BDE751CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F94586-51F8-414F-AAF4-FB3BDE751CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F94586-51F8-414F-AAF4-FB3BDE751CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F94586-51F8-414F-AAF4-FB3BDE751CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DFCF9BE-5B4C-4ACB-9B96-142434432D51}
+	EndGlobalSection
+EndGlobal

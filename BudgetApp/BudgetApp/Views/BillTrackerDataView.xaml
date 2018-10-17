@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="BudgetApp.Views.BillTrackerDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BudgetApp.Views"
+             mc:Ignorable="d">
+    <Border BorderBrush="Black" BorderThickness="3" Padding="3" MinWidth="300">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding CompanyName, FallbackValue=Cox}" FontSize="18"
+                   Grid.Row="0" Grid.Column="0"/>
+            <TextBlock Text="{Binding BillsDueText}" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock Text="{Binding NextBill, FallbackValue=$2500.00 Due on November 28th 2018}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Content="Test" Command="{Binding TestCommand}" Grid.Row="0" Grid.Column="1"/>
+        </Grid>
+    </Border>
+</UserControl>

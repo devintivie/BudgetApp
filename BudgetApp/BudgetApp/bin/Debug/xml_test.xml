@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<BudgetModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BudgetData>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Anytime Fitness</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>AT&amp;T</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Blizzard</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills>
+        <Bill>
+          <DueDate>2018-05-10T00:00:00</DueDate>
+          <AmountDue>0</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>false</IsPaid>
+        </Bill>
+        <Bill>
+          <DueDate>2018-06-26T00:00:00</DueDate>
+          <AmountDue>200</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>true</IsPaid>
+        </Bill>
+      </Bills>
+      <CompanyName>Cox</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Dairy Queen</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Datatest1</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Fedloan</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Great LAkes</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Hulu</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills>
+        <Bill>
+          <DueDate>2018-11-28T00:00:00</DueDate>
+          <AmountDue>2500</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>false</IsPaid>
+        </Bill>
+      </Bills>
+      <CompanyName>NV Energy</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills />
+      <CompanyName>Opps</CompanyName>
+    </BillTracker>
+    <BillTracker>
+      <Bills>
+        <Bill>
+          <DueDate>2018-05-10T00:00:00</DueDate>
+          <AmountDue>0</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>false</IsPaid>
+        </Bill>
+        <Bill>
+          <DueDate>2018-07-15T00:00:00</DueDate>
+          <AmountDue>0</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>false</IsPaid>
+        </Bill>
+      </Bills>
+      <CompanyName>USAA</CompanyName>
+    </BillTracker>
+  </BudgetData>
+</BudgetModel>
