@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetApp.Views
+namespace BudgetApp
 {
     /// <summary>
     /// Interaction logic for BillView.xaml

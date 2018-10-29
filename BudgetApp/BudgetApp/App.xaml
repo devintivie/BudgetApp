@@ -4,17 +4,16 @@
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              xmlns:views="clr-namespace:BudgetApp.Views"
-
              Startup="Application_Startup">
     <Application.Resources>
         <DataTemplate DataType="{x:Type vms:BillViewModel}">
-            <views:BillView/>
+            <local:BillView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:BillTrackerDataViewModel}">
-            <views:BillTrackerDataView/>
+        <DataTemplate DataType="{x:Type vms:NextBillDueDataViewModel}">
+            <local:NextBillDueDataControl/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vms:BillTrackerViewModel}">
-            <views:BillTrackerView/>
+            <local:BillTrackerView/>
         </DataTemplate>
     </Application.Resources>
 </Application>

@@ -10,11 +10,11 @@ using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
-    public class BillTrackerDataViewModel : BaseViewModel
+    public class BillTrackerDataViewModel : LocalBaseViewModel
     {
 
         public ObservableCollection<Bill> Bills { get; set; }
-        private DateTime firstPaydate;
+        private readonly DateTime firstPaydate;
 
         private string companyName;
         public string CompanyName

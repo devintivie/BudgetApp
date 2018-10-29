@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\
 BudgetApp
 none
 false
 DEBUG;TRACE
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\App.xaml
-61048655456
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml
+6374016256
 
-23748049413
+271867899700
 17-140857567
-MainWindow.xaml;Views\BillTrackerDataView.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarDay.xaml;Views\CalendarTwoWeek.xaml;
+MainWindow.xaml;Controls\NextBillDueDataControl.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarDay.xaml;Views\CalendarTwoWeek.xaml;
 
 False
 

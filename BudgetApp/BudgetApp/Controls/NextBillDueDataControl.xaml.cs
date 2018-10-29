@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetApp.Views
+namespace BudgetApp
 {
     /// <summary>
     /// Interaction logic for BillTrackerView.xaml
     /// </summary>
-    public partial class BillTrackerDataView : UserControl
+    public partial class NextBillDueDataControl : UserControl
     {
-        public BillTrackerDataView()
+        public NextBillDueDataControl()
         {
             InitializeComponent();
         }

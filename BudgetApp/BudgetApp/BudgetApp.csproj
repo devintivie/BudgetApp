@@ -60,17 +60,21 @@
     <Compile Include="Managers\BillTrackerManager.cs" />
     <Compile Include="Managers\DependencyManager.cs" />
     <Compile Include="Models\ApplicationPage.cs" />
-    <Compile Include="Models\BillTrackerModel.cs" />
+    <Compile Include="Models\BillTracker.cs" />
     <Compile Include="Models\BudgetCalculators.cs" />
     <Compile Include="Models\BudgetModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Design\NextBillDueDataDesignModel.cs" />
+    <Compile Include="ViewModels\LocalBaseViewModel.cs" />
     <Compile Include="ViewModels\BillTrackerDataViewModel.cs" />
     <Compile Include="ViewModels\BillTrackerViewModel.cs" />
     <Compile Include="ViewModels\BillViewModel.cs" />
+    <Compile Include="ViewModels\Design\BillDesignModel.cs" />
+    <Compile Include="ViewModels\Design\BillTrackerDesignModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\BillTrackerDataView.xaml.cs">
-      <DependentUpon>BillTrackerDataView.xaml</DependentUpon>
+    <Compile Include="Controls\NextBillDueDataControl.xaml.cs">
+      <DependentUpon>NextBillDueDataControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\NextBillDueDataViewModel.cs" />
     <Compile Include="Views\BillTrackerView.xaml.cs">
       <DependentUpon>BillTrackerView.xaml</DependentUpon>
     </Compile>
@@ -95,7 +99,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\BillTrackerDataView.xaml">
+    <Page Include="Controls\NextBillDueDataControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -117,7 +121,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BillModel.cs" />
+    <Compile Include="Models\Bill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -143,9 +147,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieBaseClasses\IvieBaseClasses.csproj">
       <Project>{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}</Project>

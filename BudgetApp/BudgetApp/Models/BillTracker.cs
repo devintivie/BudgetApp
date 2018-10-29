@@ -8,31 +8,22 @@ using System.Collections.ObjectModel;
 
 namespace BudgetApp.Models
 {
-    public class BillTrackerModel { }
-
     [Serializable]
     public class BillTracker : BaseINPC, IComparable<BillTracker>
     {
-        public List<Bill> Bills { get; set; }
+        public List<Bill> Bills { get; set; } = new List<Bill>();
 
-        private string companyName;
-        public string CompanyName
-        {
-            get { return companyName; }
-            set
-            {
-                if (companyName != value)
-                {
-                    companyName = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        public string CompanyName { get; set; }
 
         public BillTracker()
         {
-            CompanyName = "";
-            Bills = new List<Bill>();
+            CompanyName = "No Name";
+        }
+
+        public BillTracker(string name, Bill firstBill)
+        {
+            CompanyName = name;
+            Bills.Add(firstBill);
         }
 
         public BillTracker(string name, List<Bill> list)
@@ -45,6 +36,7 @@ namespace BudgetApp.Models
                 Bills.Add(b);
             }
         }
+
 
         public int CompareTo(BillTracker other)
         {

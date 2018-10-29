@@ -1,39 +1,36 @@
-﻿<UserControl x:Class="BudgetApp.Views.BillView"
+﻿<UserControl x:Class="BudgetApp.BillView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
-             xmlns:local="clr-namespace:BudgetApp.Views"
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d">
-    <UserControl.Resources>
-        <cvt:DateOnlyConverter x:Key="DateConverter"/>
-        <cvt:CurrencyConverter x:Key="CurrencyConverter"/>
-    </UserControl.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
 
-        <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
-                 Grid.Column="1" Width="70"
-                 Background="White"
+    <Border BorderBrush="Black" BorderThickness="2">
+        <Grid d:DataContext="{x:Static vms:BillDesignModel.Instance}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
+                 Grid.Column="0" Width="70"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
                  />
 
-        <TextBlock Text="{Binding DueDate, Converter={cvt:DateOnlyConverter}}" 
-                   Grid.Column="2" 
+            <TextBlock Text="{Binding DueDate, Converter={cvt:DayDateConverter}}" 
+                   Grid.Column="1" 
                    Padding="5"
                    Width="180" 
                    VerticalAlignment="Center" 
-                   Visibility="{Binding IsDateShown, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Collapse}"
                    TextAlignment="Left"
                    />
 
-    </Grid>
+        </Grid>
+    </Border>
     <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

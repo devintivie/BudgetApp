@@ -109,7 +109,7 @@ namespace BudgetApp.Models
                 {
                     newBD = (BudgetModel)xs.Deserialize(fsin);
                     Console.WriteLine("Object Deserialized");
-                    Console.WriteLine(newBD.ToString());
+                    Console.WriteLine(newBD.ToString() + "TEsting");
                 }
             }
 

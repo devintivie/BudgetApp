@@ -8,74 +8,71 @@ using System.Threading.Tasks;
 
 namespace BudgetApp.ViewModels
 {
-    public class BillViewModel : BaseViewModel
+    public class BillViewModel : LocalBaseViewModel
     {
-        private DateTime dueDate;
+        private Bill Bill { get; set; }
+
         public DateTime DueDate
         {
-            get { return dueDate; }
+            get { return Bill.DueDate; }
             set
             {
-                if (dueDate != value)
+                if (Bill.DueDate != value)
                 {
-                    dueDate = value;
+                    Bill.DueDate = value;
                     NotifyPropertyChanged();
-                    Console.WriteLine("bye");
                 }
             }
         }
 
-        private Double amountDue;
-        public Double AmountDue
+        public double AmountDue
         {
-            get { return amountDue; }
+            get { return Bill.AmountDue; }
             set
             {
-                if (amountDue != value)
+                if (Bill.AmountDue != value)
                 {
-                    amountDue = value;
+                    Bill.AmountDue = value;
                     NotifyPropertyChanged();
+                    Console.WriteLine(Bill.AmountDue.ToString("C"));
                 }
             }
         }
 
-        private string confirmation;
         public string Confirmation
         {
-            get { return confirmation; }
+            get { return Bill.Confirmation; }
             set
             {
-                if (confirmation != value)
+                if (Bill.Confirmation != value)
                 {
-                    confirmation = value;
+                    Bill.Confirmation = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private bool isPaid;
         public bool IsPaid
         {
-            get { return isPaid; }
+            get { return Bill.IsPaid; }
             set
             {
-                if (isPaid != value)
+                if (Bill.IsPaid != value)
                 {
-                    isPaid = value;
+                    Bill.IsPaid = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-
-        private Bill Bill { get; set; }
 
         public BillViewModel(Bill iBill)
         {
             Bill = iBill;
-            DueDate = iBill.DueDate;
-            AmountDue = iBill.AmountDue;
-            Confirmation = iBill.Confirmation;
-            IsPaid = iBill.IsPaid;
+        }
+
+        public BillViewModel()
+        {
+            Bill = new Bill();
         }
 
 

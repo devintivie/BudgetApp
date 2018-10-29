@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace BudgetApp.Models
 {
-    public class BillModel { }
-
     [Serializable]
     public class Bill : BaseINPC, IComparable  
     {
@@ -18,61 +16,11 @@ namespace BudgetApp.Models
         #endregion PrivateVariables
 
         #region Properties
-        private DateTime dueDate;
-        public DateTime DueDate
-        {
-            get { return dueDate; }
-            set
-            {
-                if (dueDate != value)
-                {
-                    dueDate = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
-        private Double amountDue;
-        public Double AmountDue
-        {
-            get { return amountDue; }
-            set
-            {
-                if (amountDue != value)
-                {
-                    amountDue = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string confirmation;
-        public string Confirmation
-        {
-            get { return confirmation; }
-            set
-            {
-                if (confirmation != value)
-                {
-                    confirmation = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool isPaid;
-        public bool IsPaid
-        {
-            get { return isPaid; }
-            set
-            {
-                if (isPaid != value)
-                {
-                    isPaid = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        public DateTime DueDate { get; set; }
+        public double AmountDue { get; set; }
+        public string Confirmation { get; set; }
+        public bool IsPaid { get; set; }
 
         #endregion Properties
 
@@ -91,6 +39,14 @@ namespace BudgetApp.Models
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
         }
+        public Bill(double iAmount, int month, int day)
+        {
+            var today = DateTime.Now;
+            DueDate = new DateTime(today.Year, month, day);
+            AmountDue = iAmount;
+            Confirmation = DEFUALT_CONFIRMATION;
+            IsPaid = false;
+        }
 
         public int CompareTo(object obj)
         {
@@ -99,13 +55,15 @@ namespace BudgetApp.Models
              * If return == 0, the instance is the same as obj
              * If return >0, the instance is later than obj
              */
+
+
             if (obj == null) return 1;
 
-            Bill otherBill = obj as Bill;
-            if (otherBill != null)
+            if (obj is Bill otherBill)
                 return DueDate.CompareTo(otherBill.DueDate);
             else
                 throw new ArgumentException("Object is not a Bill Object");
+
         }
 
         /// <summary>

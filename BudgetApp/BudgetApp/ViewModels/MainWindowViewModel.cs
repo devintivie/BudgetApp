@@ -11,15 +11,18 @@ using System.Windows;
 
 namespace BudgetApp.ViewModels
 {
-    public class MainWindowViewModel : BaseViewModel
+    public class MainWindowViewModel : LocalBaseViewModel
     {
         public ObservableCollection<BillViewModel> BillList { get; set; } = new ObservableCollection<BillViewModel>();
-        public ObservableCollection<BillTrackerDataViewModel> BTList { get; set; }
+        public ObservableCollection<NextBillDueDataViewModel> BTList { get; set; }
         public ObservableCollection<Bill> Bills { get; set; }
+        public ObservableCollection<NextBillDueDataViewModel> DataList { get; set; }
 
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
-        private DateTime firstPaydate;
+        private readonly DateTime firstPaydate = DateTime.Today;
+
+        private readonly string filename = "xml_test.xml";
 
         private BillViewModel bvm;
         public BillViewModel BVM
@@ -65,8 +68,22 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        private BillTrackerDataViewModel currentBT;
-        public BillTrackerDataViewModel CurrentBT
+        private BillViewModel currentBVM;
+        public BillViewModel CurrentBVM
+        {
+            get { return currentBVM; }
+            set
+            {
+                if (currentBVM != value)
+                {
+                    currentBVM = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private BillTrackerViewModel currentBT;
+        public BillTrackerViewModel CurrentBT
         {
             get { return currentBT; }
             set
@@ -74,21 +91,40 @@ namespace BudgetApp.ViewModels
                 if (currentBT != value)
                 {
                     currentBT = value;
-                    Bills.Clear();
-                    if(CurrentBT != null)
-                    {
-                        foreach (var b in CurrentBT.Bills)
-                        {
-                            Bills.Add(b);
-                        }
-                    }
+
+
+                    //Bills.Clear();
+                    //if(CurrentBT != null)
+                    //{
+                    //    foreach (var b in CurrentBT.Bills)
+                    //    {
+                    //        Bills.Add(b);
+                    //    }
+                    //}
 
                     Console.WriteLine("current bill tracker changed");
-                    
+
                     NotifyPropertyChanged();
+                    
                 }
             }
         }
+
+        private NextBillDueDataViewModel currentSelection;
+        public NextBillDueDataViewModel CurrentSelection
+        {
+            get { return currentSelection; }
+            set
+            {
+                if (currentSelection != value)
+                {
+                    currentSelection = value;
+                    NotifyPropertyChanged();
+                    UpdateCurrentBTVM();
+                }
+            }
+        }
+
 
         private string newCompany;
         public string NewCompany
@@ -133,20 +169,32 @@ namespace BudgetApp.ViewModels
 
         public MainWindowViewModel()
         {
-            BTList = new ObservableCollection<BillTrackerDataViewModel>();
+            BTList = new ObservableCollection<NextBillDueDataViewModel>();
             Bills = new ObservableCollection<Bill>();
+            BTVM = new BillTrackerViewModel();
+
+            DataList = new ObservableCollection<NextBillDueDataViewModel>();
+
+            var newBill = new Bill(150, 7, 12);
+            var newBT = new BillTracker
+            {
+                CompanyName = "Some other company"
+            };
+            newBT.Bills.Add(newBill);
+            var somedata = new NextBillDueDataViewModel(newBT);
+            DataList.Add(somedata);
 
             AddCompanyCommand = new DelegateCommand(OnAddCompany, CanAddCompany);
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
-            AddBillCommand = new DelegateCommand(OnAddBill, CanAddBill);
+            //AddBillCommand = new DelegateCommand(OnAddBill, CanAddBill);
             EditBillCommand = new DelegateCommand(OnEditBill, CanEditBill);
             BillChangedCommand = new DelegateCommand(OnBillChanged, CanBillChanged);
-            RemoveBillCommand = new DelegateCommand(OnRemoveBill, CanRemoveBill);
+            //RemoveBillCommand = new DelegateCommand(OnRemoveBill, CanRemoveBill);
             SaveCommand = new DelegateCommand(OnSave, CanSave);
             LoadCommand = new DelegateCommand(OnLoad, CanLoad);
             ClosingCommand = new DelegateCommand(ExecuteClosing, CanExecuteClosing);
 
-            firstPaydate = new DateTime(2018, 6, 15);
+            //firstPaydate = new DateTime(2018, 6, 15);
             
 
             BVM = new BillViewModel(new Bill());
@@ -167,8 +215,28 @@ namespace BudgetApp.ViewModels
             //BillTrackerManager.AddTracker(bt2);
             UpdateBTList();
             OnLoad();
+            UpdateCurrentBTVM();
 
         }
+
+        private void UpdateCurrentBTVM()
+        {
+            if(CurrentSelection == null)
+            {
+                CurrentBT = new BillTrackerViewModel(BillTrackerManager.AllTrackers[0]);
+            }
+            else
+            {
+                CurrentBT = new BillTrackerViewModel(BillTrackerManager.TrackersByCompany[CurrentSelection.CompanyName]);
+            }
+
+                
+            
+
+            
+        }
+
+
 
         private void OnEditBill()
         {
@@ -190,7 +258,7 @@ namespace BudgetApp.ViewModels
             CurrentBill.Confirmation = BVM.Confirmation;
             CurrentBill.IsPaid = BVM.IsPaid;
             CurrentBill.AmountDue = BVM.AmountDue;
-            UpdateBills();
+            //UpdateBills();
         }
 
         private bool CanBillChanged()
@@ -198,54 +266,56 @@ namespace BudgetApp.ViewModels
             return CurrentBill != null;
         }
 
-        private void OnRemoveBill()
-        {
-            var found = false;
-            foreach (var b in CurrentBT.BillTracker.Bills)
-            {
-                if (b.DueDate.Equals(CurrentBill.DueDate))
-                {
-                    found = true;
-                }
-            }
-            if (found)
-            {
-                CurrentBT.BillTracker.Bills.Remove(CurrentBill);
-                Console.WriteLine(CurrentBT.BillTracker.Bills.Count);
-            }
+        //private void OnRemoveBill()
+        //{
+        //    var found = false;
+        //    foreach (var b in CurrentBT.Bills)
+        //    {
+        //        if (b.DueDate.Equals(CurrentBill.DueDate))
+        //        {
+        //            found = true;
+        //        }
+        //    }
+        //    if (found)
+        //    {
+        //        CurrentBT.Bills.Remove(CurrentBVM);//     .Bills.Remove(CurrentBill);
+        //        Console.WriteLine(CurrentBT.Bills.Count);
+        //    }
 
-            CurrentBT.UpdateBills();
-            UpdateBills();
-            CurrentBT.UpdateNextBill();
-        }
+        //    CurrentBT.UpdateBills();
+        //    UpdateBills();
+        //    //CurrentBT.UpdateNextBill();
+        //}
 
         private bool CanRemoveBill()
         {
             return CurrentBill != null;
         }
 
-        private void OnAddBill()
-        {
-            var bill = new Bill();
-            bill.DueDate = BVM.DueDate;
-            bill.AmountDue = BVM.AmountDue;
-            var found = false;
-            foreach(var b in CurrentBT.BillTracker.Bills)
-            {
-                if (b.DueDate.Equals(bill.DueDate))
-                {
-                    found = true;
-                }
-            }
-            if (!found)
-            {
-                CurrentBT.BillTracker.Bills.Add(bill);
-            }
+        //private void OnAddBill()
+        //{
+        //    var bill = new Bill
+        //    {
+        //        DueDate = BVM.DueDate,
+        //        AmountDue = BVM.AmountDue
+        //    };
+        //    var found = false;
+        //    foreach(var b in CurrentBT.Bills)
+        //    {
+        //        if (b.DueDate.Equals(bill.DueDate))
+        //        {
+        //            found = true;
+        //        }
+        //    }
+        //    if (!found)
+        //    {
+        //        CurrentBT.Bills.Add(bill);
+        //    }
             
-            CurrentBT.UpdateBills();
-            UpdateBills();
-            CurrentBT.UpdateNextBill();
-        }
+        //    CurrentBT.UpdateBills();
+        //    UpdateBills();
+        //    //CurrentBT.UpdateNextBill();
+        //}
 
         private bool CanAddBill()
         {
@@ -263,9 +333,9 @@ namespace BudgetApp.ViewModels
 
         private void OnRemoveCompany()
         {
-            BillTrackerManager.TrackersByCompany.Remove(CurrentBT.CompanyName);
-            BillTrackerManager.AllTrackers.Remove(CurrentBT.BillTracker);
-            UpdateBTList();
+            //BillTrackerManager.TrackersByCompany.Remove(CurrentBT.CompanyName);
+            //BillTrackerManager.AllTrackers.Remove(CurrentBT.BillTracker);
+            //UpdateBTList();
         }
 
         private bool CanRemoveCompany()
@@ -288,8 +358,10 @@ namespace BudgetApp.ViewModels
                 }
                 if (!found && NewCompany.Length>0)
                 {
-                    var bt = new BillTracker();
-                    bt.CompanyName = NewCompany;
+                    var bt = new BillTracker
+                    {
+                        CompanyName = NewCompany
+                    };
                     BillTrackerManager.TrackersByCompany.Add(bt.CompanyName, bt);
                     BillTrackerManager.AllTrackers.Add(bt);
                     UpdateBTList();
@@ -313,7 +385,7 @@ namespace BudgetApp.ViewModels
             {
                 bm.AddBillTracker(bt);
             }
-            bm.Serialize("xml_test.xml");
+            bm.Serialize(filename);
         }
 
         private bool CanSave()
@@ -324,11 +396,12 @@ namespace BudgetApp.ViewModels
         private void OnLoad()
         {
             BillTrackerManager.Reset();
-            var bm = BudgetModel.Deserialize("xml_test.xml");
+            var bm = BudgetModel.Deserialize(filename);
             foreach (BillTracker bt in bm.BudgetData)
             {
                 BillTrackerManager.TrackersByCompany.Add(bt.CompanyName, bt);
                 BillTrackerManager.AllTrackers.Add(bt);
+                Console.WriteLine(bt.CompanyName);
             }
 
             UpdateBTList();
@@ -352,18 +425,19 @@ namespace BudgetApp.ViewModels
             }
             foreach (var b in tempList)
             {
-                BTList.Add(new BillTrackerDataViewModel(b, firstPaydate));
+                BTList.Add(new NextBillDueDataViewModel(b));
             }
+            
         }
 
-        private void UpdateBills()
-        {
-            Bills.Clear();
-            foreach (var b in CurrentBT.Bills)
-            {
-                Bills.Add(b);
-            }
-        }
+        //private void UpdateBills()
+        //{
+        //    Bills.Clear();
+        //    foreach (var b in CurrentBT.Bills)
+        //    {
+        //        Bills.Add(b);
+        //    }
+        //}
 
         private void ExecuteClosing()
         {
