@@ -22,30 +22,30 @@ namespace BudgetApp.ViewModels
                 new BillViewModel
                 {
                     AmountDue = 50,
-                    Confirmation = "ABC123",
+                    //Confirmation = "ABC123",
                     DueDate = new DateTime(2018,5,20),
-                    IsPaid = true
+                    //IsPaid = true
                 },
                 new BillViewModel
                 {
                     AmountDue = 75,
-                    Confirmation = "ABC123",
+                    //Confirmation = "ABC123",
                     DueDate = new DateTime(2018,6,20),
-                    IsPaid = true
+                    //IsPaid = true
                 },
                 new BillViewModel
                 {
                     AmountDue = 80,
-                    Confirmation = "ABC123",
+                    //Confirmation = "ABC123",
                     DueDate = new DateTime(2018,7,20),
-                    IsPaid = true
+                    //IsPaid = true
                 },
                 new BillViewModel
                 {
                     AmountDue = 50,
-                    Confirmation = "ABC123",
+                    //Confirmation = "ABC123",
                     DueDate = new DateTime(2018,8,20),
-                    IsPaid = false
+                    //IsPaid = false
                 }
             };
 

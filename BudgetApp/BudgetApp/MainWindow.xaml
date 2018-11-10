@@ -10,33 +10,131 @@
         mc:Ignorable="d"
         x:Name="AppWindow"
         Title="MainWindow">
-
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
+    <DockPanel>
+        <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New Budget..." Command="{Binding NewCommand}"/>
+                <MenuItem Header="Save Budget" Command="{Binding SaveCommand}"/>
+                <MenuItem Header="Save Budget As..." Command="{Binding SaveAsCommand}"/>
+                <MenuItem Header="Open Budget..." Command="{Binding OpenCommand}"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+        </Menu>
+        <Grid Background="LightBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
 
-    <Grid Background="LightBlue" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<ContentControl Content="{Binding BOVM}"
+                    Grid.Row="0" Grid.RowSpan="2"
+                    Grid.Column="0"
+                    />
         
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-
-        <ListView ItemsSource="{Binding BTList}" Background="Transparent"
-                  Grid.Row="0" Grid.RowSpan="2"
+    <TextBlock Text="Add Companies to start budget."
+                   Width="400"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                   TextWrapping="Wrap"
+                       Margin="0 10 20 0"
+                       FontSize="20"
+                   VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       />-->
+            <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
+                  Visibility="Visible"
+                  Height="600"
+                  VerticalAlignment="Top"
+                  Grid.Row="1" Grid.RowSpan="2"
                   Grid.Column="0"
                   SelectedItem="{Binding CurrentSelection}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                   BorderBrush="Transparent">
-        </ListView>
-        <ContentControl Content="{Binding CurrentBT}"
-                        Grid.Row="0" Grid.Column="1"
+            </ListView>
+
+            <ContentControl Content="{Binding CurrentBT}"
+                        Grid.Row="1" Grid.Column="1"
                         Visibility="{Binding ShowCurrentBT, Converter={cvtrs:BooleanToVisibilityConverter}}"/>
-        
-    </Grid>
+            <Button Grid.Row="3" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
+            <!--<StackPanel Orientation="Horizontal" Grid.Row="3">
+        <Button Content="Save Budget" Command="{Binding SaveCommand}" Background="Black" Foreground="White"
+                    FontSize="16" Padding="3"/>
+        <Button Content="Test Load Budget" Command="{Binding OpenCommand}"
+                    Background="Black" Foreground="White"
+                    FontSize="16" Padding="3"/>
+    </StackPanel>-->
+
+        </Grid>
+    </DockPanel>
+
+
 </Window>
+
+
+<!--<Grid Background="LightBlue">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+
+
+    -->
+<!--<ContentControl Content="{Binding BOVM}"
+                        Grid.Row="0" Grid.RowSpan="2"
+                        Grid.Column="0"
+                        />-->
+<!--
+    <TextBlock Text="Add Companies to start budget."
+                   Width="400"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                   TextWrapping="Wrap"
+                       Margin="0 10 20 0"
+                       FontSize="20"
+                   VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       />
+    <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
+                  Visibility="Hidden"
+                  Height="600"
+                  VerticalAlignment="Top"
+                  Grid.Row="1" Grid.RowSpan="2"
+                  Grid.Column="0"
+                  SelectedItem="{Binding CurrentSelection}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                  BorderBrush="Transparent">
+    </ListView>
+
+    <ContentControl Content="{Binding CurrentBT}"
+                        Grid.Row="1" Grid.Column="1"
+                        Visibility="{Binding ShowCurrentBT, Converter={cvtrs:BooleanToVisibilityConverter}}"/>
+
+    <StackPanel Orientation="Horizontal" Grid.Row="3">
+        <Button Content="Save Budget" Command="{Binding SaveCommand}" Background="Black" Foreground="White"
+                    FontSize="16" Padding="3"/>
+        <Button Content="Test Load Budget" Command="{Binding LoadCommand}"
+                    Background="Black" Foreground="White"
+                    FontSize="16" Padding="3"/>
+    </StackPanel>
+
+</Grid>-->

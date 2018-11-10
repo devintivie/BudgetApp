@@ -56,9 +56,6 @@ namespace BudgetApp.ViewModels
             }
         }
             
-            
-
-
         private DateTime nextDueDate;
         public DateTime NextDueDate
         {
@@ -105,7 +102,7 @@ namespace BudgetApp.ViewModels
             bool found = false;
             foreach (var d in Bills)
             {
-                if (d.DueDate.CompareTo(DateTime.Today) > 0)
+                if (d.DueDate.CompareTo(DateTime.Today) >= 0)
                 {
                     NextAmountDue = d.AmountDue;
                     NextDueDate = d.DueDate;

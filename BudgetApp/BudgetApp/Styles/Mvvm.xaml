@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BudgetApp"
+                    xmlns:vms="clr-namespace:BudgetApp.ViewModels">
+    <DataTemplate DataType="{x:Type vms:BillViewModel}">
+            <local:BillView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:NextBillDueDataViewModel}">
+            <local:NextBillDueDataControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:BillTrackerViewModel}">
+            <local:BillTrackerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:BudgetOverviewViewModel}">
+            <local:BudgetOverviewControl/>
+        </DataTemplate>
+</ResourceDictionary>

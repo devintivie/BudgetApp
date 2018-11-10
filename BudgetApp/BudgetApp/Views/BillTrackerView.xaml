@@ -7,11 +7,12 @@
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              mc:Ignorable="d">
-    <Border BorderBrush="Black" BorderThickness="2" Height="300">
+    <Border BorderBrush="Black" BorderThickness="2" Height="330">
         <Grid d:DataContext="{x:Static vms:BillTrackerDesignModel.Instance}" Width="350">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -19,18 +20,12 @@
         </Grid.ColumnDefinitions>-->
 
             <TextBlock Text="{Binding CompanyName}" 
-                   Width="350" FontSize="30"
-                   HorizontalAlignment="Right"
-                   TextTrimming="CharacterEllipsis"
+                       Width="350" FontSize="30"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Right"
+                       TextTrimming="CharacterEllipsis"
                    
                    />
-            <!--<ListView ItemsSource="{Binding BTList}" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="4" SelectedItem="{Binding CurrentBT}" SelectedIndex="0" Height="200" VerticalAlignment="Top"/>
-        <Button Content="Add Company" Command="{Binding UpdateCommand}" Grid.Row="1"/>
-        <Button Content="Remove Company" Grid.Row="1" Grid.Column="1"/>
-
-        <ListView ItemsSource="{Binding Bills}" SelectedItem="{Binding CurrentBill}" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="162" VerticalAlignment="Top"/>-->
-
-
             <ListView x:Name="BillListView" Height="250" ItemsSource="{Binding Bills}" 
                       Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
                   Grid.Row="1" Grid.Column="0"
@@ -38,7 +33,7 @@
                       HorizontalContentAlignment="Right"
                       Background="Transparent"
                       BorderBrush="Transparent"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
                   SelectedItem="{Binding CurrentBVM}">
             </ListView>
 
@@ -51,12 +46,10 @@
                        FontSize="20"
                        HorizontalAlignment="Right"
                        />
-
-            <!--<ContentControl Content="{Binding BVM}" Grid.Row="0" Grid.Column="6"/>-->
-            <!--<ContentControl Content="{Binding BTVM}"/>-->
-
-            <!--<Button Content="Add Bill" Command="{Binding AddCommand}" Grid.Row="1" Grid.Column="4"/>
-        <Button Content="Remove Bill" Command="{Binding RemoveCommand}" Grid.Row="1" Grid.Column="5"/>-->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add Bill" Command="{Binding AddCommand}"/>
+                <Button Content="Remove Bill" Command="{Binding RemoveCommand}"/>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

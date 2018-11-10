@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="Controls\BudgetOverviewControl.xaml.cs">
+      <DependentUpon>BudgetOverviewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ApplicationPageValueConverter.cs" />
     <Compile Include="Managers\BillTrackerManager.cs" />
     <Compile Include="Managers\DependencyManager.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="Models\BillTracker.cs" />
     <Compile Include="Models\BudgetCalculators.cs" />
     <Compile Include="Models\BudgetModel.cs" />
+    <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
     <Compile Include="ViewModels\Design\NextBillDueDataDesignModel.cs" />
     <Compile Include="ViewModels\LocalBaseViewModel.cs" />
     <Compile Include="ViewModels\BillTrackerDataViewModel.cs" />
@@ -87,6 +92,10 @@
     <Compile Include="Views\CalendarTwoWeek.xaml.cs">
       <DependentUpon>CalendarTwoWeek.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\BudgetOverviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +111,26 @@
     <Page Include="Controls\NextBillDueDataControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Mvvm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BillTrackerView.xaml">
       <SubType>Designer</SubType>
@@ -139,6 +168,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\fa-solid-900.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

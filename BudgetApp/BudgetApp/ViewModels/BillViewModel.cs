@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
     public class BillViewModel : LocalBaseViewModel
     {
-        private Bill Bill { get; set; }
+        public Bill Bill { get; set; }
 
         public DateTime DueDate
         {
@@ -34,45 +35,83 @@ namespace BudgetApp.ViewModels
                 {
                     Bill.AmountDue = value;
                     NotifyPropertyChanged();
-                    Console.WriteLine(Bill.AmountDue.ToString("C"));
                 }
             }
         }
 
-        public string Confirmation
+        private bool isCalendarOpen = false;
+        public bool IsCalendarOpen
         {
-            get { return Bill.Confirmation; }
+            get { return isCalendarOpen; }
             set
             {
-                if (Bill.Confirmation != value)
+                if (isCalendarOpen != value)
                 {
-                    Bill.Confirmation = value;
+                    isCalendarOpen = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public bool IsPaid
-        {
-            get { return Bill.IsPaid; }
-            set
-            {
-                if (Bill.IsPaid != value)
-                {
-                    Bill.IsPaid = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        public ICommand OpenPopupCommand { get; set; }
+
+
+
+
+
+
+
+
+
+        //public string Confirmation
+        //{
+        //    get { return Bill.Confirmation; }
+        //    set
+        //    {
+        //        if (Bill.Confirmation != value)
+        //        {
+        //            Bill.Confirmation = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+
+        //public bool IsPaid
+        //{
+        //    get { return Bill.IsPaid; }
+        //    set
+        //    {
+        //        if (Bill.IsPaid != value)
+        //        {
+        //            Bill.IsPaid = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
 
         public BillViewModel(Bill iBill)
         {
             Bill = iBill;
+            OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
         }
 
         public BillViewModel()
         {
             Bill = new Bill();
+            OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
+        }
+
+        private bool CanOpenPopup()
+        {
+            return true;
+        }
+
+        private void OnOpenPopup()
+        {
+            if (!IsCalendarOpen)
+            {
+                IsCalendarOpen = true;
+            }
         }
 
 

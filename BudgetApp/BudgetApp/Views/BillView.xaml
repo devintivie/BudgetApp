@@ -8,13 +8,8 @@
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d">
 
-    <Border BorderBrush="Black" BorderThickness="2">
-        <Grid d:DataContext="{x:Static vms:BillDesignModel.Instance}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
+    <Border BorderBrush="Black" BorderThickness="2" >
+        <StackPanel Orientation="Horizontal" d:DataContext="{x:Static vms:BillDesignModel.Instance}">
             <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
                  Grid.Column="0" Width="70"
                  VerticalContentAlignment="Center"
@@ -28,8 +23,17 @@
                    VerticalAlignment="Center" 
                    TextAlignment="Left"
                    />
+            <Button Content="{StaticResource FontAwesomeCalendarIcon}" FontFamily="{StaticResource FontAwesome}"
+                    FontSize="30" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Command="{Binding OpenPopupCommand}"
+                    />
 
-        </Grid>
+            <Popup IsOpen="{Binding IsCalendarOpen}" StaysOpen="False"
+                   HorizontalOffset="70" VerticalOffset="-30">
+                <Calendar SelectedDate="{Binding DueDate}" DisplayDate="{Binding DueDate, Mode=OneWay}">
+                    
+                </Calendar>
+            </Popup>
+        </StackPanel>
     </Border>
     <!--<Grid>
         <Grid.RowDefinitions>

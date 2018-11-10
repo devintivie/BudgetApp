@@ -17,9 +17,9 @@ namespace BudgetApp.ViewModels
         public BillDesignModel()
         {
             AmountDue = 100;
-            Confirmation = "Test Conf";
+            //Confirmation = "Test Conf";
             DueDate = new DateTime(2011, 1, 1);
-            IsPaid = true;
+            //IsPaid = true;
 
         }
         #endregion

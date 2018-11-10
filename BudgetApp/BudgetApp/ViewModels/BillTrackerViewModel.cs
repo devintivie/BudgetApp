@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
@@ -14,6 +15,9 @@ namespace BudgetApp.ViewModels
         private BillTracker BillTracker { get; set; }
 
         public ObservableCollection<BillViewModel> Bills { get; set; } = new ObservableCollection<BillViewModel>();
+
+        public ICommand AddCommand { get; set; }
+        public ICommand RemoveCommand { get; set; }
 
         private bool isContentAvailable;
         public bool IsContentAvailable
@@ -56,24 +60,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
-
-
-        public BillTrackerViewModel()
-        {
-            BillTracker = new BillTracker();
-            UpdateContentAvailable();
-        }
-
+        #region Constructors
         public BillTrackerViewModel(BillTracker iBillTracker)
         {
             BillTracker = iBillTracker;
-            Bills.Clear();
-            foreach(var bill in iBillTracker.Bills)
-            {
-                Bills.Add(new BillViewModel(bill));
-            }
-            UpdateContentAvailable();
+            UpdateBills();
+            AddCommand = new DelegateCommand(OnAdd, CanAdd);
+            RemoveCommand = new DelegateCommand(OnRemove, CanRemove);
         }
+
+        public BillTrackerViewModel() : this(new BillTracker()) { }
+        #endregion
+
+        
+
+        
 
         private void UpdateContentAvailable()
         {
@@ -88,6 +89,74 @@ namespace BudgetApp.ViewModels
         }
 
 
+        private void OnRemove()
+        {
+            var found = false;
+            foreach (var b in BillTracker.Bills)
+            {
+                if (b.DueDate.Equals(CurrentBVM.DueDate))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                BillTracker.Bills.Remove(CurrentBVM.Bill);
+                Console.WriteLine(BillTracker.Bills.Count);
+            }
+
+            UpdateBills();
+        }
+
+        private bool CanRemove()
+        {
+            return CurrentBVM != null;
+        }
+
+        private void OnAdd()
+        {
+            var bill = new Bill();
+            //{
+            //    DueDate = BVM.DueDate,
+            //    AmountDue = BVM.AmountDue
+            //};
+            var found = false;
+            foreach (var b in BillTracker.Bills)
+            {
+                if (b.DueDate.Equals(bill.DueDate))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                BillTracker.Bills.Add(bill);
+            }
+
+            //CurrentBT.UpdateBills();
+            UpdateBills();
+            //CurrentBT.UpdateNextBill();
+        }
+
+        private bool CanAdd()
+        {
+            return true;
+        }
+
+        public void UpdateBills()
+        {
+            Bills.Clear();
+            foreach (var bill in BillTracker.Bills)
+            {
+                Bills.Add(new BillViewModel(bill));
+            }
+            UpdateContentAvailable();
+        }
+
+
+
     }
 }
 
@@ -98,7 +167,7 @@ namespace BudgetApp.ViewModels
 
 
 /* FOR REFERENCE */
-//public ObservableCollection<BillViewModel> BillList { get; set; } = new ObservableCollection<BillViewModel>();
+        //public ObservableCollection<BillViewModel> BillList { get; set; } = new ObservableCollection<BillViewModel>();
 
 //private BillViewModel currentBVM;
 //public BillViewModel CurrentBVM

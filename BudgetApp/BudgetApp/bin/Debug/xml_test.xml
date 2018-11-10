@@ -16,16 +16,16 @@
     <BillTracker>
       <Bills>
         <Bill>
-          <DueDate>2018-05-10T00:00:00</DueDate>
-          <AmountDue>0</AmountDue>
-          <Confirmation>None</Confirmation>
-          <IsPaid>false</IsPaid>
-        </Bill>
-        <Bill>
           <DueDate>2018-06-26T00:00:00</DueDate>
           <AmountDue>200</AmountDue>
           <Confirmation>None</Confirmation>
           <IsPaid>true</IsPaid>
+        </Bill>
+        <Bill>
+          <DueDate>2018-08-29T00:00:00</DueDate>
+          <AmountDue>50</AmountDue>
+          <Confirmation>None</Confirmation>
+          <IsPaid>false</IsPaid>
         </Bill>
       </Bills>
       <CompanyName>Cox</CompanyName>

@@ -24,21 +24,17 @@ namespace BudgetApp.Models
 
         #endregion Properties
 
+        #region Constructors
+
         public Bill()
         {
-            DueDate = default(DateTime);
+            DueDate = DateTime.Now.Date;
             AmountDue = 0.0;
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
         }
-        public Bill(int month, int day)
-        {
-            var today = DateTime.Now;
-            DueDate = new DateTime(today.Year, month, day);
-            AmountDue = 0.0;
-            Confirmation = DEFUALT_CONFIRMATION;
-            IsPaid = false;
-        }
+        public Bill(int month, int day) : this(0, month, day) { }
+
         public Bill(double iAmount, int month, int day)
         {
             var today = DateTime.Now;
@@ -47,6 +43,9 @@ namespace BudgetApp.Models
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
         }
+        #endregion
+
+
 
         public int CompareTo(object obj)
         {
