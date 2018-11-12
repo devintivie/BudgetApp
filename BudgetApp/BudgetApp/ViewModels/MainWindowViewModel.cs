@@ -164,6 +164,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private bool isPopupOpen;
+        public bool IsPopupOpen
+        {
+            get { return isPopupOpen; }
+            set
+            {
+                if (isPopupOpen != value)
+                {
+                    isPopupOpen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
 
         public DelegateCommand AddCompanyCommand { get; set; }
@@ -177,6 +192,7 @@ namespace BudgetApp.ViewModels
         public DelegateCommand OpenCommand { get; set; }
         public DelegateCommand BillChangedCommand { get; set; }
         public ICommand UpdateBTListCommand { get; set; }
+        public ICommand OpenPopupCommand { get; set; }
 
         public DelegateCommand ClosingCommand { get; set; }
 
@@ -190,6 +206,8 @@ namespace BudgetApp.ViewModels
 
             AddCompanyCommand = new DelegateCommand(OnAddCompany, CanAddCompany);
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
+            OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
+            
             //EditBillCommand = new DelegateCommand(OnEditBill, CanEditBill);
             //BillChangedCommand = new DelegateCommand(OnBillChanged, CanBillChanged);
             NewCommand = new DelegateCommand(OnNew, CanNew);
@@ -241,8 +259,6 @@ namespace BudgetApp.ViewModels
 
             
         }
-
-
 
         private void OnUpdateBTList()
         {
@@ -342,6 +358,9 @@ namespace BudgetApp.ViewModels
             //BillTrackerManager.TrackersByCompany.Remove(CurrentBT.CompanyName);
             //BillTrackerManager.AllTrackers.Remove(CurrentBT.BillTracker);
             //UpdateBTList();
+            BillTrackerManager.TrackersByCompany.Remove(CurrentSelection.CompanyName);
+            BillTrackerManager.AllTrackers.Remove(CurrentSelection.BillTracker);
+            UpdateBTList();
         }
 
         private bool CanRemoveCompany()
@@ -357,7 +376,7 @@ namespace BudgetApp.ViewModels
             {
                 foreach (var b in BTList)
                 {
-                    if (b.CompanyName.Equals(NewCompany))
+                    if (b.CompanyName.Equals(NewCompany, StringComparison.CurrentCultureIgnoreCase))
                     {
                         found = true;
                     }
@@ -380,6 +399,19 @@ namespace BudgetApp.ViewModels
         }
 
         private bool CanAddCompany()
+        {
+            return true;
+        }
+
+        private void OnOpenPopup()
+        {
+            if (!IsPopupOpen)
+            {
+                IsPopupOpen = true;
+            }
+        }
+
+        private bool CanOpenPopup()
         {
             return true;
         }

@@ -29,6 +29,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -37,19 +38,19 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!--<ContentControl Content="{Binding BOVM}"
+            <ContentControl Content="{Binding BOVM}"
                     Grid.Row="0" Grid.RowSpan="2"
                     Grid.Column="0"
                     />
         
-    <TextBlock Text="Add Companies to start budget."
-                   Width="400"
+            <!--<TextBlock Text="Add Companies to start budget."
+                       Width="400"
                        Grid.Row="1"
                        Grid.Column="0"
-                   TextWrapping="Wrap"
+                       TextWrapping="Wrap"
                        Margin="0 10 20 0"
                        FontSize="20"
-                   VerticalAlignment="Top"
+                       VerticalAlignment="Top"
                        HorizontalAlignment="Center"
                        />-->
             <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
@@ -66,14 +67,37 @@
             <ContentControl Content="{Binding CurrentBT}"
                         Grid.Row="1" Grid.Column="1"
                         Visibility="{Binding ShowCurrentBT, Converter={cvtrs:BooleanToVisibilityConverter}}"/>
-            <Button Grid.Row="3" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
-            <!--<StackPanel Orientation="Horizontal" Grid.Row="3">
-        <Button Content="Save Budget" Command="{Binding SaveCommand}" Background="Black" Foreground="White"
-                    FontSize="16" Padding="3"/>
-        <Button Content="Test Load Budget" Command="{Binding OpenCommand}"
-                    Background="Black" Foreground="White"
-                    FontSize="16" Padding="3"/>
-    </StackPanel>-->
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <Button Content="Add Company" Command="{Binding OpenPopupCommand}"/>
+                <Button Content="Remove Company" Command="{Binding RemoveCompanyCommand}"/>
+            </StackPanel>
+            <Button Grid.Row="4" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
+
+            <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
+                   HorizontalOffset="0" VerticalOffset="-80"
+                   >
+                <DockPanel Width="{Binding ElementName=BudgetList, Path=ActualWidth}"
+                           Background="DarkGray" Height="40">
+                    <TextBlock x:Name="newCompanyText" Text="Company Name  "
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="{StaticResource FontSizeAverage}"/>
+                    <Button Content="{StaticResource FontAwesomeAddIcon}" 
+                            Margin="5"
+                            Height="{Binding ElementName=newCompanyText, Path=ActualHeight}"
+                            Width="{Binding ElementName=newCompanyText, Path=ActualHeight}"
+                            FontFamily="{StaticResource FontAwesome}"
+                            Command="{Binding AddCompanyCommand}"
+                            FontSize="{StaticResource FontSizeAverage}"
+                            DockPanel.Dock="Right"/>
+
+                    <TextBox Text="{Binding NewCompany}"
+                             FontSize="{StaticResource FontSizeAverage}"
+                             VerticalAlignment="Center"/>
+                    
+                </DockPanel>
+            </Popup>
 
         </Grid>
     </DockPanel>

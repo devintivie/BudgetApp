@@ -16,5 +16,5 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 17-140857567
 Controls\BudgetOverviewControl.xaml;MainWindow.xaml;Controls\NextBillDueDataControl.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Mvvm.xaml;Styles\Texts.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarDay.xaml;Views\CalendarTwoWeek.xaml;
 
-False
+True
 

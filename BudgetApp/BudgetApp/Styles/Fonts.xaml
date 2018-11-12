@@ -19,6 +19,6 @@
     <system:Double x:Key="FontSizeRegular">20</system:Double>
     <system:Double x:Key="FontSizeLarge">30</system:Double>
 
-    <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
+    <system:String x:Key="FontAwesomeAddIcon">&#xf055;</system:String>
     <system:String x:Key="FontAwesomeCalendarIcon">&#xf271;</system:String>
 </ResourceDictionary>

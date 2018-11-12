@@ -22,7 +22,7 @@
           <IsPaid>true</IsPaid>
         </Bill>
         <Bill>
-          <DueDate>2018-08-29T00:00:00</DueDate>
+          <DueDate>2018-12-13T00:00:00</DueDate>
           <AmountDue>50</AmountDue>
           <Confirmation>None</Confirmation>
           <IsPaid>false</IsPaid>
@@ -40,15 +40,11 @@
     </BillTracker>
     <BillTracker>
       <Bills />
-      <CompanyName>Fedloan</CompanyName>
-    </BillTracker>
-    <BillTracker>
-      <Bills />
       <CompanyName>Great LAkes</CompanyName>
     </BillTracker>
     <BillTracker>
       <Bills />
-      <CompanyName>Hulu</CompanyName>
+      <CompanyName>hulu</CompanyName>
     </BillTracker>
     <BillTracker>
       <Bills>
@@ -63,24 +59,7 @@
     </BillTracker>
     <BillTracker>
       <Bills />
-      <CompanyName>Opps</CompanyName>
-    </BillTracker>
-    <BillTracker>
-      <Bills>
-        <Bill>
-          <DueDate>2018-05-10T00:00:00</DueDate>
-          <AmountDue>0</AmountDue>
-          <Confirmation>None</Confirmation>
-          <IsPaid>false</IsPaid>
-        </Bill>
-        <Bill>
-          <DueDate>2018-07-15T00:00:00</DueDate>
-          <AmountDue>0</AmountDue>
-          <Confirmation>None</Confirmation>
-          <IsPaid>false</IsPaid>
-        </Bill>
-      </Bills>
-      <CompanyName>USAA</CompanyName>
+      <CompanyName>really long company name that might work</CompanyName>
     </BillTracker>
   </BudgetData>
 </BudgetModel>

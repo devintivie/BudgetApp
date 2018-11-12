@@ -12,7 +12,7 @@ namespace BudgetApp.ViewModels
     public class NextBillDueDataViewModel : LocalBaseViewModel
     {
         public ObservableCollection<Bill> Bills { get; set; }
-        private BillTracker BillTracker { get; set; }
+        public BillTracker BillTracker { get; private set; }
 
         public string CompanyName
         {

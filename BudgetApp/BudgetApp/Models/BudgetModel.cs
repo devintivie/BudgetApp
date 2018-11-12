@@ -117,7 +117,7 @@ namespace BudgetApp.Models
             {
                 newBD.Serialize(Filename);
                 Console.WriteLine("File Created");
-                //Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {

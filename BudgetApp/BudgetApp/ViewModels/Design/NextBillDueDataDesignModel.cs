@@ -19,7 +19,7 @@ namespace BudgetApp.ViewModels
         {
             CompanyName = "New Company";
             NextAmountDue = 140;
-            NextDueDate = new DateTime(2018, 7, 18);
+            NextDueDate = new DateTime(2018, 11, 18);
         }
         #endregion
     }
