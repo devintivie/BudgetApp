@@ -22,10 +22,10 @@ namespace BudgetApp.ViewModels
         public ObservableCollection<NextBillDueDataViewModel> DataList { get; set; }
 
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
-
         private readonly DateTime firstPaydate = DateTime.Today;
+        private static string DEFAULT_FILENAME = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\new_budget.xml";
 
-        private readonly string filename = "xml_test.xml"; //"new_budget.xml"
+        
 
         private BillViewModel bvm;
         public BillViewModel BVM
@@ -164,6 +164,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private string filename = DEFAULT_FILENAME;
+        public string Filename
+        {
+            get { return filename; }
+            set
+            {
+                if (filename != value)
+                {
+                    filename = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         private bool isPopupOpen;
         public bool IsPopupOpen
         {
@@ -177,6 +192,28 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+
+        private bool isNewBudget = true;
+        public bool IsNewBudget
+        {
+            get { return isNewBudget; }
+            set
+            {
+                if (isNewBudget != value)
+                {
+                    isNewBudget = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+        public bool IsEmptyBudget
+        {
+            get { return BillTrackerManager.AllTrackers.Count == 0; }
+        }
+
 
 
 
@@ -198,11 +235,7 @@ namespace BudgetApp.ViewModels
 
         public MainWindowViewModel()
         {
-            BTList = new ObservableCollection<NextBillDueDataViewModel>();
-            Bills = new ObservableCollection<Bill>();
-            BTVM = new BillTrackerViewModel();
-
-            DataList = new ObservableCollection<NextBillDueDataViewModel>();
+            
 
             AddCompanyCommand = new DelegateCommand(OnAddCompany, CanAddCompany);
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
@@ -217,9 +250,7 @@ namespace BudgetApp.ViewModels
             ClosingCommand = new DelegateCommand(ExecuteClosing, CanExecuteClosing);
             UpdateBTListCommand = new DelegateCommand(OnUpdateBTList, CanUpdateBTList);
 
-            //UpdateBTList();
-            OnOpen();
-            UpdateCurrentBTVM();
+            OnNew();
 
         }
 
@@ -260,6 +291,17 @@ namespace BudgetApp.ViewModels
             
         }
 
+        private void Startup()
+        {
+            Console.WriteLine("Startup methods ran");
+            BTList = new ObservableCollection<NextBillDueDataViewModel>();
+            Bills = new ObservableCollection<Bill>();
+            BTVM = new BillTrackerViewModel();
+            DataList = new ObservableCollection<NextBillDueDataViewModel>();
+            
+            //UpdateBTList();
+            UpdateCurrentBTVM();
+        }
         private void OnUpdateBTList()
         {
 
@@ -418,12 +460,9 @@ namespace BudgetApp.ViewModels
 
         private void OnNew()
         {
-            var bm = new BudgetModel();
-            foreach (BillTracker bt in BillTrackerManager.AllTrackers)
-            {
-                bm.AddBillTracker(bt);
-            }
-            bm.Serialize(filename);
+            Startup();
+            IsNewBudget = true;
+            Filename = DEFAULT_FILENAME;
         }
 
         private bool CanNew()
@@ -431,14 +470,34 @@ namespace BudgetApp.ViewModels
             return true;
         }
 
-        private void OnSave()
+        private void SaveFile()
         {
             var bm = new BudgetModel();
+
             foreach (BillTracker bt in BillTrackerManager.AllTrackers)
             {
                 bm.AddBillTracker(bt);
             }
-            bm.Serialize(filename);
+
+            bm.Serialize(Filename);
+            IsNewBudget = false;
+
+        }
+
+        private void OnSave()
+        {
+            if (IsNewBudget)
+            {
+                OnSaveAs();
+                
+            }
+            else
+            {
+                SaveFile();
+
+            }
+
+
         }
 
         private bool CanSave()
@@ -448,13 +507,6 @@ namespace BudgetApp.ViewModels
 
         private void OnSaveAs()
         {
-            var bm = new BudgetModel();
-
-            foreach (BillTracker bt in BillTrackerManager.AllTrackers)
-            {
-                bm.AddBillTracker(bt);
-            }
-
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "xml files (*.xml)|*.xml",
@@ -464,7 +516,8 @@ namespace BudgetApp.ViewModels
 
             if ( (bool)saveFileDialog.ShowDialog())
             {
-                bm.Serialize(saveFileDialog.FileName);
+                Filename = saveFileDialog.FileName;
+                SaveFile();
             }
 
             //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -481,9 +534,10 @@ namespace BudgetApp.ViewModels
             //        myStream.Close();
             //    }
             //}
-
-
             
+
+
+
         }
 
         private bool CanSaveAs()
@@ -499,8 +553,10 @@ namespace BudgetApp.ViewModels
             //    Console.WriteLine(openFileDialog.FileName);
             //}
 
+            Filename = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\xml_test.xml";
+
             BillTrackerManager.Reset();
-            var bm = BudgetModel.Deserialize(filename);
+            var bm = BudgetModel.Deserialize(Filename);
             foreach (BillTracker bt in bm.BudgetData)
             {
                 BillTrackerManager.TrackersByCompany.Add(bt.CompanyName, bt);
@@ -509,6 +565,7 @@ namespace BudgetApp.ViewModels
             }
 
             UpdateBTList();
+            IsNewBudget = false;
 
         }
 
@@ -532,9 +589,11 @@ namespace BudgetApp.ViewModels
             {
                 BTList.Add(new NextBillDueDataViewModel(b));
             }
-            
-            
-            
+
+            NotifyPropertyChanged(nameof(IsEmptyBudget));
+
+
+
         }
 
         //private void UpdateBills()

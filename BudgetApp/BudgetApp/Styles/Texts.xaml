@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BudgetApp.Styles">
+    
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}"/>
         <Setter Property="FontFamily" Value="{StaticResource Segoe}"/>
@@ -49,9 +50,6 @@
 
                         </TextBlock>
                     </Grid>
-
-
-
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
