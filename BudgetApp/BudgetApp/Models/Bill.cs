@@ -43,6 +43,14 @@ namespace BudgetApp.Models
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
         }
+
+        public Bill(double iAmount, DateTime iDueDate)
+        {
+            DueDate = iDueDate;
+            AmountDue = iAmount;
+            Confirmation = DEFUALT_CONFIRMATION;
+            IsPaid = false;
+        }
         #endregion
 
 

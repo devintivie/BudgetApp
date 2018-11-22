@@ -67,6 +67,7 @@
     <Compile Include="Models\BillTracker.cs" />
     <Compile Include="Models\BudgetCalculators.cs" />
     <Compile Include="Models\BudgetModel.cs" />
+    <Compile Include="Models\DueDateFrequencies.cs" />
     <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
     <Compile Include="ViewModels\Design\MainWindowDesignModel.cs" />
     <Compile Include="ViewModels\Design\NextBillDueDataDesignModel.cs" />

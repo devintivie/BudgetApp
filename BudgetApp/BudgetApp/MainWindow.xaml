@@ -55,7 +55,7 @@
                   BorderBrush="Transparent">
             </ListView>
 
-            <TextBlock Text="Add Companies to start budget."
+            <TextBlock Text="Add a company to start budget."
                        Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}}"
                        Width="300"
                        Grid.Row="1"

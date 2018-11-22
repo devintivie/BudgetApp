@@ -25,7 +25,7 @@ namespace BudgetApp.Managers
         #endregion Singleton
 
         public Dictionary<string, BillTracker> TrackersByCompany { get; set; } = new Dictionary<string, BillTracker>();
-        public ObservableCollection<BillTracker> AllTrackers { get; set; } = new ObservableCollection<BillTracker>();
+        public List<BillTracker> AllTrackers { get; set; } = new List<BillTracker>();
 
         private BillTracker selectedTracker;
         public BillTracker SelectedTracker
@@ -52,6 +52,7 @@ namespace BudgetApp.Managers
                 {
                     trackerCount = value;
                     NotifyPropertyChanged();
+                    Console.WriteLine($"bill tracker notify count = {TrackerCount}");
                 }
             }
         }
@@ -68,6 +69,7 @@ namespace BudgetApp.Managers
                 TrackersByCompany.Add(bt.CompanyName, bt);
                 AllTrackers.Add(bt);
             }
+            UpdateTrackerCount();
         }
 
         public void AddTracker(string name, List<Bill> bills)
@@ -76,12 +78,14 @@ namespace BudgetApp.Managers
             {
                 var tracker = new BillTracker(name, bills);
             }
+            UpdateTrackerCount();
         }
 
         public void RemoveTracker(BillTracker bt)
         {
             AllTrackers.Remove(bt);
             TrackersByCompany.Remove(bt.CompanyName);
+            UpdateTrackerCount();
         }
 
         public void RemoveTracker(string name)
@@ -90,6 +94,7 @@ namespace BudgetApp.Managers
             {
                 RemoveTracker(tracker);
             }
+            UpdateTrackerCount();
         }
 
         public void Reset()
@@ -97,6 +102,7 @@ namespace BudgetApp.Managers
             TrackersByCompany.Clear();
             AllTrackers.Clear();
             SelectedTracker = null;
+            UpdateTrackerCount();
         }
 
         //public void Serialize(string Filename)

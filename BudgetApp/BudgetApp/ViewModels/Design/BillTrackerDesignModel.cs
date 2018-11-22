@@ -49,6 +49,10 @@ namespace BudgetApp.ViewModels
                 }
             };
 
+            AddBillAmount = 0;
+            AddBillStartDate = DateTime.Today;
+            AddBillStopDate = DateTime.Today.AddMonths(1);
+
             IsContentAvailable = true;
         }
         #endregion

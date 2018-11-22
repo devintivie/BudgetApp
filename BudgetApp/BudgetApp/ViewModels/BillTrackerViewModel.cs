@@ -12,12 +12,16 @@ namespace BudgetApp.ViewModels
 {
     public class BillTrackerViewModel : LocalBaseViewModel
     {
+        #region Fields
         private BillTracker BillTracker { get; set; }
+        #endregion
 
+        #region Properties
         public ObservableCollection<BillViewModel> Bills { get; set; } = new ObservableCollection<BillViewModel>();
 
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
+        public ICommand OpenAddBillCommand { get; set; }
 
         private bool isContentAvailable;
         public bool IsContentAvailable
@@ -60,6 +64,109 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private bool isAddBillOpen;
+        public bool IsAddBillOpen
+        {
+            get { return isAddBillOpen; }
+            set
+            {
+                if (isAddBillOpen != value)
+                {
+                    isAddBillOpen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool ShowStopDate
+        {
+            get
+            {
+                switch (SelectedOption)
+                {
+                    case DueDateFrequencies.Single:
+                        return false;
+                    case DueDateFrequencies.OneWeek:
+
+                    case DueDateFrequencies.TwoWeek:
+
+                    case DueDateFrequencies.FourWeek:
+
+                    case DueDateFrequencies.Monthly:
+
+                    case DueDateFrequencies.Quarterly:
+                        return true;
+                    default:
+                        return false;
+                        
+                }
+            }
+        }
+
+
+        private DateTime addBillStartDate = DateTime.Today;
+        public DateTime AddBillStartDate
+        {
+            get { return addBillStartDate; }
+            set
+            {
+                if (addBillStartDate != value)
+                {
+                    addBillStartDate = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private DateTime addBillStopDate = DateTime.Today.AddMonths(1);
+        public DateTime AddBillStopDate
+        {
+            get { return addBillStopDate; }
+            set
+            {
+                if (addBillStopDate != value)
+                {
+                    addBillStopDate = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        private double addBillAmount = 0.0;
+        public double AddBillAmount
+        {
+            get { return addBillAmount; }
+            set
+            {
+                if (addBillAmount != value)
+                {
+                    addBillAmount = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+        private DueDateFrequencies selectedOption = DueDateFrequencies.Single;
+        public DueDateFrequencies SelectedOption
+        {
+            get { return selectedOption; }
+            set
+            {
+                if (selectedOption != value)
+                {
+                    selectedOption = value;
+                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(ShowStopDate));
+                }
+            }
+        }
+
+
+        #endregion
+
         #region Constructors
         public BillTrackerViewModel(BillTracker iBillTracker)
         {
@@ -67,15 +174,13 @@ namespace BudgetApp.ViewModels
             UpdateBills();
             AddCommand = new DelegateCommand(OnAdd, CanAdd);
             RemoveCommand = new DelegateCommand(OnRemove, CanRemove);
+            OpenAddBillCommand = new DelegateCommand(OnOpenAddBill, CanOpenAddBill);
         }
 
         public BillTrackerViewModel() : this(new BillTracker()) { }
         #endregion
 
-        
-
-        
-
+        #region Methods
         private void UpdateContentAvailable()
         {
             if(Bills.Count > 0)
@@ -87,7 +192,6 @@ namespace BudgetApp.ViewModels
                 IsContentAvailable = false;
             }
         }
-
 
         private void OnRemove()
         {
@@ -103,7 +207,7 @@ namespace BudgetApp.ViewModels
             if (found)
             {
                 BillTracker.Bills.Remove(CurrentBVM.Bill);
-                Console.WriteLine(BillTracker.Bills.Count);
+                //Console.WriteLine(BillTracker.Bills.Count);
             }
 
             UpdateBills();
@@ -116,31 +220,163 @@ namespace BudgetApp.ViewModels
 
         private void OnAdd()
         {
-            var bill = new Bill();
-            //{
-            //    DueDate = BVM.DueDate,
-            //    AmountDue = BVM.AmountDue
-            //};
-            var found = false;
-            foreach (var b in BillTracker.Bills)
+            var newBills = new List<Bill>();
+            var numDays = (AddBillStopDate - AddBillStartDate).TotalDays;
+            var numWeeks = 0;
+            var numMonths = 0;
+            double dayCount = 0;
+
+            switch (SelectedOption)
             {
-                if (b.DueDate.Equals(bill.DueDate))
-                {
-                    found = true;
+                case DueDateFrequencies.Single:
+                    var newBill = new Bill()
+                    {
+                        DueDate = AddBillStartDate,
+                        AmountDue = AddBillAmount
+                    };
+                    newBills.Add(newBill);
+
                     break;
-                }
-            }
-            if (!found)
-            {
-                BillTracker.Bills.Add(bill);
+
+                case DueDateFrequencies.OneWeek:
+                    while (dayCount < numDays)
+                    {
+                        dayCount = (AddBillStartDate.AddDays(7*(numWeeks+1)) - AddBillStartDate).TotalDays;
+                        numWeeks++;
+                    }
+                    Console.WriteLine($"weeks of bills = {numWeeks}");
+
+                    for (int i = 0; i < numWeeks; i++)
+                    {
+                        newBills.Add(new Bill(AddBillAmount, AddBillStartDate.AddDays(7*i)));
+                    }
+
+                    break;
+
+                case DueDateFrequencies.TwoWeek:
+                    while (dayCount < numDays)
+                    {
+                        dayCount = (AddBillStartDate.AddDays(14 * (numWeeks + 1)) - AddBillStartDate).TotalDays;
+                        numWeeks++;
+                    }
+                    Console.WriteLine($"weeks of bills = {numWeeks}");
+
+                    for (int i = 0; i < numWeeks; i++)
+                    {
+                        newBills.Add(new Bill(AddBillAmount, AddBillStartDate.AddDays(14 * i)));
+                    }
+
+                    break;
+
+                case DueDateFrequencies.FourWeek:
+                    while (dayCount < numDays)
+                    {
+                        dayCount = (AddBillStartDate.AddDays(28 * (numWeeks + 1)) - AddBillStartDate).TotalDays;
+                        numWeeks++;
+                    }
+                    Console.WriteLine($"weeks of bills = {numWeeks}");
+
+                    for (int i = 0; i < numWeeks; i++)
+                    {
+                        newBills.Add(new Bill(AddBillAmount, AddBillStartDate.AddDays(28 * i)));
+                    }
+
+                    break;
+
+                case DueDateFrequencies.Monthly:
+                    while(dayCount < numDays)
+                    {
+                        dayCount = (AddBillStartDate.AddMonths(numMonths + 1) - AddBillStartDate).TotalDays;
+                        numMonths++;
+                    }
+                    Console.WriteLine($"Months of bills = {numMonths}");
+
+                    for(int i = 0; i < numMonths; i++)
+                    {
+                        newBills.Add(new Bill(AddBillAmount, AddBillStartDate.AddMonths(i)));
+                    }
+                    
+                    break;
+
+                case DueDateFrequencies.Quarterly:
+                    while (dayCount < numDays)
+                    {
+                        dayCount = (AddBillStartDate.AddMonths(3*(numMonths + 1)) - AddBillStartDate).TotalDays;
+                        numMonths++;
+                    }
+                    Console.WriteLine($"Months of bills = {numMonths}");
+
+                    for (int i = 0; i < numMonths; i++)
+                    {
+                        newBills.Add(new Bill(AddBillAmount, AddBillStartDate.AddMonths(3*i)));
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
+
+            foreach(var bill in newBills)
+            {
+                var found = false;
+                foreach (var b in BillTracker.Bills)
+                {
+                    if (b.DueDate.Equals(bill.DueDate))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    BillTracker.Bills.Add(bill);
+
+                }
+
+
+            }
+            //var bill = new Bill()
+            //{
+            //    DueDate = AddBillStartDate,
+            //    AmountDue = AddBillAmount
+            //};
+            //var found = false;
+            //foreach (var b in BillTracker.Bills)
+            //{
+            //    if (b.DueDate.Equals(bill.DueDate))
+            //    {
+            //        found = true;
+            //        break;
+            //    }
+            //}
+            //if (!found)
+            //{
+            //    BillTracker.Bills.Add(bill);
+
+            //}
+
+            BillTracker.Bills.Sort();
             //CurrentBT.UpdateBills();
             UpdateBills();
             //CurrentBT.UpdateNextBill();
+            IsAddBillOpen = false;
         }
 
         private bool CanAdd()
+        {
+            return true;
+        }
+
+        private void OnOpenAddBill()
+        {
+            if (!IsAddBillOpen)
+            {
+                IsAddBillOpen = true;
+            }
+        }
+
+        private bool CanOpenAddBill()
         {
             return true;
         }
@@ -155,195 +391,9 @@ namespace BudgetApp.ViewModels
             UpdateContentAvailable();
         }
 
-
-
+        #endregion
+        
     }
 }
 
 
-
-
-
-
-
-/* FOR REFERENCE */
-        //public ObservableCollection<BillViewModel> BillList { get; set; } = new ObservableCollection<BillViewModel>();
-
-//private BillViewModel currentBVM;
-//public BillViewModel CurrentBVM
-//{
-//    get { return currentBVM; }
-//    set
-//    {
-//        if (currentBVM != value)
-//        {
-//            currentBVM = value;
-//            Console.WriteLine($"current bill view model changed now {CurrentBVM.AmountDue}");
-//            NotifyPropertyChanged();
-//        }
-//    }
-//}
-
-//private Bill currentBill;
-//public Bill CurrentBill
-//{
-//    get { return currentBill; }
-//    set
-//    {
-//        if (currentBill != value)
-//        {
-//            currentBill = value;
-//            NotifyPropertyChanged();
-//        }
-//    }
-//}
-
-//private string companyName;
-//public string CompanyName
-//{
-//    get { return companyName; }
-//    set
-//    {
-//        if (companyName != value)
-//        {
-//            companyName = value;
-//            NotifyPropertyChanged();
-//        }
-//    }
-//}
-
-
-//public DelegateCommand EditCommand { get; set; }
-//public DelegateCommand AddCommand { get; set; }
-//public DelegateCommand RemoveCommand { get; set; }
-
-//public BillTrackerViewModel(DateTime firstPaycheck)
-//{
-//    //BTList = new ObservableCollection<BillTrackerDataViewModel>();
-//    //Bills = new ObservableCollection<Bill>();
-
-//    ////UpdateCommand = new DelegateCommand(OnEdit, CanEdit);
-//    //AddCommand = new DelegateCommand(OnAdd, CanAdd);
-//    //RemoveCommand = new DelegateCommand(OnRemove, CanRemove);
-
-//    //BVM = new BillViewModel(new Bill());
-//    //BTVM = new BillTrackerViewModel(firstPaydate);
-//    //bvm.DueDate = DateTime.Today;
-
-//    //var bill1 = new Bill(5,10);
-//    //var bill2 = new Bill(7,15);
-//    //var mylist = new List<Bill>();
-
-//    //mylist.Add(bill1);
-//    //mylist.Add(bill2);
-//    //var bt = new BillTracker("USAA", mylist);
-//    //var bt2 = new BillTracker("Cox", mylist);
-
-//    //CurrentBT = new BillTrackerDataViewModel(bt);
-
-//    //BillTrackerManager.AddTracker(bt);
-//    //BillTrackerManager.AddTracker(bt2);
-//    //UpdateBTList();
-
-//}
-
-//public BillTrackerViewModel()
-//{
-//    companyName = "this fucking shit";
-//    BillList.Add(new BillViewModel(new Bill(60, 5, 6)));
-//    BillList.Add(new BillViewModel(new Bill(80, 6, 6)));
-//    BillList.Add(new BillViewModel(new Bill(100, 7, 6)));
-//}
-
-///*private void OnRemove()
-//{
-//    var found = false;
-//    foreach (var b in CurrentBT.BillTracker.Bills)
-//    {
-//        if (b.DueDate.Equals(CurrentBill.DueDate))
-//        {
-//            found = true;
-//        }
-//    }
-//    if (found)
-//    {
-//        CurrentBT.BillTracker.Bills.Remove(CurrentBill);
-//        Console.WriteLine(CurrentBT.BillTracker.Bills.Count);
-//    }
-
-//    CurrentBT.UpdateBills();
-//    UpdateBills();
-//    CurrentBT.UpdateNextBill();
-//}
-
-//private bool CanRemove()
-//{
-//    return CurrentBill != null;
-//}
-
-//private void OnAdd()
-//{
-//    var bill = new Bill
-//    {
-//        DueDate = BVM.DueDate,
-//        AmountDue = BVM.AmountDue
-//    };
-//    var found = false;
-//    foreach (var b in CurrentBT.BillTracker.Bills)
-//    {
-//        if (b.DueDate.Equals(bill.DueDate))
-//        {
-//            found = true;
-//        }
-//    }
-//    if (!found)
-//    {
-//        CurrentBT.BillTracker.Bills.Add(bill);
-//    }
-
-//    CurrentBT.UpdateBills();
-//    UpdateBills();
-//    CurrentBT.UpdateNextBill();
-//}
-
-//private bool CanAdd()
-//{
-//    return true;
-//}
-
-//private void OnEdit()
-//{
-//    var bill = new Bill
-//    {
-//        DueDate = BVM.DueDate,
-//        AmountDue = BVM.AmountDue
-//    };
-//    CurrentBT.BillTracker.Bills.Add(bill);
-//    CurrentBT.UpdateBills();
-//    UpdateBills();
-//    CurrentBT.UpdateNextBill();
-//}
-
-//private bool CanEdit()
-//{
-//    return true;
-//}*/
-
-
-////public void UpdateBTList()
-////{
-////    BTList.Clear();
-////    foreach (var b in BillTrackerManager.AllTrackers)
-////    {
-////        BTList.Add(new BillTrackerDataViewModel(b, firstPaydate));
-////    }
-////}
-
-////public void UpdateBills()
-////{
-////    Bills.Clear();
-////    foreach (var b in CurrentBT.Bills)
-////    {
-////        Bills.Add(b);
-////    }
-////}

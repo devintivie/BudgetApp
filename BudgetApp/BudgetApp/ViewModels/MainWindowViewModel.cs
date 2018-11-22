@@ -102,19 +102,32 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        //private bool showCurrentBT = true;
-        //public bool ShowCurrentBT
-        //{
-        //    get { return showCurrentBT; }
-        //    set
-        //    {
-        //        if (showCurrentBT != value)
-        //        {
-        //            showCurrentBT = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
+        public bool ShowCurrentBT
+        {
+            get
+            {
+                Console.WriteLine(BillTrackerManager.TrackerCount);
+                if(CurrentSelection == null)
+                {
+                    Console.WriteLine("current selection == null");
+                }
+                else
+                {
+                    Console.WriteLine("current selection is not null");
+                }
+                if( (BillTrackerManager.TrackerCount == 0) || CurrentSelection == null)
+                {
+                    Console.WriteLine("show current bt is false");
+                    return false;
+
+                }
+                else
+                {
+                    Console.WriteLine("show current bt is true");
+                    return true;
+                }
+            }
+        }
 
 
 
@@ -208,6 +221,8 @@ namespace BudgetApp.ViewModels
         }
 
 
+ 
+
 
         public bool IsEmptyBudget
         {
@@ -285,10 +300,13 @@ namespace BudgetApp.ViewModels
 
             }
 
-                
-            
+            NotifyPropertyChanged(nameof(ShowCurrentBT));
 
-            
+
+
+
+
+
         }
 
         private void Startup()
@@ -397,11 +415,7 @@ namespace BudgetApp.ViewModels
 
         private void OnRemoveCompany()
         {
-            //BillTrackerManager.TrackersByCompany.Remove(CurrentBT.CompanyName);
-            //BillTrackerManager.AllTrackers.Remove(CurrentBT.BillTracker);
-            //UpdateBTList();
-            BillTrackerManager.TrackersByCompany.Remove(CurrentSelection.CompanyName);
-            BillTrackerManager.AllTrackers.Remove(CurrentSelection.BillTracker);
+            BillTrackerManager.RemoveTracker(CurrentSelection.BillTracker);
             UpdateBTList();
         }
 
@@ -429,8 +443,8 @@ namespace BudgetApp.ViewModels
                     {
                         CompanyName = NewCompany
                     };
-                    BillTrackerManager.TrackersByCompany.Add(bt.CompanyName, bt);
-                    BillTrackerManager.AllTrackers.Add(bt);
+
+                    BillTrackerManager.AddTracker(bt);
                     UpdateBTList();
                 }
             }
@@ -559,9 +573,7 @@ namespace BudgetApp.ViewModels
             var bm = BudgetModel.Deserialize(Filename);
             foreach (BillTracker bt in bm.BudgetData)
             {
-                BillTrackerManager.TrackersByCompany.Add(bt.CompanyName, bt);
-                BillTrackerManager.AllTrackers.Add(bt);
-                Console.WriteLine(bt.CompanyName);
+                BillTrackerManager.AddTracker(bt);
             }
 
             UpdateBTList();
