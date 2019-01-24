@@ -41,21 +41,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        public string NextDueDateString
+        private bool showAmountDue = true;
+        public bool ShowAmountDue
         {
-            get
+            get { return showAmountDue; }
+            set
             {
-                if (NextDueDate.CompareTo(DateTime.Today) < 0)
+                if (showAmountDue != value)
                 {
-                    return "None Due";
-                }
-                else
-                {
-                    return NextDueDate.ToShortDateString();
+                    showAmountDue = value;
+                    NotifyPropertyChanged();
                 }
             }
         }
-            
+
+
         private DateTime nextDueDate;
         public DateTime NextDueDate
         {
@@ -70,6 +70,38 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+
+        private BillStatus nextBillStatus;
+        public BillStatus NextBillStatus
+        {
+            get { return nextBillStatus; }
+            set
+            {
+                if (nextBillStatus != value)
+                {
+                    nextBillStatus = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        public string NextDueDateString
+        {
+            get
+            {
+                if (NextDueDate.CompareTo(DateTime.Today) < 0)
+                {
+                    return "None Due";
+                }
+                else
+                {
+                    return NextDueDate.ToShortDateString();
+                }
+            }
+        }
+
+       
 
         public NextBillDueDataViewModel()
         {
@@ -100,12 +132,24 @@ namespace BudgetApp.ViewModels
         public void UpdateNextBill()
         {
             bool found = false;
+            BillStatus bs = BillStatus.Paid;
             foreach (var d in Bills)
             {
+                if(d.BillStatus == BillStatus.PastDue) { bs = BillStatus.PastDue; }
                 if (d.DueDate.CompareTo(DateTime.Today) >= 0)
                 {
+                    ShowAmountDue = true;
                     NextAmountDue = d.AmountDue;
                     NextDueDate = d.DueDate;
+                    if(bs == BillStatus.PastDue)
+                    {
+                        NextBillStatus = bs;
+                    }
+                    else
+                    {
+                        NextBillStatus = d.BillStatus;
+                    }
+                    
                     found = true;
                     break;
                 }
@@ -113,8 +157,8 @@ namespace BudgetApp.ViewModels
 
             if (!found)
             {
-                NextAmountDue = 0;
-                NextDueDate = default(DateTime);
+                ShowAmountDue = false;
+                NextBillStatus = BillStatus.DueInOverOneMonth;
                 
             }
         }

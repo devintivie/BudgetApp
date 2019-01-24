@@ -18,8 +18,8 @@ namespace BudgetApp.ViewModels
         {
             AmountDue = 100;
             //Confirmation = "Test Conf";
-            DueDate = new DateTime(2011, 1, 1);
-            //IsPaid = true;
+            DueDate = new DateTime(2018, 1, 1);
+            IsPaid = true;
 
         }
         #endregion

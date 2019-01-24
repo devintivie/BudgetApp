@@ -82,24 +82,32 @@ namespace BudgetApp.ViewModels
         {
             get
             {
-                switch (SelectedOption)
+                if(SelectedOption == DueDateFrequencies.Single)
                 {
-                    case DueDateFrequencies.Single:
-                        return false;
-                    case DueDateFrequencies.OneWeek:
-
-                    case DueDateFrequencies.TwoWeek:
-
-                    case DueDateFrequencies.FourWeek:
-
-                    case DueDateFrequencies.Monthly:
-
-                    case DueDateFrequencies.Quarterly:
-                        return true;
-                    default:
-                        return false;
-                        
+                    return false;
                 }
+                else
+                {
+                    return true;
+                }
+                //switch (SelectedOption)
+                //{
+                //    case DueDateFrequencies.Single:
+                //        return false;
+                //    case DueDateFrequencies.OneWeek:
+
+                //    case DueDateFrequencies.TwoWeek:
+
+                //    case DueDateFrequencies.FourWeek:
+
+                //    case DueDateFrequencies.Monthly:
+
+                //    case DueDateFrequencies.Quarterly:
+                //        return true;
+                //    default:
+                //        return false;
+                        
+                //}
             }
         }
 
@@ -244,7 +252,7 @@ namespace BudgetApp.ViewModels
                         dayCount = (AddBillStartDate.AddDays(7*(numWeeks+1)) - AddBillStartDate).TotalDays;
                         numWeeks++;
                     }
-                    Console.WriteLine($"weeks of bills = {numWeeks}");
+                    //Console.WriteLine($"weeks of bills = {numWeeks}");
 
                     for (int i = 0; i < numWeeks; i++)
                     {
@@ -259,7 +267,7 @@ namespace BudgetApp.ViewModels
                         dayCount = (AddBillStartDate.AddDays(14 * (numWeeks + 1)) - AddBillStartDate).TotalDays;
                         numWeeks++;
                     }
-                    Console.WriteLine($"weeks of bills = {numWeeks}");
+                    //Console.WriteLine($"weeks of bills = {numWeeks}");
 
                     for (int i = 0; i < numWeeks; i++)
                     {
@@ -274,7 +282,7 @@ namespace BudgetApp.ViewModels
                         dayCount = (AddBillStartDate.AddDays(28 * (numWeeks + 1)) - AddBillStartDate).TotalDays;
                         numWeeks++;
                     }
-                    Console.WriteLine($"weeks of bills = {numWeeks}");
+                    //Console.WriteLine($"weeks of bills = {numWeeks}");
 
                     for (int i = 0; i < numWeeks; i++)
                     {
@@ -289,7 +297,7 @@ namespace BudgetApp.ViewModels
                         dayCount = (AddBillStartDate.AddMonths(numMonths + 1) - AddBillStartDate).TotalDays;
                         numMonths++;
                     }
-                    Console.WriteLine($"Months of bills = {numMonths}");
+                    //Console.WriteLine($"Months of bills = {numMonths}");
 
                     for(int i = 0; i < numMonths; i++)
                     {
@@ -304,7 +312,7 @@ namespace BudgetApp.ViewModels
                         dayCount = (AddBillStartDate.AddMonths(3*(numMonths + 1)) - AddBillStartDate).TotalDays;
                         numMonths++;
                     }
-                    Console.WriteLine($"Months of bills = {numMonths}");
+                    //Console.WriteLine($"Months of bills = {numMonths}");
 
                     for (int i = 0; i < numMonths; i++)
                     {

@@ -60,16 +60,44 @@
     <Compile Include="Controls\BudgetOverviewControl.xaml.cs">
       <DependentUpon>BudgetOverviewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Calendar\DayBoxBillControl.xaml.cs">
+      <DependentUpon>DayBoxBillControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar\DayBoxControl.xaml.cs">
+      <DependentUpon>DayBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar\BudgetCalendarControl.xaml.cs">
+      <DependentUpon>BudgetCalendarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultipleCheckControl.xaml.cs">
+      <DependentUpon>MultipleCheckControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar\WeekControl.xaml.cs">
+      <DependentUpon>WeekControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ApplicationPageValueConverter.cs" />
+    <Compile Include="Converters\NextBillColorConverter.cs" />
+    <Compile Include="Managers\BankAccountManager.cs" />
     <Compile Include="Managers\BillTrackerManager.cs" />
     <Compile Include="Managers\DependencyManager.cs" />
     <Compile Include="Models\ApplicationPage.cs" />
+    <Compile Include="Models\BankAccount.cs" />
+    <Compile Include="Models\BillStatus.cs" />
+    <Compile Include="Models\BillStatusHelper.cs" />
     <Compile Include="Models\BillTracker.cs" />
     <Compile Include="Models\BudgetCalculators.cs" />
     <Compile Include="Models\BudgetModel.cs" />
     <Compile Include="Models\DueDateFrequencies.cs" />
+    <Compile Include="ViewModels\Calendar\BudgetCalendarViewModel.cs" />
     <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
+    <Compile Include="ViewModels\Calendar\DayBoxBillViewModel.cs" />
+    <Compile Include="ViewModels\Calendar\DayBoxViewModel.cs" />
+    <Compile Include="ViewModels\Calendar\WeekViewModel.cs" />
+    <Compile Include="ViewModels\Design\Calendar\BudgetCalendarDesignModel.cs" />
+    <Compile Include="ViewModels\Design\Calendar\DayBoxBillDesignModel.cs" />
+    <Compile Include="ViewModels\Design\Calendar\DayBoxDesignModel.cs" />
     <Compile Include="ViewModels\Design\MainWindowDesignModel.cs" />
+    <Compile Include="ViewModels\Design\MultiplePaycheckDesignModel.cs" />
     <Compile Include="ViewModels\Design\NextBillDueDataDesignModel.cs" />
     <Compile Include="ViewModels\LocalBaseViewModel.cs" />
     <Compile Include="ViewModels\BillTrackerDataViewModel.cs" />
@@ -81,6 +109,7 @@
     <Compile Include="Controls\NextBillDueDataControl.xaml.cs">
       <DependentUpon>NextBillDueDataControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MultiplePaycheckViewModel.cs" />
     <Compile Include="ViewModels\NextBillDueDataViewModel.cs" />
     <Compile Include="Views\BillTrackerView.xaml.cs">
       <DependentUpon>BillTrackerView.xaml</DependentUpon>
@@ -95,6 +124,26 @@
       <DependentUpon>CalendarTwoWeek.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\BudgetOverviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calendar\DayBoxBillControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Calendar\DayBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calendar\BudgetCalendarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MultipleCheckControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Calendar\WeekControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

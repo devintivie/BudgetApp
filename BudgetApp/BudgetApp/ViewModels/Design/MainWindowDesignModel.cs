@@ -25,7 +25,151 @@ namespace BudgetApp.ViewModels
                     NextDueDate = DateTime.Today,
                     NextAmountDue = 100
 
-                }
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+                new NextBillDueDataViewModel
+                {
+                    CompanyName = "hello",
+                    NextDueDate = DateTime.Today,
+                    NextAmountDue = 100
+
+                },
+            };
+            BAList = new ObservableCollection<Models.BankAccount>
+            {
+                new Models.BankAccount()
             };
 
         }

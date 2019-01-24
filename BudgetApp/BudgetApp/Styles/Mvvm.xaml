@@ -3,15 +3,27 @@
                     xmlns:local="clr-namespace:BudgetApp"
                     xmlns:vms="clr-namespace:BudgetApp.ViewModels">
     <DataTemplate DataType="{x:Type vms:BillViewModel}">
-            <local:BillView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:NextBillDueDataViewModel}">
-            <local:NextBillDueDataControl/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:BillTrackerViewModel}">
-            <local:BillTrackerView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:BudgetOverviewViewModel}">
-            <local:BudgetOverviewControl/>
-        </DataTemplate>
+        <local:BillView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:NextBillDueDataViewModel}">
+        <local:NextBillDueDataControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BillTrackerViewModel}">
+        <local:BillTrackerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BudgetOverviewViewModel}">
+        <local:BudgetOverviewControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:MultiplePaycheckViewModel}">
+        <local:MultipleCheckControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BudgetCalendarViewModel}">
+        <local:BudgetCalendarControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DayBoxViewModel}">
+        <local:DayBoxControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DayBoxBillViewModel}">
+        <local:DayBoxBillControl/>
+    </DataTemplate>
 </ResourceDictionary>

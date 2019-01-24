@@ -8,26 +8,36 @@
         xmlns:cvtrs="clr-namespace:IvieConverters;assembly=IvieConverters"
         mc:Ignorable="d"
         x:Name="AppWindow"
-        Title="MainWindow">
+        Title="MainWindow" Height="850" Width="1500" >
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding SaveCommand}" Gesture="CTRL+S"/>
+        <KeyBinding Command="{Binding OpenCommand}" Gesture="CTRL+O"/>
+        <KeyBinding Command="{Binding NewCommand}" Gesture="Ctrl+N"/>
+    </Window.InputBindings>
 
     <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}">
         <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="New Budget..." Command="{Binding NewCommand}"/>
-                <MenuItem Header="Save Budget" Command="{Binding SaveCommand}"/>
+                <MenuItem Header="New Budget..." Command="{Binding NewCommand}" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="Save Budget" Command="{Binding SaveCommand}" InputGestureText="Ctrl+S"/>
                 <MenuItem Header="Save Budget As..." Command="{Binding SaveAsCommand}"/>
-                <MenuItem Header="Open Budget..." Command="{Binding OpenCommand}"/>
+                <MenuItem Header="Open Budget..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O"/>
                 <MenuItem Header="Exit"/>
             </MenuItem>
         </Menu>
-        <Grid Background="LightBlue">
+        <Grid Background="{StaticResource BackgroundMainBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <!-- Top Buttons-->
+                <RowDefinition Height="40"/>
+                <!-- Paycheck dates-->
+                <RowDefinition Height="40"/>
+                
+                <RowDefinition Height="260"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
@@ -36,29 +46,26 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <ContentControl 
-                    Grid.Row="0" Grid.RowSpan="2"
-                    Grid.Column="0"/>
-
-           
-
             <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
-                  Height="600"
-                      Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
-                  VerticalAlignment="Top"
-                  Grid.Row="1" Grid.RowSpan="2"
-                  Grid.Column="0"
-                  SelectedItem="{Binding CurrentSelection}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                  BorderBrush="Transparent">
-            </ListView>
+                        
+                        Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
+                        VerticalAlignment="Top"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.RowSpan="5"
+                        SelectedItem="{Binding CurrentSelection}"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                        BorderBrush="Transparent"/>
 
             <TextBlock Text="Add a company to start budget."
                        Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}}"
                        Width="300"
-                       Grid.Row="1"
+                       Grid.Row="0"
                        Grid.Column="0"
                        TextWrapping="Wrap"
                        Margin="0 10 20 0"
@@ -68,23 +75,75 @@
                        />
 
             <ContentControl Content="{Binding CurrentBT}"
-                        Grid.Row="1" Grid.Column="1"
+                        Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="3"
+                            VerticalAlignment="Top"
                         Visibility="{Binding ShowCurrentBT, Converter={cvtrs:BooleanToVisibilityConverter}}"/>
 
-            <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <Button Content="Add Company" Command="{Binding OpenPopupCommand}"/>
+            <ListView Grid.Row="3" Grid.Column="1"
+                      Grid.RowSpan="1"
+                      ItemsSource="{Binding BAList}"/>
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="3">
+                <Button x:Name="addButton" Content="Add Company" Command="{Binding OpenPopupCommand}"
+                        CommandParameter="{Binding ElementName=AppWindow}"
+                        Focusable="False"/>
                 <Button Content="Remove Company" Command="{Binding RemoveCompanyCommand}"/>
+                <Button Content="Add Account" Command="{Binding AddAccountCommand}"
+                        Focusable="False"/>
+                <Button Content="Remove Account" Command="{Binding RemoveAccountCommand}"/>
             </StackPanel>
-            <Button Grid.Row="4" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
-            <TextBlock Text="{Binding IsNewBudget}" Grid.Row="4" Grid.Column="1"/>
-            <TextBlock Text="{Binding Filename}" Grid.Row="4" Grid.Column="2"/>
+            <Button Grid.Row="6" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
+            <!--<TextBlock Text="{Binding IsNewBudget}" Grid.Row="3" Grid.Column="1"/>-->
+            <!--<TextBlock Text="{Binding Filename}" Grid.Row="6" Grid.Column="2"/>-->
+            <TextBox Text="{Binding NewAccount}" Grid.Row="6" Grid.Column="1"/>
+
+            <ContentControl Content="{Binding BudgetCalendar}" 
+                            Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4"
+                            Grid.RowSpan="5"
+                            />
+            <!--<local:MonthView Grid.Column="2" Grid.RowSpan="4"/>-->
+            <!--<StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowLeftIcon}"/>
+                --><!--<ComboBox ItemsSource="{Binding Source={local:Enumeration {x:Type my}}}"/>--><!--
+                <TextBox Text="{Binding PrevPaydate, Converter={cvtrs:DateOnlyConverter}}" 
+                     Grid.Row="0" Grid.Column="2" Margin="2"
+                     TextAlignment="Center"
+                     />
+                <TextBox Text="{Binding CurrPaydate, Converter={cvtrs:DateOnlyConverter}}" 
+                     Grid.Row="0" Grid.Column="3" Margin="2"
+                     TextAlignment="Center"/>
+                <TextBox Text="{Binding NextPaydate, Converter={cvtrs:DateOnlyConverter}}" 
+                     Grid.Row="0" Grid.Column="4" Margin="2"
+                     TextAlignment="Center"/>
+                <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowRightIcon}"/>
+            </StackPanel>
+            
+            <Border BorderThickness="3" 
+                    BorderBrush="Black"
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    Grid.RowSpan="4">
+                <ListView ItemsSource="{Binding BudgetDisplay}" Background="Transparent"
+                  Height="600"
+                      Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
+                  VerticalAlignment="Top"
+                  
+                  SelectedItem="{Binding CurrentSelection}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                  BorderBrush="Transparent"/>
+                
+            </Border>-->
+            
 
             <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
+                   Focusable="False"
                    HorizontalOffset="0" VerticalOffset="-80"
                    >
                 <DockPanel Width="{Binding ElementName=BudgetList, Path=ActualWidth}"
                            Background="DarkGray" Height="40">
-                    <TextBlock x:Name="newCompanyText" Text="Company Name  "
+                    <TextBlock Text="Company Name  "
+                               x:Name="newCompanyText"
                                VerticalAlignment="Center"
                                DockPanel.Dock="Left"
                                FontSize="{StaticResource FontSizeAverage}"/>
@@ -97,7 +156,9 @@
                             FontSize="{StaticResource FontSizeAverage}"
                             DockPanel.Dock="Right"/>
 
-                    <TextBox Text="{Binding NewCompany}"
+                    <TextBox x:Name="newCompanyTextbox" Text="{Binding NewCompany}"
+                             Focusable="True"
+                             IsEnabled="True"
                              FontSize="{StaticResource FontSizeAverage}"
                              VerticalAlignment="Center"/>
                     

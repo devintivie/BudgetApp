@@ -19,7 +19,8 @@
     </UserControl.Resources>
 
     <Border x:Name="border" BorderBrush="Black" BorderThickness="2" Height="330" Width="350">
-        <Grid d:DataContext="{x:Static vms:BillTrackerDesignModel.Instance}" >
+        <Grid d:DataContext="{x:Static vms:BillTrackerDesignModel.Instance}" 
+              Background="{StaticResource BackgroundMainBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="Auto"/>
@@ -40,7 +41,7 @@
             <ListView x:Name="BillListView" Height="250" ItemsSource="{Binding Bills}" 
                       Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
                       Grid.Row="1" Grid.Column="0"
-                      HorizontalAlignment="Right"
+                      HorizontalAlignment="Center"
                       HorizontalContentAlignment="Right"
                       Background="Transparent"
                       BorderBrush="Transparent"
@@ -64,8 +65,8 @@
 
             <Popup IsOpen="{Binding IsAddBillOpen}" StaysOpen="False"
                    HorizontalOffset="0" VerticalOffset="-280">
-                <Grid Height="250" Width="{Binding ElementName=border, Path=ActualWidth}" 
-                      Background="Green">
+                <Grid Height="250" Width="346" 
+                      Background="{StaticResource BackgroundMainBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -86,11 +87,17 @@
                     <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding Source={StaticResource options}}" 
                               SelectedItem="{Binding SelectedOption}"/>
-                    <Calendar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    <Viewbox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="170">
+                        <Calendar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                               SelectedDate="{Binding AddBillStartDate}" DisplayDate="{Binding AddBillStartDate, Mode=OneWay}"/>
-                    <Calendar Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                        
+                    </Viewbox>
+                    <Viewbox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Width="170">
+                        <Calendar 
                               Visibility="{Binding ShowStopDate, Converter={cvt:BooleanToVisibilityConverter}}"
                               SelectedDate="{Binding AddBillStopDate}" DisplayDate="{Binding AddBillStopDate, Mode=OneWay}"/>
+                    </Viewbox>
+                    
                     <Button Grid.Row="3" Grid.Column="0" Content="Add" Command="{Binding AddCommand}"/>
                 </Grid>
                       

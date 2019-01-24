@@ -22,6 +22,20 @@ namespace BudgetApp.ViewModels
                 {
                     Bill.DueDate = value;
                     NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(BillStatus));
+                }
+            }
+        }
+
+        public BillStatus BillStatus
+        {
+            get { return Bill.BillStatus; }
+            set
+            {
+                if(Bill.BillStatus != value)
+                {
+                    Bill.BillStatus = value;
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -55,14 +69,6 @@ namespace BudgetApp.ViewModels
 
         public ICommand OpenPopupCommand { get; set; }
 
-
-
-
-
-
-
-
-
         //public string Confirmation
         //{
         //    get { return Bill.Confirmation; }
@@ -76,18 +82,19 @@ namespace BudgetApp.ViewModels
         //    }
         //}
 
-        //public bool IsPaid
-        //{
-        //    get { return Bill.IsPaid; }
-        //    set
-        //    {
-        //        if (Bill.IsPaid != value)
-        //        {
-        //            Bill.IsPaid = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
+        public bool IsPaid
+        {
+            get { return Bill.IsPaid; }
+            set
+            {
+                if (Bill.IsPaid != value)
+                {
+                    Bill.IsPaid = value;
+                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(BillStatus));
+                }
+            }
+        }
 
         public BillViewModel(Bill iBill)
         {

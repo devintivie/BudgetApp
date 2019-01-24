@@ -12,7 +12,6 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding BTList}" Background="Transparent"
-                  d:DataContext=""
                   Height="600"
                   VerticalAlignment="Top"
                   SelectedItem="{Binding CurrentSelection}"

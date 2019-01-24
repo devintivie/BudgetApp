@@ -1,6 +1,11 @@
 ﻿
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BudgetOverviewControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxBillControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\BudgetCalendarControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\MultipleCheckControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\WeekControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\MainWindow.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\NextBillDueDataControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Buttons.xaml;;

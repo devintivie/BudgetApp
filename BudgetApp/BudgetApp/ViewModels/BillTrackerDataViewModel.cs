@@ -50,6 +50,14 @@ namespace BudgetApp.ViewModels
             get { return $"{BillsDue} bills due this paycheck"; }
         }
 
+        //public System.Windows.Media.Brush Background
+        //{
+        //    get
+        //    {
+        //        if()
+        //    }
+        //}
+
 
 
         private string nextBill;
@@ -68,9 +76,7 @@ namespace BudgetApp.ViewModels
 
         public ICommand TestCommand { get; set; }
 
-
-
-        public BillTracker BillTracker { get; set; }
+        public BillTracker BillTracker { get; private set; }
 
         public BillTrackerDataViewModel(BillTracker bt, DateTime firstPaycheck)
         {
@@ -80,17 +86,7 @@ namespace BudgetApp.ViewModels
             UpdateBills();
             UpdateNextBill();
             CompanyName = bt.CompanyName;
-            TestCommand = new DelegateCommand(OnTest, CanTest);
-        }
-
-        private void OnTest()
-        {
-            Console.WriteLine("Running Test Command");
-        }
-
-        private bool CanTest()
-        {
-            return true;
+            //TestCommand = new DelegateCommand(OnTest, CanTest);
         }
 
         public void UpdateBills()

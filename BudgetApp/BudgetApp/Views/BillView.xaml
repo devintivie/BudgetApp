@@ -8,23 +8,29 @@
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d">
 
-    <Border BorderBrush="Black" BorderThickness="2" >
+    <Border BorderBrush="Black" BorderThickness="2" Background="{Binding BillStatus, Converter={local:NextBillColorConverter}}">
         <StackPanel Orientation="Horizontal" d:DataContext="{x:Static vms:BillDesignModel.Instance}">
+            <CheckBox VerticalAlignment="Center" Padding="5"
+                      HorizontalAlignment="Center"
+                      IsChecked="{Binding IsPaid}"
+                      />
             <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
-                 Grid.Column="0" Width="70"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 />
+                     Grid.Column="0" Width="70"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     MouseDoubleClick="TextBox_MouseDoubleClick"
+                     />
 
             <TextBlock Text="{Binding DueDate, Converter={cvt:DayDateConverter}}" 
-                   Grid.Column="1" 
-                   Padding="5"
-                   Width="180" 
-                   VerticalAlignment="Center" 
-                   TextAlignment="Left"
+                        Grid.Column="1" 
+                        Padding="5"
+                        Width="180" 
+                        VerticalAlignment="Center" 
+                        TextAlignment="Left"
+                   
                    />
-            <Button Content="{StaticResource FontAwesomeCalendarIcon}" FontFamily="{StaticResource FontAwesome}"
-                    FontSize="30" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Command="{Binding OpenPopupCommand}"
+            <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeEditIcon}" 
+                    Command="{Binding OpenPopupCommand}"
                     />
 
             <Popup IsOpen="{Binding IsCalendarOpen}" StaysOpen="False"

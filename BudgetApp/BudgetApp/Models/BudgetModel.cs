@@ -13,6 +13,8 @@ namespace BudgetApp.Models
     {
         #region Properties
         public List<BillTracker> BudgetData { get; set; } = new List<BillTracker>();
+        public string FriendlyName { get; set; } = "sample";
+        public List<BankAccount> BankAccounts { get; set; } = new List<BankAccount>();
         #endregion Properties
 
         #region Constructors
@@ -91,9 +93,10 @@ namespace BudgetApp.Models
                     Console.WriteLine("Object Serialized");
                 }
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("An error has occured");
+                Console.WriteLine(e.Message);
+                //Console.WriteLine("An error has occured");
             }
         }
 
@@ -108,21 +111,21 @@ namespace BudgetApp.Models
                 using (fsin)
                 {
                     newBD = (BudgetModel)xs.Deserialize(fsin);
-                    Console.WriteLine("Object Deserialized");
-                    Console.WriteLine(newBD.ToString() + "TEsting");
+                   // Console.WriteLine("Object Deserialized");
+                    //Console.WriteLine(newBD.ToString() + "TEsting");
                 }
             }
 
             catch (FileNotFoundException ex)
             {
                 newBD.Serialize(Filename);
-                Console.WriteLine("File Created");
+                //Console.WriteLine("File Created");
                 Console.WriteLine(ex.ToString());
             }
-            finally
-            {
-                Console.WriteLine();
-            }
+            //finally
+            //{
+            //    Console.WriteLine();
+            //}
 
             return newBD;
         }

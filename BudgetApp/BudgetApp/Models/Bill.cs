@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BudgetApp.Models
 {
@@ -17,10 +18,39 @@ namespace BudgetApp.Models
 
         #region Properties
 
-        public DateTime DueDate { get; set; }
+        private DateTime dueDate;
+        public DateTime DueDate
+        {
+            get { return dueDate; }
+            set
+            {
+                if (dueDate != value)
+                {
+                    dueDate = value;
+                    GetBillStatus();
+                }
+            }
+        }
+
         public double AmountDue { get; set; }
         public string Confirmation { get; set; }
-        public bool IsPaid { get; set; }
+
+        private bool isPaid;
+        public bool IsPaid
+        {
+            get { return isPaid; }
+            set
+            {
+                if (isPaid != value)
+                {
+                    isPaid = value;
+                    GetBillStatus();
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public BillStatus BillStatus { get; set; }
 
         #endregion Properties
 
@@ -32,6 +62,7 @@ namespace BudgetApp.Models
             AmountDue = 0.0;
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
+            GetBillStatus();
         }
         public Bill(int month, int day) : this(0, month, day) { }
 
@@ -42,6 +73,7 @@ namespace BudgetApp.Models
             AmountDue = iAmount;
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
+            GetBillStatus();
         }
 
         public Bill(double iAmount, DateTime iDueDate)
@@ -50,8 +82,15 @@ namespace BudgetApp.Models
             AmountDue = iAmount;
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
+            GetBillStatus();
+
         }
         #endregion
+
+        private void GetBillStatus()
+        {
+            BillStatus = BillStatusHelper.GetBillStatus(DateTime.Today, DueDate, IsPaid);
+        }
 
 
 

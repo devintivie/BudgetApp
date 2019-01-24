@@ -12,6 +12,7 @@ namespace BudgetApp.ViewModels
     public class LocalBaseViewModel : BaseViewModel
     {
         public BillTrackerManager BillTrackerManager => BillTrackerManager.Instance;
+        public BankAccountManager BankAccountManager => BankAccountManager.Instance;
     }
 
 }
