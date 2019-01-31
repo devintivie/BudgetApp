@@ -76,10 +76,13 @@
       <DependentUpon>WeekControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ApplicationPageValueConverter.cs" />
+    <Compile Include="Converters\DayBoxStatusColorConverter.cs" />
+    <Compile Include="Converters\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Converters\NextBillColorConverter.cs" />
     <Compile Include="Managers\BankAccountManager.cs" />
     <Compile Include="Managers\BillTrackerManager.cs" />
     <Compile Include="Managers\DependencyManager.cs" />
+    <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Models\ApplicationPage.cs" />
     <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\BillStatus.cs" />
@@ -87,7 +90,7 @@
     <Compile Include="Models\BillTracker.cs" />
     <Compile Include="Models\BudgetCalculators.cs" />
     <Compile Include="Models\BudgetModel.cs" />
-    <Compile Include="Models\DueDateFrequencies.cs" />
+    <Compile Include="Models\BudgetEnums.cs" />
     <Compile Include="ViewModels\Calendar\BudgetCalendarViewModel.cs" />
     <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
     <Compile Include="ViewModels\Calendar\DayBoxBillViewModel.cs" />

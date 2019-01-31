@@ -33,35 +33,6 @@ namespace BudgetApp
                 default:
                     return Brushes.Transparent;
             }
-             //if( ((DateTime)value).CompareTo(DateTime.Today) < 0)
-             //{
-            
-            //}
-            //else
-            //{
-            //    return Brushes.Blue;
-            //}
-            //return Brushes.Orange;
-
-            //if (parameter == null)
-            //{
-            //    return (bool)value ? Visibility.Visible : Visibility.Hidden;
-            //}
-            //else if ((string)parameter == "Invert")
-            //{
-            //    return (bool)value ? Visibility.Hidden : Visibility.Visible;
-            //    //return (bool)value ? Visibility.Visible : Visibility.Hidden;
-            //}
-            //else if ((string)parameter == "Collapse")
-            //{
-            //    return (bool)value ? Visibility.Visible : Visibility.Collapsed;
-            //    //return (bool)value ? Visibility.Visible : Visibility.Hidden;
-            //}
-            //else
-            //{
-            //    return (bool)value ? Visibility.Visible : Visibility.Collapsed;
-            //    //return (bool)value ? Visibility.Visible : Visibility.Hidden;
-            //}
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

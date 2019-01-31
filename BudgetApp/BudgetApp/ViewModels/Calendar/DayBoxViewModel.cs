@@ -26,6 +26,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private bool selectStatus = false;
+        public bool SelectStatus
+        {
+            get { return selectStatus; }
+            set
+            {
+                if (selectStatus != value)
+                {
+                    selectStatus = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         public string Day => Date.Day.ToString();
 
         public DayBoxViewModel()
@@ -56,7 +71,7 @@ namespace BudgetApp.ViewModels
                     if (Date.Equals(bill.DueDate))
                     {
                         Console.WriteLine("bill added to calendar");
-                        Bills.Add(new DayBoxBillViewModel(bt.CompanyName, bill.BillStatus));
+                        Bills.Add(new DayBoxBillViewModel(bt.CompanyName, bill));
                     }
                 }
             }

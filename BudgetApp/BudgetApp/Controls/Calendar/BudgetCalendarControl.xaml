@@ -6,33 +6,63 @@
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              Width="700"
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-    
+
+    <!--<UserControl.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:CalendarOptions"/>
+                <x:Type TypeName="local:DueDateFrequencies"/> 
+            </ObjectDataProvider.MethodParameters>
+            
+            
+        </ObjectDataProvider>
+    </UserControl.Resources>-->
+
+                        
     <Grid VerticalAlignment="Stretch"
-          d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}">
+          d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}" Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Background="AliceBlue"
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowLeftIcon}"
                     Command="{Binding PrevTimeCommand}"/>
             <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowRightIcon}"
                     Command="{Binding NextTimeCommand}"/>
-            <!--<Image x:Name="MonthGoPrev" Source="/Images/ForwardGreen.png" Height="24" RenderTransformOrigin="0.5,0.5" Margin="20,0,6,0"
-                       MouseLeftButtonUp="MonthGoPrev_MouseLeftButtonUp">
-                <Image.RenderTransform>
-                    <RotateTransform Angle="180"/>
-                </Image.RenderTransform>
-            </Image>-->
-            <!--<Image Name="MonthGoNext" Source="/Images/ForwardGreen.png" Height="24" Margin="6,0,6,0"
-                   MouseLeftButtonUp="MonthGoNext_MouseLeftButtonUp"/>-->
             <TextBlock Text="{Binding MonthYear, Converter={cvt:MonthYearConverter}}" FontSize="14" FontFamily="Arial" VerticalAlignment="Center"/>
+            <!--<ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:CalendarOptions}}}"  SelectedItem="{Binding SelectedOption}"
+                      Margin="5"/>-->
+            <!--<ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding SelectedOption}"
+                      Margin="5"/>-->
+            <StackPanel VerticalAlignment="Center" Margin="10 0 10 0">
+                <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=TwoWeek}">Bi-Weekly View</RadioButton>
+                <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=FiveWeek}">Month View</RadioButton>
+            </StackPanel>
+            
+            <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
+                      SelectedItem="{Binding PayDateFrequency}"
+                      VerticalAlignment="Center"/>
+            <TextBox Text="{Binding CurrPaydate, Converter={cvt:DateOnlyConverter}}"
+                     VerticalAlignment="Center" Height="22" BorderBrush="Blue" BorderThickness="1"/>
         </StackPanel>
-        <Grid Grid.Row="1" Background="AliceBlue">
+        <Grid Grid.Row="1" Background="AliceBlue"
+              Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -50,20 +80,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="Sunday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="1" Content="Monday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="2" Content="Tuesday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="3" Content="Wednesday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="4" Content="Thursday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="5" Content="Friday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,1,0"/>
-            <Label Grid.Column="6" Content="Saturday" FontSize="9" Margin="2,0,0,2" Padding="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            
+            <TextBlock Grid.Column="0" Text="Sunday" Style="{StaticResource CalendarDays}" />
+            <TextBlock Grid.Column="1" Text="Monday" Style="{StaticResource CalendarDays}"/>
+            <TextBlock Grid.Column="2" Text="Tuesday" Style="{StaticResource CalendarDays}" />
+            <TextBlock Grid.Column="3" Text="Wednesday" Style="{StaticResource CalendarDays}" />
+            <TextBlock Grid.Column="4" Text="Thursday" Style="{StaticResource CalendarDays}" />
+            <TextBlock Grid.Column="5" Text="Friday" Style="{StaticResource CalendarDays}" />
+            <TextBlock Grid.Column="6" Text="Saturday" Style="{StaticResource CalendarDays}"/>
 
 
-            <ListBox Grid.Row="2" Grid.ColumnSpan="7"
+            <ListBox x:Name="CalendarDaysList" Grid.Row="2" Grid.ColumnSpan="7"
                      ItemsSource="{Binding DayList}" Margin="0"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                      SelectedItem="{Binding SelectedDBVM}"
+                     
                      
                      >
                 <ListBox.ItemContainerStyle>
@@ -100,14 +132,24 @@
             <local:WeekOfDayControls Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7"/>
             <local:WeekOfDayControls Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7"/>
             <local:WeekOfDayControls Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7"/>-->
+            
         </Grid>
+        <TextBox Text="{Binding BankBalance, Converter={cvt:CurrencyConverter}}" VerticalAlignment="Center"
+                   Grid.Row="3" Grid.Column="1"/>
+        <TextBlock Text="Total Due" Grid.Row="4" Margin="5" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding TotalDue, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
+                   Grid.Row="4" Grid.Column="1"/>
+        <TextBlock Text="{Binding RemainingBalance, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
+                   Grid.Row="4" Grid.Column="2"/>
         <!--<StackPanel x:Name="MonthViewStack" Grid.Row="2">
             
         </StackPanel>-->
-        <Grid x:Name="MonthViewGrid" Grid.Row="2">
+        <!--<Grid x:Name="MonthViewGrid" Grid.Row="2">
             <Grid.RowDefinitions>
             </Grid.RowDefinitions>
-        </Grid>
+        </Grid>-->
+
+        
 
     </Grid>
 </UserControl>

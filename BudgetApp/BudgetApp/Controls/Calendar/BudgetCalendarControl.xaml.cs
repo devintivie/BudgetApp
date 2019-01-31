@@ -23,6 +23,12 @@ namespace BudgetApp
         public BudgetCalendarControl()
         {
             InitializeComponent();
+            CalendarDaysList.MouseDoubleClick += new MouseButtonEventHandler(CalendarDaysList_DoubleClick); 
+        }
+
+        private void CalendarDaysList_DoubleClick(object sender, EventArgs e)
+        {
+            Console.WriteLine(CalendarDaysList.SelectedItem.ToString());
         }
     }
 }

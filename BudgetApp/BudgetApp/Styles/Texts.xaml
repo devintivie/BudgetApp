@@ -132,4 +132,13 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="CalendarDays" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="9"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="2 0 0 2"/>
+        <Setter Property="Padding" Value="0 1 0 0"/>
+    </Style>
+
 </ResourceDictionary>

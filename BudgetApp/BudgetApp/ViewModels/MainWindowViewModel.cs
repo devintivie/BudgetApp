@@ -430,6 +430,7 @@ namespace BudgetApp.ViewModels
 
             //BTList.Clear();
             UpdateBTList();
+            BudgetCalendar.UpdateCalendar();
             //Console.WriteLine("List Updated");
         }
 

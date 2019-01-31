@@ -13,7 +13,8 @@ namespace BudgetApp.ViewModels
     public class BudgetCalendarViewModel : LocalBaseViewModel
     {
         public ObservableCollection<DayBoxViewModel> DayList { get; set; } = new ObservableCollection<DayBoxViewModel>();
-        
+        public List<string> DayOfWeekString { get; set; } = new List<string>();
+
         public ICommand PrevTimeCommand { get; set; }
         public ICommand NextTimeCommand { get; set; }
 
@@ -49,6 +50,109 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+        private DateTime currPaydate = DateTime.Today;
+        public DateTime CurrPaydate
+        {
+            get { return currPaydate; }
+            set
+            {
+                if (currPaydate != value)
+                {
+                    currPaydate = value;
+                    UpdateCalendar();
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private DateTime nextPaydate;
+        public DateTime NextPaydate
+        {
+            get { return nextPaydate; }
+            set
+            {
+                if (nextPaydate != value)
+                {
+                    nextPaydate = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+        private double totalDue;
+        public double TotalDue
+        {
+            get { return totalDue; }
+            set
+            {
+                if (totalDue != value)
+                {
+                    totalDue = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private double bankBalance;
+        public double BankBalance
+        {
+            get { return bankBalance; }
+            set
+            {
+                if (bankBalance != value)
+                {
+                    bankBalance = value;
+                    CalculateBalance();
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private double remainingBalance;
+        public double RemainingBalance
+        {
+            get { return remainingBalance; }
+            set
+            {
+                if (remainingBalance != value)
+                {
+                    remainingBalance = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private CalendarOptions selectedOption = CalendarOptions.FiveWeek;
+        public CalendarOptions SelectedOption
+        {
+            get { return selectedOption; }
+            set
+            {
+                if (selectedOption != value)
+                {
+                    selectedOption = value;
+                    UpdateCalendar();
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private PayDateFrequencies payDateFrequency = PayDateFrequencies.Biweekly;
+        public PayDateFrequencies PayDateFrequency
+        {
+            get { return payDateFrequency; }
+            set
+            {
+                if (payDateFrequency != value)
+                {
+                    payDateFrequency = value;
+                    UpdateCalendar();
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
 
         public BudgetCalendarViewModel()
@@ -58,12 +162,9 @@ namespace BudgetApp.ViewModels
             NextTimeCommand = new DelegateCommand(OnNextTime, CanNextTime);
 
             UpdateCalendar();
-
-
-
         }
 
-        private void UpdateCalendar()
+        public void UpdateCalendar()
         {
             var startDay = 0;
             DayList.Clear();
@@ -99,12 +200,38 @@ namespace BudgetApp.ViewModels
                     break;
             }
 
-            for (int i = 0; i < 28; i++)
+            var weeks = 0;
+            switch (SelectedOption)
+            {
+                case CalendarOptions.OneWeek:
+                    weeks = 1;
+                    break;
+
+                case CalendarOptions.TwoWeek:
+                    weeks = 3;
+                    break;
+
+                case CalendarOptions.FourWeek:
+                    weeks = 4;
+                    break;
+
+                case CalendarOptions.FiveWeek:
+                    weeks = 5;
+                    break;
+
+                case CalendarOptions.EightWeek:
+                    weeks = 8;
+                    break;
+            }
+
+            for (int i = 0; i < weeks*7; i++)
             {
                 var date = MonthYear.AddDays(startDay + i);
                 DayList.Add(new DayBoxViewModel(date));
 
             }
+            CalculatePaycheckTotal();
+            CalculateBalance();
         }
 
         private bool CanNextTime()
@@ -127,6 +254,32 @@ namespace BudgetApp.ViewModels
         {
             MonthYear = MonthYear.AddDays(-7);
             UpdateCalendar();
+        }
+
+        private void CalculatePaycheckTotal()
+        {
+            double subtotal = 0;
+            foreach(var daybox in DayList)
+            {
+                var startDate = CurrPaydate;
+                var endDate = (PayDateFrequency == PayDateFrequencies.Biweekly) ? startDate.AddDays(14) : startDate.AddDays(7);
+
+                if( (daybox.Date.CompareTo(startDate) >= 0) && (daybox.Date.CompareTo(endDate) < 0))
+                {
+                    daybox.SelectStatus = true;
+                    foreach(var bill in daybox.Bills)
+                    {
+                        subtotal += bill.AmountDue;
+                    }
+                }
+            }
+
+            TotalDue = subtotal;
+        }
+
+        private void CalculateBalance()
+        {
+            RemainingBalance = BankBalance - TotalDue;
         }
     }
 }

@@ -16,5 +16,7 @@ namespace BudgetApp.Models
             var nextpaydate = firstPayDate.AddDays(paydayJump);
             return nextpaydate;
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace BudgetApp.ViewModels
 {
     public class DayBoxBillViewModel : LocalBaseViewModel
     {
+        public Bill Bill { get; private set; }
+
         private string companyName;
         public string CompanyName
         {
@@ -22,30 +25,44 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        private BillStatus status;
         public BillStatus Status
         {
-            get { return status; }
+            get { return Bill.BillStatus; }
             set
             {
-                if (status != value)
+                if (Bill.BillStatus != value)
                 {
-                    status = value;
+                    Bill.BillStatus = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double AmountDue
+        {
+            get { return Bill.AmountDue; }
+            set
+            {
+                if (Bill.AmountDue != value)
+                {
+                    Bill.AmountDue = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
 
+
         public DayBoxBillViewModel(string name)
         {
             CompanyName = name;
+            Bill = new Bill();
         }
 
-        public DayBoxBillViewModel(string name, BillStatus iStatus)
+        public DayBoxBillViewModel(string name, Bill iBill)
         {
             CompanyName = name;
-            Status = iStatus;
+            Bill = iBill;
         }
 
 
