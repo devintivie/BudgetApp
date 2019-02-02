@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,12 +24,21 @@ namespace BudgetApp
         public BudgetCalendarControl()
         {
             InitializeComponent();
-            CalendarDaysList.MouseDoubleClick += new MouseButtonEventHandler(CalendarDaysList_DoubleClick); 
+            //CalendarDaysList.MouseDoubleClick += new MouseButtonEventHandler(CalendarDaysList_DoubleClick); 
         }
 
-        private void CalendarDaysList_DoubleClick(object sender, EventArgs e)
-        {
-            Console.WriteLine(CalendarDaysList.SelectedItem.ToString());
-        }
+        //private void CalendarDaysList_DoubleClick(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine(CalendarDaysList.SelectedItem.ToString());
+        //}
+
+        //private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine(sender.ToString());
+        //    var track = ((ListBoxItem)sender).Content as Track;
+
+        //    //track.
+
+        //}
     }
 }

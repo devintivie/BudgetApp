@@ -17,6 +17,7 @@ namespace BudgetApp.ViewModels
 
         public ICommand PrevTimeCommand { get; set; }
         public ICommand NextTimeCommand { get; set; }
+        public ICommand DoubleClickCommand { get; set; }
 
         private DayBoxViewModel selectedDBVM;
         public DayBoxViewModel SelectedDBVM
@@ -59,7 +60,8 @@ namespace BudgetApp.ViewModels
                 if (currPaydate != value)
                 {
                     currPaydate = value;
-                    UpdateCalendar();
+                    //UpdateCalendar();
+                    CalculatePaycheckTotal();
                     NotifyPropertyChanged();
                 }
             }
@@ -160,6 +162,7 @@ namespace BudgetApp.ViewModels
             MonthYear = DateTime.Today;
             PrevTimeCommand = new DelegateCommand(OnPrevTime, CanPrevTime);
             NextTimeCommand = new DelegateCommand(OnNextTime, CanNextTime);
+            DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
 
             UpdateCalendar();
         }
@@ -250,6 +253,19 @@ namespace BudgetApp.ViewModels
             return true;
         }
 
+        private void OnDoubleClick()
+        {
+            Console.WriteLine("Double Click attached property");
+            //CurrPaydate
+            Console.WriteLine(SelectedDBVM.Date);
+            CurrPaydate = SelectedDBVM.Date;
+        }
+
+        private bool CanDoubleClick()
+        {
+            return true;
+        }
+
         private void OnPrevTime()
         {
             MonthYear = MonthYear.AddDays(-7);
@@ -261,6 +277,7 @@ namespace BudgetApp.ViewModels
             double subtotal = 0;
             foreach(var daybox in DayList)
             {
+                daybox.SelectStatus = false;
                 var startDate = CurrPaydate;
                 var endDate = (PayDateFrequency == PayDateFrequencies.Biweekly) ? startDate.AddDays(14) : startDate.AddDays(7);
 
@@ -275,6 +292,7 @@ namespace BudgetApp.ViewModels
             }
 
             TotalDue = subtotal;
+            CalculateBalance();
         }
 
         private void CalculateBalance()

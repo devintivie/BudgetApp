@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\SelectorDoubleClickCommandBehavior.cs" />
     <Compile Include="Controls\BudgetOverviewControl.xaml.cs">
       <DependentUpon>BudgetOverviewControl.xaml</DependentUpon>
     </Compile>

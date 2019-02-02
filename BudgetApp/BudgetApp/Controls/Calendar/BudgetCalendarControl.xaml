@@ -23,7 +23,6 @@
             
         </ObjectDataProvider>
     </UserControl.Resources>-->
-
                         
     <Grid VerticalAlignment="Stretch"
           d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}" Background="AliceBlue">
@@ -90,11 +89,13 @@
             <TextBlock Grid.Column="6" Text="Saturday" Style="{StaticResource CalendarDays}"/>
 
 
-            <ListBox x:Name="CalendarDaysList" Grid.Row="2" Grid.ColumnSpan="7"
+            <ListBox Grid.Row="2" Grid.ColumnSpan="7"
                      ItemsSource="{Binding DayList}" Margin="0"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                      SelectedItem="{Binding SelectedDBVM}"
+                     local:SelectorDoubleClickCommandBehavior.HandleDoubleClick="True"
+                     local:SelectorDoubleClickCommandBehavior.TheCommandToRun="{Binding DoubleClickCommand}"
                      
                      
                      >
@@ -117,7 +118,8 @@
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        
+                        <!--<EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>-->
+
                     </Style>
                 </ListBox.ItemContainerStyle>
                 <ListBox.ItemsPanel>

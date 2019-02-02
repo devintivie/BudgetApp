@@ -32,6 +32,7 @@
                  ItemsSource="{Binding Bills}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 
                  Height="75">
         </ListBox>
 

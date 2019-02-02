@@ -1,15 +1,19 @@
-﻿using System;
+﻿using IvieBaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
     public class DayBoxViewModel : LocalBaseViewModel
     {
         public ObservableCollection<DayBoxBillViewModel> Bills { get; set; } = new ObservableCollection<DayBoxBillViewModel>();
+
+        public ICommand TestCommand { get; set; }
 
         private DateTime date;
         public DateTime Date
@@ -45,6 +49,8 @@ namespace BudgetApp.ViewModels
 
         public DayBoxViewModel()
         {
+            TestCommand = new DelegateCommand(OnTest, CanTest);
+
             Console.WriteLine("DayBoxViewModel called");
             foreach (var bt in BillTrackerManager.AllTrackers)
             {
@@ -59,6 +65,18 @@ namespace BudgetApp.ViewModels
             }
             
         }
+
+        private void OnTest()
+        {
+            Console.WriteLine("Test Command");
+        }
+
+        private bool CanTest()
+        {
+            return true;
+        }
+
+        
 
         public DayBoxViewModel(DateTime date)
         {
