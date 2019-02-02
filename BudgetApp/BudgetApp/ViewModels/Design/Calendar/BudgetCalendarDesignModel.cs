@@ -21,7 +21,7 @@ namespace BudgetApp.ViewModels
 
             var today = DateTime.Today;
 
-            for(int i = 0; i<28; i++)
+            for(int i = 0; i<21; i++)
             {
                 DayList.Add(new DayBoxViewModel(today.AddDays(i)));
             }

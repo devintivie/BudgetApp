@@ -46,6 +46,20 @@ namespace BudgetApp.ViewModels
         //}
 
 
+        private bool asyncIsRunning;
+        public bool AsyncIsRunning
+        {
+            get { return asyncIsRunning; }
+            set
+            {
+                if (asyncIsRunning != value)
+                {
+                    asyncIsRunning = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         private BillTrackerViewModel btvm;
         public BillTrackerViewModel BTVM
@@ -351,7 +365,7 @@ namespace BudgetApp.ViewModels
             UpdateBTListCommand = new DelegateCommand(OnUpdateBTList, CanUpdateBTList);
 
             //Use this for processes that may take time
-            //TestAsyncCommand = new DelegateCommand(async() => await OnTest(), CanTest);
+            TestAsyncCommand = new DelegateCommand(async () => await OnTest(), CanTest);
 
             MPVM = new MultiplePaycheckViewModel();
 
@@ -363,10 +377,19 @@ namespace BudgetApp.ViewModels
 
         private async Task OnTest()
         {
-            await Task.Delay(5000);
-            Console.WriteLine("printing test");
-            
-                
+            await RunCommand(() => AsyncIsRunning, async () =>
+           {
+               Console.WriteLine(AsyncIsRunning);
+               await Task.Delay(5000);
+               Console.WriteLine("printing test");
+           });
+
+            Console.WriteLine(AsyncIsRunning);
+
+            //await Task.Delay(5000);
+            //Console.WriteLine("printing test");
+
+
         }
 
         private bool CanTest()

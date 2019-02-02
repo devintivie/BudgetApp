@@ -54,9 +54,9 @@
                 <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=FiveWeek}">Month View</RadioButton>
             </StackPanel>
             
-            <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
+            <!--<ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
                       SelectedItem="{Binding PayDateFrequency}"
-                      VerticalAlignment="Center"/>
+                      VerticalAlignment="Center"/>-->
             <TextBox Text="{Binding CurrPaydate, Converter={cvt:DateOnlyConverter}}"
                      VerticalAlignment="Center" Height="22" BorderBrush="Blue" BorderThickness="1"/>
         </StackPanel>
@@ -95,10 +95,10 @@
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                      SelectedItem="{Binding SelectedDBVM}"
                      local:SelectorDoubleClickCommandBehavior.HandleDoubleClick="True"
-                     local:SelectorDoubleClickCommandBehavior.TheCommandToRun="{Binding DoubleClickCommand}"
-                     
+                     local:SelectorDoubleClickCommandBehavior.DoubleClickCommand="{Binding DoubleClickCommand}"
                      
                      >
+                
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Padding" Value="0"/>

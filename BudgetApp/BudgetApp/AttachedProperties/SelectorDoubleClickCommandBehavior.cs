@@ -25,8 +25,6 @@ namespace BudgetApp
             d.SetValue(HandleDoubleClickProperty, value);
         }
 
-
-
         private static void OnHandleDoubleClickedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Selector selector = d as Selector;
@@ -42,21 +40,21 @@ namespace BudgetApp
             }
         }
 
-        public static readonly DependencyProperty TheCommandToRunProperty = DependencyProperty.RegisterAttached(
-            "TheCommandToRun",
+        public static readonly DependencyProperty DoubleClickCommand = DependencyProperty.RegisterAttached(
+            "DoubleClickCommand",
             typeof(ICommand),
             typeof(SelectorDoubleClickCommandBehavior),
             new FrameworkPropertyMetadata((ICommand)null)
             );
 
-        public static ICommand GetTheCommandToRun(DependencyObject d)
+        public static ICommand GetDoubleClickCommand(DependencyObject d)
         {
-            return (ICommand)d.GetValue(TheCommandToRunProperty);
+            return (ICommand)d.GetValue(DoubleClickCommand);
         }
 
-        public static void SetTheCommandToRun(DependencyObject d, ICommand value)
+        public static void SetDoubleClickCommand(DependencyObject d, ICommand value)
         {
-            d.SetValue(TheCommandToRunProperty, value);
+            d.SetValue(DoubleClickCommand, value);
         }
         
         private static void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -75,7 +73,7 @@ namespace BudgetApp
 
             if(activatedItem != null)
             {
-                ICommand command = (ICommand)(sender as DependencyObject).GetValue(TheCommandToRunProperty);
+                ICommand command = (ICommand)(sender as DependencyObject).GetValue(DoubleClickCommand);
                 if(command != null)
                 {
                     if (command.CanExecute(null))

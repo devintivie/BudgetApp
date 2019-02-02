@@ -27,6 +27,11 @@ namespace BudgetApp
             //CalendarDaysList.MouseDoubleClick += new MouseButtonEventHandler(CalendarDaysList_DoubleClick); 
         }
 
+        private void ListBox_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine("right click down");
+        }
+
         //private void CalendarDaysList_DoubleClick(object sender, EventArgs e)
         //{
         //    Console.WriteLine(CalendarDaysList.SelectedItem.ToString());

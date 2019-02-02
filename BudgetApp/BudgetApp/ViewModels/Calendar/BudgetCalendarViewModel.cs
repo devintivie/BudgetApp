@@ -29,8 +29,8 @@ namespace BudgetApp.ViewModels
                 {
                     selectedDBVM = value;
                     NotifyPropertyChanged();
-                    if(SelectedDBVM != null)
-                        MonthYear = SelectedDBVM.Date;
+                    //if(SelectedDBVM != null)
+                    //    MonthYear = SelectedDBVM.Date;
                     //NotifyPropertyChanged(nameof(SelectedDate));
 
                 }
@@ -46,7 +46,7 @@ namespace BudgetApp.ViewModels
                 if (monthYear != value)
                 {
                     monthYear = value;
-                    
+                    Console.WriteLine(MonthYear);
                     NotifyPropertyChanged();
                 }
             }
@@ -203,6 +203,8 @@ namespace BudgetApp.ViewModels
                     break;
             }
 
+            
+
             var weeks = 0;
             switch (SelectedOption)
             {
@@ -233,6 +235,8 @@ namespace BudgetApp.ViewModels
                 DayList.Add(new DayBoxViewModel(date));
 
             }
+
+            MonthYear = MonthYear.AddDays(startDay);
             CalculatePaycheckTotal();
             CalculateBalance();
         }
@@ -257,11 +261,24 @@ namespace BudgetApp.ViewModels
         {
             Console.WriteLine("Double Click attached property");
             //CurrPaydate
-            Console.WriteLine(SelectedDBVM.Date);
+            //Console.WriteLine(SelectedDBVM.Date);
             CurrPaydate = SelectedDBVM.Date;
         }
 
         private bool CanDoubleClick()
+        {
+            return true;
+        }
+
+        private void OnRightClick()
+        {
+            Console.WriteLine("Double Click attached property");
+            //CurrPaydate
+            //Console.WriteLine(SelectedDBVM.Date);
+            CurrPaydate = SelectedDBVM.Date;
+        }
+
+        private bool CanRightClick()
         {
             return true;
         }

@@ -125,7 +125,6 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Deb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Mvvm.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
@@ -162,6 +161,7 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Buttons.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Colors.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Fonts.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Mvvm.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Texts.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillView.baml
@@ -174,3 +174,7 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\Page1.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\Page1.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\MainWindowPage.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\MainWindowPage.baml
