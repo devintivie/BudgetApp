@@ -1,5 +1,6 @@
 ﻿
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BillList\BillListControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BudgetOverviewControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxBillControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxControl.xaml;;
@@ -8,6 +9,8 @@ FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bu
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\WeekControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\MainWindow.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\NextBillDueDataControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Pages\MainPage.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Pages\Page1.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Buttons.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Colors.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Fonts.xaml;;
@@ -17,6 +20,4 @@ FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bu
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Views\BillView.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Views\CalendarDay.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Views\CalendarTwoWeek.xaml;;
-FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Pages\Page1.xaml;;
-FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Pages\MainWindowPage.xaml;;
 

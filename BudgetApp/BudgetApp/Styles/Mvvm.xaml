@@ -26,4 +26,8 @@
     <DataTemplate DataType="{x:Type vms:DayBoxBillViewModel}">
         <local:DayBoxBillControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BillListViewModel}">
+        <local:BillListControl/>
+    </DataTemplate>
+    
 </ResourceDictionary>

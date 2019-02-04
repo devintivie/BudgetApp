@@ -8,19 +8,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace BudgetApp
+namespace BudgetApp.Pages
 {
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage<VM> : Page
-        where VM : BaseViewModel, new()
+    public class BasePage<VM> : Page where VM : BaseViewModel, new()
     {
 
         #region Private Member
         private VM viewModel;
 
         #endregion
+
         #region Public Properties
         /// <summary>
         /// The animation to play when the page is first loaded

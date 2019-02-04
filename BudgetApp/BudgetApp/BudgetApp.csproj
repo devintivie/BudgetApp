@@ -63,6 +63,9 @@
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\SelectorRightClickCommandBehavior.cs" />
     <Compile Include="AttachedProperties\SelectorDoubleClickCommandBehavior.cs" />
+    <Compile Include="Controls\BillList\BillListControl.xaml.cs">
+      <DependentUpon>BillListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BudgetOverviewControl.xaml.cs">
       <DependentUpon>BudgetOverviewControl.xaml</DependentUpon>
     </Compile>
@@ -85,8 +88,9 @@
     <Compile Include="Converters\DayBoxStatusColorConverter.cs" />
     <Compile Include="Converters\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Converters\NextBillColorConverter.cs" />
-    <Compile Include="Pages\MainWindowPage.xaml.cs">
-      <DependentUpon>MainWindowPage.xaml</DependentUpon>
+    <Compile Include="FrameworkElements\ConditionalEventTrigger.cs" />
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\BankAccountManager.cs" />
     <Compile Include="Managers\BillTrackerManager.cs" />
@@ -104,6 +108,7 @@
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BillList\BillListViewModel.cs" />
     <Compile Include="ViewModels\Calendar\BudgetCalendarViewModel.cs" />
     <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
     <Compile Include="ViewModels\Calendar\DayBoxBillViewModel.cs" />
@@ -127,6 +132,8 @@
     </Compile>
     <Compile Include="ViewModels\MultiplePaycheckViewModel.cs" />
     <Compile Include="ViewModels\NextBillDueDataViewModel.cs" />
+    <Compile Include="ViewModels\Pages\CurrentPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
     <Compile Include="Views\BillTrackerView.xaml.cs">
       <DependentUpon>BillTrackerView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +146,10 @@
     <Compile Include="Views\CalendarTwoWeek.xaml.cs">
       <DependentUpon>CalendarTwoWeek.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\BillList\BillListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\BudgetOverviewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -179,7 +190,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\MainWindowPage.xaml">
+    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

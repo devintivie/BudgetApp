@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         xmlns:vms="clr-namespace:BudgetApp.ViewModels"
-        xmlns:cvtrs="clr-namespace:IvieConverters;assembly=IvieConverters"
+        xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
         mc:Ignorable="d"
         x:Name="AppWindow"
         Title="MainWindow" Height="850" Width="1500" >
@@ -18,7 +18,7 @@
         <KeyBinding Command="{Binding NewCommand}" Gesture="Ctrl+N"/>
     </Window.InputBindings>
 
-    <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}">
+    <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}" Background="{StaticResource WordDarkBlueBrush}">
         <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="New Budget..." Command="{Binding NewCommand}" InputGestureText="Ctrl+N"/>
@@ -28,14 +28,20 @@
                 <MenuItem Header="Exit"/>
             </MenuItem>
         </Menu>
-        <Border DockPanel.Dock="Left">
-            <Button Height="50" VerticalAlignment="Top" Width="100"/>
+        <Border DockPanel.Dock="Left" Width="100">
+            <StackPanel>
+                <Button Content="Calendar" Style="{StaticResource PageButton}" Command="{Binding ShowCalendarCommand}"/>
+                <Button Content="Bills List" Style="{StaticResource PageButton}" Command="{Binding ShowBillsCommand}"/>
+            </StackPanel>
+            
         </Border>
-        <Grid Background="{StaticResource BackgroundMainBrush}">
+        <ContentControl Content="{Binding PageViewModel}" />
+        <!--<Frame Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>-->
+        <!--<Grid Background="{StaticResource BackgroundMainBrush}">
             <Grid.RowDefinitions>
-                <!-- Top Buttons-->
+                 --><!--Top Buttons--><!--
                 <RowDefinition Height="40"/>
-                <!-- Paycheck dates-->
+                 --><!--Paycheck dates--><!--
                 <RowDefinition Height="40"/>
                 
                 <RowDefinition Height="260"/>
@@ -51,9 +57,10 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!--<ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
+            --><!--<ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
                         
                         Visibility="{Binding IsEmptyBudget, Converter={cvtrs:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
                         VerticalAlignment="Top"
@@ -85,7 +92,7 @@
 
             <!--<ListView Grid.Row="3" Grid.Column="1"
                       Grid.RowSpan="1"
-                      ItemsSource="{Binding BAList}"/>-->
+                      ItemsSource="{Binding BAList}"/>--><!--
 
             <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="3">
                 <Button x:Name="addButton" Content="Add Company" Command="{Binding OpenPopupCommand}"
@@ -99,15 +106,15 @@
                         local:IsBusyProperty.Value="{Binding AsyncIsRunning}"/>
             </StackPanel>
             <Button Grid.Row="6" Content="Update Bill lists" Command="{Binding UpdateBTListCommand}"/>
-            <!--<TextBlock Text="{Binding IsNewBudget}" Grid.Row="3" Grid.Column="1"/>-->
-            <!--<TextBlock Text="{Binding Filename}" Grid.Row="6" Grid.Column="2"/>-->
+            --><!--<TextBlock Text="{Binding IsNewBudget}" Grid.Row="3" Grid.Column="1"/>-->
+            <!--<TextBlock Text="{Binding Filename}" Grid.Row="6" Grid.Column="2"/>--><!--
             <TextBox Text="{Binding NewAccount}" Grid.Row="6" Grid.Column="1"/>
 
             <ContentControl Content="{Binding BudgetCalendar}" 
                             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
                             Grid.RowSpan="4"
                             />
-            <!--<local:MonthView Grid.Column="2" Grid.RowSpan="4"/>-->
+            --><!--<local:MonthView Grid.Column="2" Grid.RowSpan="4"/>-->
             <!--<StackPanel Grid.Column="2" Orientation="Horizontal">
                 <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowLeftIcon}"/>
                 --><!--<ComboBox ItemsSource="{Binding Source={local:Enumeration {x:Type my}}}"/>--><!--
@@ -122,9 +129,9 @@
                      Grid.Row="0" Grid.Column="4" Margin="2"
                      TextAlignment="Center"/>
                 <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowRightIcon}"/>
-            </StackPanel>
+            </StackPanel>-->
             
-            <Border BorderThickness="3" 
+            <!--<Border BorderThickness="3" 
                     BorderBrush="Black"
                     Grid.Row="1" 
                     Grid.Column="2" 
@@ -138,7 +145,7 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                   BorderBrush="Transparent"/>
                 
-            </Border>-->
+            </Border>--><!--
             
 
             <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
@@ -170,7 +177,7 @@
                 </DockPanel>
             </Popup>
 
-        </Grid>
+        </Grid>-->
     </DockPanel>
 
 

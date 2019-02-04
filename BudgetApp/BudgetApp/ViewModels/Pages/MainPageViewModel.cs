@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BudgetApp.Models
+namespace BudgetApp.ViewModels
 {
-    public enum ApplicationPage
+    public class MainPageViewModel : LocalBaseViewModel
     {
-        Main,
-        New,
-
     }
 }

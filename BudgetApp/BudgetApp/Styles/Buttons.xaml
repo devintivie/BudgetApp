@@ -139,5 +139,106 @@
         </Setter>
     </Style>
 
+    <!-- Page Navigation Button -->
+    <Style x:Key="PageButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource WordDarkBlueBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5 0"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Height" Value="60"/>
 
+        <Setter Property="local:IsBusyProperty.Value" Value="False"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- Basically a copy of a normal button in WPF -->
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
+                                   Focusable="False" 
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                       FontSize="{StaticResource FontSizeAverage}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   Margin="{TemplateBinding Padding}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <TextBlock Style="{StaticResource SpinningText}"
+                                       FontSize="{StaticResource FontSizeAverage}"
+                                    Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=False}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" >
+
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource WordOrangeBrush}"/>
+                        </Trigger>
+                        <!--<EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource BackgroundLogin}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource WordDarkBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>-->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource self}, Path=IsMouseOver}" Value="true" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource self}, Path=IsEnabled}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{StaticResource BackgroundLogin}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                    <ColorAnimation To="{StaticResource WordDarkBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
+                        
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource self}, Path=IsMouseOver}" Value="true" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource self}, Path=IsEnabled}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{StaticResource WordOrange}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+                        
+
+                        <!--<Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BackgroundLoginBrush}"/>
+                        </Trigger>-->
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

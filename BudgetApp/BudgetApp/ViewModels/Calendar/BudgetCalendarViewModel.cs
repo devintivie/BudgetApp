@@ -167,6 +167,11 @@ namespace BudgetApp.ViewModels
             UpdateCalendar();
         }
 
+        public override void UpdateView()
+        {
+            UpdateCalendar();
+        }
+
         public void UpdateCalendar()
         {
             var startDay = 0;

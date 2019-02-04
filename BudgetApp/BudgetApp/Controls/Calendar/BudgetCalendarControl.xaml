@@ -7,9 +7,7 @@
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d" 
-             Width="700"
-             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+             mc:Ignorable="d">
 
     <!--<UserControl.Resources>
         <ObjectDataProvider x:Key="dataFromEnum"

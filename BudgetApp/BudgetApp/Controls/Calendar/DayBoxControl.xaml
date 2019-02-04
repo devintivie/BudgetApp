@@ -19,6 +19,7 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="DayLabelRowBorder" CornerRadius="2" BorderBrush="{x:Null}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Background="{StaticResource WordOrangeBrush}">
             <!--<Label Content="1" FontWeight="Bold"/>-->
             <TextBlock Text="{Binding Day}" FontWeight="Bold" VerticalAlignment="Center" Margin="5 0 0 0"/>

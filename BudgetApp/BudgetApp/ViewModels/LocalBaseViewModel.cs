@@ -13,6 +13,12 @@ namespace BudgetApp.ViewModels
     {
         public BillTrackerManager BillTrackerManager => BillTrackerManager.Instance;
         public BankAccountManager BankAccountManager => BankAccountManager.Instance;
+
+        public virtual void UpdateView()
+        {
+
+        }
+
     }
 
 }
