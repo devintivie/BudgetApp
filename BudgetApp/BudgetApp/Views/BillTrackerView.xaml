@@ -26,46 +26,63 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>-->
 
+            
+            <Button Style="{StaticResource IconButton}" Content="Edit" 
+                    Grid.Column="0"
+                    Command="{Binding}" 
+                    Width="30"
+                />
             <TextBlock Text="{Binding CompanyName}" 
-                       Width="350" FontSize="30"
-                       TextAlignment="Center"
-                       HorizontalAlignment="Right"
-                       TextTrimming="CharacterEllipsis"
-                   
-                   />
-            <ListView x:Name="BillListView" Height="250" ItemsSource="{Binding Bills}" 
+                    Width="275" FontSize="30"
+                    TextAlignment="Center"
+                    HorizontalAlignment="Right"
+                    TextTrimming="CharacterEllipsis"
+                    Grid.Column="1"
+                />
+                
+            
+            
+            
+            <ListBox x:Name="BillListView" Height="250" ItemsSource="{Binding Bills}" 
                       Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
                       Grid.Row="1" Grid.Column="0"
+                      Grid.ColumnSpan="3"
                       HorizontalAlignment="Center"
                       HorizontalContentAlignment="Right"
                       Background="Transparent"
                       BorderBrush="Transparent"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible"
                       SelectedItem="{Binding CurrentBVM}">
-            </ListView>
+            </ListBox>
 
             <TextBlock Text="No Bills To List..."
                        Grid.Row="1"
-                       Grid.Column="0"
+                       Grid.Column="1"
                        Margin="0 10 20 0"
                        Visibility="{Binding IsContentAvailable, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
                        
                        FontSize="20"
                        HorizontalAlignment="Right"
                        />
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                        Grid.Column="1" HorizontalAlignment="Center">
                 <Button Content="Add Bill" Command="{Binding OpenAddBillCommand}"/>
                 <Button Content="Remove Bill" Command="{Binding RemoveCommand}"/>
             </StackPanel>
 
             <Popup IsOpen="{Binding IsAddBillOpen}" StaysOpen="False"
                    HorizontalOffset="0" VerticalOffset="-280">
-                <Grid Height="250" Width="346" 
+                <Grid Height="276" Width="346" 
                       Background="{StaticResource BackgroundMainBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -82,7 +99,9 @@
 
                     <TextBlock Text="Amount" Grid.Row="0" Grid.Column="0" Margin="5"/>
                     <TextBox Text="{Binding AddBillAmount, Converter={cvt:CurrencyConverter}}" Grid.Row="0" Grid.Column="1"
-                             Width="100" HorizontalAlignment="Left"/>
+                             Width="100" HorizontalAlignment="Left"
+                             MouseDoubleClick="TextBox_MouseDoubleClick"
+                             />
                     <TextBlock Text="Frequency" Grid.Row="1" Grid.Column="0" Margin="5"/>
                     <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding Source={StaticResource options}}" 

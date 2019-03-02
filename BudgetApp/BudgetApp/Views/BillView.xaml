@@ -16,6 +16,9 @@
                       />
             <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
                      Grid.Column="0" Width="70"
+                     BorderThickness="2 0"
+                     BorderBrush="Black"
+                     Background="Transparent"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      MouseDoubleClick="TextBox_MouseDoubleClick"

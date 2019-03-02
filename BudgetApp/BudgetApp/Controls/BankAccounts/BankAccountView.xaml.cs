@@ -13,16 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetApp.Views
+namespace BudgetApp
 {
     /// <summary>
-    /// Interaction logic for CalendarDay.xaml
+    /// Interaction logic for BankAccountView.xaml
     /// </summary>
-    public partial class CalendarDay : UserControl
+    public partial class BankAccountView : UserControl
     {
-        public CalendarDay()
+        public BankAccountView()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+
+            if (tb != null)
+            {
+                tb.SelectAll();
+            }
         }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml
-20-729038690
+22105613250
 
-72-145416094
+801280334135
 17-140857567
-Controls\BillList\BillListControl.xaml;Controls\BudgetOverviewControl.xaml;Controls\Calendar\DayBoxBillControl.xaml;Controls\Calendar\DayBoxControl.xaml;Controls\Calendar\BudgetCalendarControl.xaml;Controls\MultipleCheckControl.xaml;Controls\Calendar\WeekControl.xaml;MainWindow.xaml;Controls\NextBillDueDataControl.xaml;Pages\MainPage.xaml;Pages\Page1.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Mvvm.xaml;Styles\Texts.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarDay.xaml;Views\CalendarTwoWeek.xaml;
+Controls\BankAccounts\BankAccountView.xaml;Controls\BankAccounts\BankOverviewControl.xaml;Controls\BillList\BillListControl.xaml;Controls\BudgetOverviewControl.xaml;Controls\Calendar\DayBoxBillControl.xaml;Controls\Calendar\DayBoxControl.xaml;Controls\Calendar\BudgetCalendarControl.xaml;Controls\MultipleCheckControl.xaml;Controls\Calendar\WeekControl.xaml;MainWindow.xaml;Controls\NextBillDueDataControl.xaml;Pages\MainPage.xaml;Pages\Page1.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\ListViews.xaml;Styles\Mvvm.xaml;Styles\Texts.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarTwoWeek.xaml;
 
 True
 

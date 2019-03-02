@@ -51,18 +51,36 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private BillViewModel bvm;
+        public BillViewModel BVM
+        {
+            get { return bvm; }
+            set
+            {
+                if (bvm != value)
+                {
+                    bvm = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
 
         public DayBoxBillViewModel(string name)
         {
             CompanyName = name;
             Bill = new Bill();
+            BVM = new BillViewModel(Bill);
+
         }
 
         public DayBoxBillViewModel(string name, Bill iBill)
         {
             CompanyName = name;
             Bill = iBill;
+            BVM = new BillViewModel(Bill);
         }
 
 

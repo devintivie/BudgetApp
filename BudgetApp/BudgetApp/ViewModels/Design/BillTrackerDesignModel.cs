@@ -12,6 +12,7 @@ namespace BudgetApp.ViewModels
         #region Singleton
         private static BillTrackerDesignModel instance;
         public static BillTrackerDesignModel Instance => instance ?? (instance = new BillTrackerDesignModel());
+        //public static BillTrackerDesignModel Instance => new BillTrackerDesignModel();
         #endregion
 
         #region Constructor

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+        xmlns:models="clr-namespace:BudgetApp.Models"
         xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
         mc:Ignorable="d"
         x:Name="AppWindow"
@@ -16,6 +17,7 @@
         <KeyBinding Command="{Binding SaveCommand}" Gesture="CTRL+S"/>
         <KeyBinding Command="{Binding OpenCommand}" Gesture="CTRL+O"/>
         <KeyBinding Command="{Binding NewCommand}" Gesture="Ctrl+N"/>
+        <KeyBinding Command="{Binding LoseFocus}" Gesture="Enter"/>
     </Window.InputBindings>
 
     <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}" Background="{StaticResource WordDarkBlueBrush}">
@@ -27,13 +29,31 @@
                 <MenuItem Header="Open Budget..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O"/>
                 <MenuItem Header="Exit"/>
             </MenuItem>
+            <MenuItem Header="Bills">
+                <MenuItem Header="Add Company"/>
+                <MenuItem Header="Add Bill"/>
+            </MenuItem>
         </Menu>
-        <Border DockPanel.Dock="Left" Width="100">
-            <StackPanel>
+        <Border DockPanel.Dock="Left" Width="200">
+            <!--<StackPanel>
                 <Button Content="Calendar" Style="{StaticResource PageButton}" Command="{Binding ShowCalendarCommand}"/>
                 <Button Content="Bills List" Style="{StaticResource PageButton}" Command="{Binding ShowBillsCommand}"/>
-            </StackPanel>
-            
+                <Button Content="Accounts" Style="{StaticResource PageButton}" Command="{Binding ShowAccountsCommand}"/>
+                <Button Content="Test" Style="{StaticResource PageButton}"/>
+            </StackPanel>-->
+            <!--<ListView SelectedIndex="0">
+                <TextBlock Text="Calendar"/>
+                <TextBlock Text="Bills List"/>
+                --><!--<Button Content="Calendar" Style="{StaticResource PageButton}" Background="Red" Width="100"/>
+                <Button Content="Bills List" Style="{StaticResource PageButton}" Background="Red"/>--><!--
+            </ListView>-->
+            <ListView ItemsSource="{Binding Source={local:EnumBindingSource  {x:Type local:Navigation}}}"
+                      SelectedItem="{Binding PageDisplay}" 
+                      Style="{StaticResource NavigationListView}"
+                      ItemContainerStyle="{StaticResource NavigationItems}">
+
+            </ListView>
+
         </Border>
         <ContentControl Content="{Binding PageViewModel}" />
         <!--<Frame Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>-->

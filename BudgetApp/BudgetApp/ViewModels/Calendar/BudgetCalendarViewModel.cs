@@ -14,10 +14,12 @@ namespace BudgetApp.ViewModels
     {
         public ObservableCollection<DayBoxViewModel> DayList { get; set; } = new ObservableCollection<DayBoxViewModel>();
         public List<string> DayOfWeekString { get; set; } = new List<string>();
+        public ObservableCollection<BankAccountViewModel> Accounts { get; set; } = new ObservableCollection<BankAccountViewModel>();
 
         public ICommand PrevTimeCommand { get; set; }
         public ICommand NextTimeCommand { get; set; }
         public ICommand DoubleClickCommand { get; set; }
+        public ICommand ConnectCommand { get; set; }
 
         private DayBoxViewModel selectedDBVM;
         public DayBoxViewModel SelectedDBVM
@@ -36,7 +38,22 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
-        
+
+        private bool testConnected = false;
+        public bool TestConnected
+        {
+            get { return testConnected; }
+            set
+            {
+                if (testConnected != value)
+                {
+                    testConnected = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         private DateTime monthYear;
         public DateTime MonthYear
         {
@@ -156,6 +173,22 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private bool isTextBoxFocused;
+        public bool IsTextBoxFocused
+        {
+            get { return isTextBoxFocused; }
+            set
+            {
+                if (isTextBoxFocused != value)
+                {
+                    isTextBoxFocused = value;
+                    Console.WriteLine(IsTextBoxFocused);
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
         public BudgetCalendarViewModel()
         {
@@ -163,13 +196,21 @@ namespace BudgetApp.ViewModels
             PrevTimeCommand = new DelegateCommand(OnPrevTime, CanPrevTime);
             NextTimeCommand = new DelegateCommand(OnNextTime, CanNextTime);
             DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
+            ConnectCommand = new DelegateCommand(OnConnect);
 
             UpdateCalendar();
+            UpdateAccountList();
+        }
+
+        private void OnConnect()
+        {
+            TestConnected = true;
         }
 
         public override void UpdateView()
         {
             UpdateCalendar();
+            UpdateAccountList();
         }
 
         public void UpdateCalendar()
@@ -267,7 +308,11 @@ namespace BudgetApp.ViewModels
             Console.WriteLine("Double Click attached property");
             //CurrPaydate
             //Console.WriteLine(SelectedDBVM.Date);
-            CurrPaydate = SelectedDBVM.Date;
+            if(selectedDBVM != null)
+            {
+                CurrPaydate = SelectedDBVM.Date;
+            }
+            
         }
 
         private bool CanDoubleClick()
@@ -320,6 +365,23 @@ namespace BudgetApp.ViewModels
         private void CalculateBalance()
         {
             RemainingBalance = BankBalance - TotalDue;
+        }
+
+        private void UpdateAccountList()
+        {
+            Accounts.Clear();
+            var tempList = new List<BankAccount>();
+            Console.WriteLine($"Update bank account tracker count = {BankAccountManager.AllAccounts.Count}");
+
+            foreach (var b in BankAccountManager.AllAccounts)
+            {
+                tempList.Add(b);
+            }
+            foreach (var b in tempList)
+            {
+                Accounts.Add(new BankAccountViewModel(b));
+            }
+
         }
     }
 }

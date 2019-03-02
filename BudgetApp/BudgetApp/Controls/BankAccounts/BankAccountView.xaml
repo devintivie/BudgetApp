@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="BudgetApp.BankAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             mc:Ignorable="d" >
+    <StackPanel Orientation="Horizontal" d:DataContext="{x:Static vms:BankAccountDesignModel.Instance}">
+        <TextBlock Text="{Binding Nickname}" 
+                    Grid.Column="1" 
+                    Padding="5"
+                    Width="180" 
+                    VerticalAlignment="Center" 
+                    TextAlignment="Left"
+                   
+                />
+        <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
+                    Grid.Column="0" Width="70"
+                    BorderThickness="0 0"
+                    BorderBrush="Black"
+                    Background="Transparent"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    MouseDoubleClick="TextBox_MouseDoubleClick"
+                    />
+    </StackPanel>
+</UserControl>

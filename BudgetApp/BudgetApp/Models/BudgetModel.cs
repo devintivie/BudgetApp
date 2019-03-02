@@ -27,10 +27,17 @@ namespace BudgetApp.Models
         #region Methods
         public void AddBillTracker(BillTracker nBT)
         {
-            if (!(BillTrackerExists(nBT)))
+            if (!BillTrackerExists(nBT))
             {
                 BudgetData.Add(nBT);
                 BudgetData.Sort();
+            }
+        }
+
+        public void AddBankAccount(BankAccount nBA)
+        {
+            if (!BankAccountExists(nBA)){
+                BankAccounts.Add(nBA);
             }
         }
 
@@ -50,6 +57,18 @@ namespace BudgetApp.Models
                 }
             }
 
+            return false;
+        }
+
+        public bool BankAccountExists(BankAccount baCheck)
+        {
+            foreach(var account in BudgetData)
+            {
+                if (baCheck.Equals(account))
+                {
+                    return true;
+                }
+            }
             return false;
         }
 

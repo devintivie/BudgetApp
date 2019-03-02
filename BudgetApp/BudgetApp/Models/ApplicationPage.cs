@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BudgetApp.Models
+namespace BudgetApp
 {
     public enum ApplicationPage
     {
-        Main,
-        New,
+        Calendar,
+        BillList,
 
     }
 }

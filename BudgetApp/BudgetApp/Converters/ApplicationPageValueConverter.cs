@@ -17,12 +17,15 @@ namespace BudgetApp
         {
             switch ((ApplicationPage)value)
             {
-                case ApplicationPage.Main:
-                    return new MainPage();
+                case ApplicationPage.Calendar:
+                    return new BudgetCalendarControl();
+                case ApplicationPage.BillList:
+                    return new BillListControl();
                 default:
                     Debugger.Break();
                     return null;
             }
+            
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

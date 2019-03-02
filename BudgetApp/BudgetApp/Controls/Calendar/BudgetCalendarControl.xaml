@@ -7,7 +7,12 @@
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             Width="844">
+
+    <!--<UserControl.Resources>
+        <cvt:BooleanToConnectedConverter x:Key="ConnectedConverter"/>
+    </UserControl.Resources>-->
 
     <!--<UserControl.Resources>
         <ObjectDataProvider x:Key="dataFromEnum"
@@ -52,13 +57,13 @@
                 <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=FiveWeek}">Month View</RadioButton>
             </StackPanel>
             
-            <!--<ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
+            <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
                       SelectedItem="{Binding PayDateFrequency}"
-                      VerticalAlignment="Center"/>-->
+                      VerticalAlignment="Center"/>
             <TextBox Text="{Binding CurrPaydate, Converter={cvt:DateOnlyConverter}}"
                      VerticalAlignment="Center" Height="22" BorderBrush="Blue" BorderThickness="1"/>
         </StackPanel>
-        <Grid Grid.Row="1" Background="AliceBlue"
+        <Grid Grid.Row="1" Background="AliceBlue" HorizontalAlignment="Stretch"
               Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -87,7 +92,7 @@
             <TextBlock Grid.Column="6" Text="Saturday" Style="{StaticResource CalendarDays}"/>
 
 
-            <ListBox Grid.Row="2" Grid.ColumnSpan="7"
+            <ListBox Grid.Row="2" Grid.ColumnSpan="7" 
                      ItemsSource="{Binding DayList}" Margin="0"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -101,6 +106,7 @@
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Padding" Value="0"/>
                         <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="IsSelected" Value="{Binding Selected}"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -122,7 +128,7 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Width="700"/>
+                        <WrapPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
 
@@ -134,8 +140,12 @@
             <local:WeekOfDayControls Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7"/>-->
             
         </Grid>
-        <TextBox Text="{Binding BankBalance, Converter={cvt:CurrencyConverter}}" VerticalAlignment="Center"
-                   Grid.Row="3" Grid.Column="1"/>
+
+        <!--<TextBox Text="{Binding BankBalance, Converter={cvt:CurrencyConverter}}" VerticalAlignment="Center"
+                 MouseDoubleClick="TextBox_MouseDoubleClick"
+                 local:FocusExtension.IsFocused="{Binding IsTextBoxFocused}"
+                   Grid.Row="3" Grid.Column="1"/>-->
+
         <TextBlock Text="Total Due" Grid.Row="4" Margin="5" VerticalAlignment="Center"/>
         <TextBlock Text="{Binding TotalDue, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
                    Grid.Row="4" Grid.Column="1"/>

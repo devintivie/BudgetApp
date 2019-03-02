@@ -25,5 +25,14 @@ namespace BudgetApp
             InitializeComponent();
         }
 
+        private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+
+            if (tb != null)
+            {
+                tb.SelectAll();
+            }
+        }
     }
 }

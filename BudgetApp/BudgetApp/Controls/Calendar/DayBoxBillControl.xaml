@@ -9,7 +9,13 @@
              mc:Ignorable="d" >
     <Border d:DataContext="{x:Static vms:DayBoxBillDesignModel.Instance}" x:Name="BorderElement" CornerRadius="5" BorderBrush="DarkOliveGreen" Background="{Binding Status, Converter={local:NextBillColorConverter}}" BorderThickness="1" >
         <TextBlock x:Name="DisplayText" Text="{Binding CompanyName}" FontSize="10" Padding="2" TextTrimming="CharacterEllipsis"
-                   HorizontalAlignment="Stretch"
-                   MaxWidth="65"/>
+                   HorizontalAlignment="Stretch">
+            <TextBlock.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"/>
+                    <!--<ContentControl Content="{Binding BVM}"/>-->
+                </ToolTip>
+            </TextBlock.ToolTip>
+        </TextBlock>
     </Border>
 </UserControl>

@@ -61,8 +61,15 @@
     <Compile Include="Animation\StoryboardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\FocusExtension.cs" />
     <Compile Include="AttachedProperties\SelectorRightClickCommandBehavior.cs" />
     <Compile Include="AttachedProperties\SelectorDoubleClickCommandBehavior.cs" />
+    <Compile Include="Controls\BankAccounts\BankAccountView.xaml.cs">
+      <DependentUpon>BankAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BankAccounts\BankOverviewControl.xaml.cs">
+      <DependentUpon>BankOverviewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BillList\BillListControl.xaml.cs">
       <DependentUpon>BillListControl.xaml</DependentUpon>
     </Compile>
@@ -84,6 +91,7 @@
     <Compile Include="Controls\Calendar\WeekControl.xaml.cs">
       <DependentUpon>WeekControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\PageDisplayValueConverter.cs" />
     <Compile Include="Converters\ApplicationPageValueConverter.cs" />
     <Compile Include="Converters\DayBoxStatusColorConverter.cs" />
     <Compile Include="Converters\EnumDescriptionTypeConverter.cs" />
@@ -108,12 +116,17 @@
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BankAccount\BankAccountViewModel.cs" />
+    <Compile Include="ViewModels\BankAccount\BankOverviewViewModel.cs" />
     <Compile Include="ViewModels\BillList\BillListViewModel.cs" />
     <Compile Include="ViewModels\Calendar\BudgetCalendarViewModel.cs" />
     <Compile Include="ViewModels\BudgetOverviewViewModel.cs" />
     <Compile Include="ViewModels\Calendar\DayBoxBillViewModel.cs" />
     <Compile Include="ViewModels\Calendar\DayBoxViewModel.cs" />
     <Compile Include="ViewModels\Calendar\WeekViewModel.cs" />
+    <Compile Include="ViewModels\Design\BankAccount\BankAccountDesignModel.cs" />
+    <Compile Include="ViewModels\Design\BankAccount\BankOverviewDesignModel.cs" />
+    <Compile Include="ViewModels\Design\BillList\BillListDesignModel.cs" />
     <Compile Include="ViewModels\Design\Calendar\BudgetCalendarDesignModel.cs" />
     <Compile Include="ViewModels\Design\Calendar\DayBoxBillDesignModel.cs" />
     <Compile Include="ViewModels\Design\Calendar\DayBoxDesignModel.cs" />
@@ -140,12 +153,17 @@
     <Compile Include="Views\BillView.xaml.cs">
       <DependentUpon>BillView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CalendarDay.xaml.cs">
-      <DependentUpon>CalendarDay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CalendarTwoWeek.xaml.cs">
       <DependentUpon>CalendarTwoWeek.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\BankAccounts\BankAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BankAccounts\BankOverviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\BillList\BillListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +228,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ListViews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Mvvm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,10 +245,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BillView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CalendarDay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

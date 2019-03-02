@@ -51,4 +51,7 @@
 
     <Color x:Key="WordGreen">#FF007E2A</Color>
     <SolidColorBrush x:Key="WordGreenBrush" Color="{StaticResource WordGreen}"/>
+
+    <Color x:Key="HoverColor">#FF688D9D</Color>
+    <SolidColorBrush x:Key="HoverColorBrush" Color="{StaticResource HoverColor}"/>
 </ResourceDictionary>

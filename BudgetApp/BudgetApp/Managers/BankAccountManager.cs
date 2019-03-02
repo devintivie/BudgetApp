@@ -15,13 +15,10 @@ namespace BudgetApp.Managers
     {
         #region Singleton
         private static BankAccountManager instance;
-
-        public static BankAccountManager Instance
-        {
-            get { return instance ?? (instance = new BankAccountManager()); }
-        }
-
+        public static BankAccountManager Instance => instance ?? (instance = new BankAccountManager());
+        
         private BankAccountManager() { }
+
         #endregion Singleton
 
         public Dictionary<string, BankAccount> AccountsByNumber { get; set; } = new Dictionary<string, BankAccount>();
@@ -52,7 +49,7 @@ namespace BudgetApp.Managers
                 {
                     accountCount = value;
                     NotifyPropertyChanged();
-                    Console.WriteLine($"bill tracker notify count = {AccountCount}");
+                    Console.WriteLine($"bank accountnotify count = {AccountCount}");
                 }
             }
         }
@@ -64,11 +61,13 @@ namespace BudgetApp.Managers
 
         public void AddAccount(BankAccount ba)
         {
-            Console.WriteLine("bank account added");
+            
             if (!AllAccounts.Contains(ba))
             {
-                AccountsByNumber.Add(ba.AccountNumber, ba);
+                Console.WriteLine("bank account added");
+                AccountsByNumber.Add(ba.Nickname, ba);
                 AllAccounts.Add(ba);
+                Console.WriteLine($"all accounts add count {AllAccounts.Count}");
             }
             UpdateAccountCount();
         }
@@ -78,6 +77,7 @@ namespace BudgetApp.Managers
             Console.WriteLine("bank account added");
             if (!AccountsByNumber.ContainsKey(name))
             {
+                Console.WriteLine("bank account added");
                 var acct = new BankAccount(0, acctNumber, bankName, nickname);
             }
             UpdateAccountCount();

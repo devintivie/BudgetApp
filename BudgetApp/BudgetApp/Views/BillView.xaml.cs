@@ -30,11 +30,8 @@ namespace BudgetApp
             TextBox tb = (sender as TextBox);
 
             if (tb != null)
-
             {
-
                 tb.SelectAll();
-
             }
         }
     }

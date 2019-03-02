@@ -33,4 +33,14 @@ namespace BudgetApp
         Weekly,
         Biweekly,
     }
+
+    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+    public enum Navigation
+    {
+        Calendar,
+        [Description("Bills List")]
+        BillList,
+        BankOverview,
+    }
+
 }

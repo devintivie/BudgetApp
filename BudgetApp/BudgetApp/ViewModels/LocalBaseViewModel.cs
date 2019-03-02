@@ -14,10 +14,13 @@ namespace BudgetApp.ViewModels
         public BillTrackerManager BillTrackerManager => BillTrackerManager.Instance;
         public BankAccountManager BankAccountManager => BankAccountManager.Instance;
 
-        public virtual void UpdateView()
+        public void ResetManagers()
         {
-
+            BillTrackerManager.Reset();
+            BankAccountManager.Reset();
         }
+
+        public virtual void UpdateView() { }
 
     }
 

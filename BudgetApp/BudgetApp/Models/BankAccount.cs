@@ -29,6 +29,8 @@ namespace BudgetApp.Models
         {
             return base.ToString();
         }
+
+
     }
 
     

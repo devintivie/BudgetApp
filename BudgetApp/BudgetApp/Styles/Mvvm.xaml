@@ -29,5 +29,11 @@
     <DataTemplate DataType="{x:Type vms:BillListViewModel}">
         <local:BillListControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BankAccountViewModel}">
+        <local:BankAccountView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:BankOverviewViewModel}">
+        <local:BankOverviewControl/>
+    </DataTemplate>
     
 </ResourceDictionary>

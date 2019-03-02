@@ -31,7 +31,7 @@ namespace BudgetApp
                 case BillStatus.NoneDue:
                     return Brushes.LightGreen;
                 default:
-                    return Brushes.Transparent;
+                    return Brushes.White;
             }
         }
 

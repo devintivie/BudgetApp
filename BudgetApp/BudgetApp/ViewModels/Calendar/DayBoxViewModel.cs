@@ -14,7 +14,7 @@ namespace BudgetApp.ViewModels
         public ObservableCollection<DayBoxBillViewModel> Bills { get; set; } = new ObservableCollection<DayBoxBillViewModel>();
 
         public ICommand TestCommand { get; set; }
-        public ICommand RightClickCommand { get; set; }
+        public ICommand DoubleClickCommand { get; set; }
 
         private DateTime date;
         public DateTime Date
@@ -45,6 +45,25 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private bool selected;
+        public bool Selected
+        {
+            get { return selected; }
+            set
+            {
+                if (selected != value)
+                {
+                    selected = value;
+                    if (selected)
+                    {
+
+                    }
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         private bool hitTestVisible = true;
         public bool HitTestVisible
         {
@@ -66,7 +85,7 @@ namespace BudgetApp.ViewModels
         public DayBoxViewModel()
         {
             TestCommand = new DelegateCommand(OnTest, CanTest);
-            RightClickCommand = new DelegateCommand(OnRightClick, CanRightClick);
+            DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
 
             Console.WriteLine("DayBoxViewModel called");
             foreach (var bt in BillTrackerManager.AllTrackers)
@@ -93,12 +112,12 @@ namespace BudgetApp.ViewModels
             return true;
         }
 
-        private void OnRightClick()
+        private void OnDoubleClick()
         {
-            Console.WriteLine("RightClickCommand");
+            Console.WriteLine("DoubleClickCommand");
         }
 
-        private bool CanRightClick()
+        private bool CanDoubleClick()
         {
             return true;
         }

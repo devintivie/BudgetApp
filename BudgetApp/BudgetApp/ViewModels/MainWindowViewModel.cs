@@ -308,6 +308,22 @@ namespace BudgetApp.ViewModels
             get { return BillTrackerManager.AllTrackers.Count == 0; }
         }
 
+        private Navigation pageDisplay = default(Navigation);
+        public Navigation PageDisplay
+        {
+            get { return pageDisplay; }
+            set
+            {
+                if (pageDisplay != value)
+                {
+                    pageDisplay = value;
+                    NotifyPropertyChanged();
+                    ShowPage();
+                }
+            }
+        }
+
+
         #endregion
 
         #region Commands
@@ -319,6 +335,7 @@ namespace BudgetApp.ViewModels
         public ICommand EditBillCommand { get; set; }
         public ICommand RemoveBillCommand { get; set; }
         public ICommand NewCommand { get; set; }
+        public ICommand LoseFocus { get; set; }
         public ICommand SaveCommand { get; set; }
         public ICommand SaveAsCommand { get; set; }
         public ICommand OpenCommand { get; set; }
@@ -331,6 +348,7 @@ namespace BudgetApp.ViewModels
 
         public ICommand ShowCalendarCommand { get; set; }
         public ICommand ShowBillsCommand { get; set; }
+        public ICommand ShowAccountsCommand { get; set; }
         #endregion
 
         #region Constructors
@@ -350,11 +368,14 @@ namespace BudgetApp.ViewModels
             SaveCommand = new DelegateCommand(OnSave, CanSave);
             SaveAsCommand = new DelegateCommand(OnSaveAs, CanSaveAs);
             OpenCommand = new DelegateCommand(OnOpen, CanOpen);
+            LoseFocus = new DelegateCommand(OnLoseFocus);
+
             ClosingCommand = new DelegateCommand(ExecuteClosing, CanExecuteClosing);
             UpdateBTListCommand = new DelegateCommand(OnUpdateBTList, CanUpdateBTList);
 
-            ShowCalendarCommand = new DelegateCommand(OnShowCalendar, CanShowCalendar);
+            ShowCalendarCommand = new DelegateCommand( OnShowCalendar, CanShowCalendar);
             ShowBillsCommand = new DelegateCommand(OnShowBills, CanShowBills);
+            ShowAccountsCommand = new DelegateCommand(OnShowAccount, CanShowAccounts);
 
             //Use this for processes that may take time
             TestAsyncCommand = new DelegateCommand(async () => await OnTest(), CanTest);
@@ -367,6 +388,7 @@ namespace BudgetApp.ViewModels
 
         }
 
+        
 
         #endregion
 
@@ -427,18 +449,14 @@ namespace BudgetApp.ViewModels
 
             NotifyPropertyChanged(nameof(ShowCurrentBT));
 
-
-
-
-
-
         }
 
         private void Startup()
         {
             //Console.WriteLine("Startup methods ran");
-            BillTrackerManager.Reset();
-            PageViewModel = new BillListViewModel();
+            ResetManagers();
+            PageDisplay = Navigation.Calendar;
+            PageViewModel = new BudgetCalendarViewModel();
 
             //BTList.Clear();
 
@@ -536,10 +554,16 @@ namespace BudgetApp.ViewModels
         {
             var bm = new BudgetModel();
 
-            foreach (BillTracker bt in BillTrackerManager.AllTrackers)
+            foreach (var bt in BillTrackerManager.AllTrackers)
             {
                 bm.AddBillTracker(bt);
             }
+
+            foreach (var ba in BankAccountManager.AllAccounts)
+            {
+                bm.AddBankAccount(ba);
+            }
+
             bm.Serialize(Filename);
             IsNewBudget = false;
 
@@ -617,7 +641,7 @@ namespace BudgetApp.ViewModels
 
             //Filename = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\xml_test.xml";
 
-            BillTrackerManager.Reset();
+            ResetManagers();
             var bm = BudgetModel.Deserialize(Filename);
             foreach (BillTracker bt in bm.BudgetData)
             {
@@ -632,15 +656,20 @@ namespace BudgetApp.ViewModels
             PageViewModel.UpdateView();
             //UpdateBTList();
             //CurrentSelection = null;
-            //IsNewBudget = false;
+            IsNewBudget = false;
             //BudgetCalendar = new BudgetCalendarViewModel();
-            
+
 
         }
 
         private bool CanOpen()
         {
             return true;
+        }
+
+        private void OnLoseFocus()
+        {
+            Console.WriteLine("Lost Focus");
         }
 
         private void UpdateBTList()
@@ -775,6 +804,39 @@ namespace BudgetApp.ViewModels
             else
                 return true;
         }
+
+        private void OnShowAccount()
+        {
+            PageViewModel = new BillListViewModel();
+        }
+        private bool CanShowAccounts()
+        {
+            if (PageViewModel is BillListViewModel)
+                return false;
+            else
+                return true;
+        }
+
+        private void ShowPage()
+        {
+            switch (PageDisplay)
+            {
+                case Navigation.Calendar:
+                    PageViewModel = new BudgetCalendarViewModel();
+                    break;
+                case Navigation.BillList:
+                    PageViewModel = new BillListViewModel();
+                    break;
+                case Navigation.BankOverview:
+                    PageViewModel = new BankOverviewViewModel();
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+
 
         private void ExecuteClosing()
         {

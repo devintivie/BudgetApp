@@ -8,7 +8,7 @@
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d">
     <Border BorderBrush="Black" BorderThickness="3" Padding="3" MinWidth="300" MaxWidth="300"
-            Background="{Binding NextBillStatus, Converter={local:NextBillColorConverter}}"
+            Background="Transparent"
             >
         
         <Grid d:DataContext="{x:Static vms:NextBillDueDataDesignModel.Instance}">
@@ -23,21 +23,20 @@
             <TextBlock Text="{Binding CompanyName}" FontSize="18"
                        Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
                        TextTrimming="WordEllipsis"
-                       Margin="5 0 0 0"/>
+                       Margin="0 0 0 0"/>
             <!--<TextBlock Text="{Binding NextBillStatus}" FontSize="{StaticResource FontSizeSmall}"
                        Grid.Row="1" Grid.Column="0" Grid.RowSpan="1"
                        TextTrimming="WordEllipsis"
                        Margin="5 0 0 0"/>-->
-            <TextBlock Text="{Binding NextAmountDue, Converter={cvt:CurrencyConverter}}" 
+            <!--<TextBlock Text="{Binding NextAmountDue, Converter={cvt:CurrencyConverter}}" 
                        Visibility="{Binding ShowAmountDue, Converter={cvt:BooleanToVisibilityConverter}}"
                        Grid.Row="0" Grid.Column="1"
-                       HorizontalAlignment="Right"/>
-            <TextBlock Text="{Binding NextDueDateString}" 
+                       HorizontalAlignment="Right"/>-->
+            <!--<TextBlock Text="{Binding NextDueDateString}" 
                        Grid.Row="1" Grid.Column="1"
                        Width="65"
                        TextAlignment="Right"
-                       
-                       HorizontalAlignment="Right"/>
+                       HorizontalAlignment="Right"/>-->
             
         </Grid>
     </Border>
