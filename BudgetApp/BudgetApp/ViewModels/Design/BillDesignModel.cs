@@ -20,6 +20,7 @@ namespace BudgetApp.ViewModels
             //Confirmation = "Test Conf";
             DueDate = new DateTime(2018, 1, 1);
             IsPaid = true;
+            //AccountID = "1234";
 
         }
         #endregion

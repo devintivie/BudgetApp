@@ -20,6 +20,8 @@ namespace BudgetApp.ViewModels
             Balance = 1500;
             BankName = "Chase";
             Nickname = "Main Account";
+            
+            
         }
         #endregion
     }

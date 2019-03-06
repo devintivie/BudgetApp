@@ -51,6 +51,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+
+        public string AccountID
+        {
+            get { return Bill.AccountID; }
+            set
+            {
+                if (Bill.AccountID != value)
+                {
+                    Bill.AccountID = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         private BillViewModel bvm;
         public BillViewModel BVM
         {

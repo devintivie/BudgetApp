@@ -49,6 +49,8 @@ namespace BudgetApp.Models
             }
         }
 
+        public string AccountID { get; set; }
+
         [XmlIgnore]
         public BillStatus BillStatus { get; set; }
 
@@ -56,32 +58,21 @@ namespace BudgetApp.Models
 
         #region Constructors
 
-        public Bill()
-        {
-            DueDate = DateTime.Now.Date;
-            AmountDue = 0.0;
-            Confirmation = DEFUALT_CONFIRMATION;
-            IsPaid = false;
-            GetBillStatus();
-        }
-        public Bill(int month, int day) : this(0, month, day) { }
+        public Bill() : this(0.0, DateTime.Now.Date) { }
 
-        public Bill(double iAmount, int month, int day)
-        {
-            var today = DateTime.Now;
-            DueDate = new DateTime(today.Year, month, day);
-            AmountDue = iAmount;
-            Confirmation = DEFUALT_CONFIRMATION;
-            IsPaid = false;
-            GetBillStatus();
-        }
+        public Bill(int month, int day, string acctID = "0000") : this(0, month, day, acctID) { }
 
-        public Bill(double iAmount, DateTime iDueDate)
+        public Bill(double iAmount, int month, int day, string acctID = "0000") : this(iAmount, new DateTime(DateTime.Now.Year, month, day), acctID) { }
+
+        //public Bill(double iAmount, int month, int day) : this(iAmount, new DateTime(DateTime.Now.Year, month, day), acctID) { }
+
+        public Bill(double iAmount, DateTime iDueDate, string acctID = "0000")
         {
             DueDate = iDueDate;
             AmountDue = iAmount;
             Confirmation = DEFUALT_CONFIRMATION;
             IsPaid = false;
+            AccountID = acctID;
             GetBillStatus();
 
         }

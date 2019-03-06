@@ -24,5 +24,7 @@ namespace BudgetApp
         {
             InitializeComponent();
         }
+
+        
     }
 }

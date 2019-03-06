@@ -62,8 +62,12 @@
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ButtonAttachedProperties.cs" />
     <Compile Include="AttachedProperties\FocusExtension.cs" />
+    <Compile Include="AttachedProperties\SelectedSubItemProperty.cs" />
     <Compile Include="AttachedProperties\SelectorRightClickCommandBehavior.cs" />
     <Compile Include="AttachedProperties\SelectorDoubleClickCommandBehavior.cs" />
+    <Compile Include="Controls\BankAccounts\BankAccountBalanceView.xaml.cs">
+      <DependentUpon>BankAccountBalanceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BankAccounts\BankAccountView.xaml.cs">
       <DependentUpon>BankAccountView.xaml</DependentUpon>
     </Compile>
@@ -75,6 +79,9 @@
     </Compile>
     <Compile Include="Controls\BudgetOverviewControl.xaml.cs">
       <DependentUpon>BudgetOverviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar\CalendarTest.xaml.cs">
+      <DependentUpon>CalendarTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Calendar\DayBoxBillControl.xaml.cs">
       <DependentUpon>DayBoxBillControl.xaml</DependentUpon>
@@ -116,6 +123,7 @@
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BankAccount\BankAccountBalanceViewModel.cs" />
     <Compile Include="ViewModels\BankAccount\BankAccountViewModel.cs" />
     <Compile Include="ViewModels\BankAccount\BankOverviewViewModel.cs" />
     <Compile Include="ViewModels\BillList\BillListViewModel.cs" />
@@ -124,6 +132,7 @@
     <Compile Include="ViewModels\Calendar\DayBoxBillViewModel.cs" />
     <Compile Include="ViewModels\Calendar\DayBoxViewModel.cs" />
     <Compile Include="ViewModels\Calendar\WeekViewModel.cs" />
+    <Compile Include="ViewModels\Design\BankAccount\BankAccountBalanceDesignModel.cs" />
     <Compile Include="ViewModels\Design\BankAccount\BankAccountDesignModel.cs" />
     <Compile Include="ViewModels\Design\BankAccount\BankOverviewDesignModel.cs" />
     <Compile Include="ViewModels\Design\BillList\BillListDesignModel.cs" />
@@ -156,6 +165,10 @@
     <Compile Include="Views\CalendarTwoWeek.xaml.cs">
       <DependentUpon>CalendarTwoWeek.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\BankAccounts\BankAccountBalanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\BankAccounts\BankAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BudgetOverviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calendar\CalendarTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,7 +249,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\Mvvm.xaml">
+    <Page Include="Styles\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,6 +300,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\IvieCustomControls\IvieCustomControls.csproj">
+      <Project>{ca1fe905-a7fb-477f-8f38-64d801fe526c}</Project>
+      <Name>IvieCustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieBaseClasses\IvieBaseClasses.csproj">
       <Project>{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}</Project>
       <Name>IvieBaseClasses</Name>

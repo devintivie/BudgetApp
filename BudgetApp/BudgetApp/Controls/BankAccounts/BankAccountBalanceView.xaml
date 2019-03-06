@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="BudgetApp.BankAccountBalanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             mc:Ignorable="d" >
+    <Border BorderThickness="1" BorderBrush="Blue">
+        <StackPanel Orientation="Vertical" d:DataContext="{x:Static vms:BankAccountBalanceDesignModel.Instance}"
+                >
+            <TextBlock Text="{Binding Nickname}"
+                   HorizontalAlignment="Center"
+                    Padding="5"
+        />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Current Balance" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
+            BorderThickness="1"
+            BorderBrush="Black"
+            Margin="3"
+            Background="White" MouseDoubleClick="TextBox_MouseDoubleClick"
+        />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Expenses" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Deductions, Converter={cvt:CurrencyConverter}}"
+                Margin="3"
+                Background="Transparent"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Remaining" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Remaining, Converter={cvt:CurrencyConverter}}"
+                        Margin="3"
+                        Background="Transparent"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -91,9 +91,44 @@ namespace BudgetApp.ViewModels
             UpdateAccountList();
         }
 
+
+
+        #endregion
+
+
+        #region Fields
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        #endregion
+
+        #region Methods
+
+        private void UpdateAccountList()
+        {
+            BAList.Clear();
+            var tempList = new List<BankAccount>();
+            Console.WriteLine($"Update bank account tracker count = {BankAccountManager.AllAccounts.Count}");
+
+            foreach (var b in BankAccountManager.AllAccounts)
+            {
+                tempList.Add(b);
+            }
+            foreach (var b in tempList)
+            {
+                BAList.Add(new BankAccountViewModel(b));
+            }
+
+        }
+
+        public override void UpdateView()
+        {
+            UpdateAccountList();
+        }
+
         private void OnAddAccount()
         {
             var found = false;
+            var random = new Random();
             if (NewNickname != null)
             {
                 foreach (var b in BAList)
@@ -105,12 +140,25 @@ namespace BudgetApp.ViewModels
                 }
                 if (!found && NewNickname.Length > 0)
                 {
+                    var uid = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+                    //var uid = new char[4];
+                    //for (int i = 0; i < uid.Length, i++)
+                    //{
+                    //    uid[i] = chars
+                    //}
+                    Console.WriteLine(uid);
+                    while (BankAccountManager.AccountsByID.ContainsKey(uid))
+                    {
+                        uid = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+                    }
                     var ba = new BankAccount
                     {
                         Nickname = NewNickname,
                         Balance = NewAccountBalance,
                         AccountNumber = "-",
-                        BankName = "-"
+                        BankName = "-",
+                        UniqueID = uid
+                        
                     };
 
                     BankAccountManager.AddAccount(ba);
@@ -151,50 +199,6 @@ namespace BudgetApp.ViewModels
         private bool CanOpenPopup()
         {
             return true;
-        }
-
-
-
-
-
-        //private void OnRemoveCompany()
-        //{
-        //    BillTrackerManager.RemoveTracker(CurrentSelection.BillTracker);
-        //    UpdateBTList();
-        //}
-
-        //private bool CanRemoveCompany()
-        //{
-        //    return CurrentSelection != null;
-        //}
-
-
-
-        #endregion
-
-
-        #region Methods
-
-        private void UpdateAccountList()
-        {
-            BAList.Clear();
-            var tempList = new List<BankAccount>();
-            Console.WriteLine($"Update bank account tracker count = {BankAccountManager.AllAccounts.Count}");
-
-            foreach (var b in BankAccountManager.AllAccounts)
-            {
-                tempList.Add(b);
-            }
-            foreach (var b in tempList)
-            {
-                BAList.Add(new BankAccountViewModel(b));
-            }
-
-        }
-
-        public override void UpdateView()
-        {
-            UpdateAccountList();
         }
         #endregion
 

@@ -11,10 +11,13 @@ namespace BudgetApp.ViewModels
 {
     public class DayBoxViewModel : LocalBaseViewModel
     {
+        #region Properties
         public ObservableCollection<DayBoxBillViewModel> Bills { get; set; } = new ObservableCollection<DayBoxBillViewModel>();
 
         public ICommand TestCommand { get; set; }
+        public ICommand EditBillCommand { get; set; }
         public ICommand DoubleClickCommand { get; set; }
+
 
         private DateTime date;
         public DateTime Date
@@ -77,29 +80,120 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+        //SelectedBill
+
+        private DayBoxBillViewModel selectedBill;
+        public DayBoxBillViewModel SelectedBill
+        {
+            get { return selectedBill; }
+            set
+            {
+                if (selectedBill != value)
+                {
+                    selectedBill = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private BillViewModel bvm;
+        public BillViewModel BVM
+        {
+            get { return bvm; }
+            set
+            {
+                if (bvm != value)
+                {
+                    bvm = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private bool isBVMOpen;
+        public bool IsBVMOpen
+        {
+            get { return isBVMOpen; }
+            set
+            {
+                if (isBVMOpen != value)
+                {
+                    isBVMOpen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+
 
 
 
         public string Day => Date.Day.ToString();
+        #endregion
+       
 
-        public DayBoxViewModel()
+        #region Constructors
+        //public DayBoxViewModel()
+        //{
+        //    TestCommand = new DelegateCommand(OnTest, CanTest);
+        //    DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
+
+        //    Console.WriteLine("DayBoxViewModel called");
+
+        //    foreach (var bt in BillTrackerManager.AllTrackers)
+        //    {
+        //        foreach (var bill in bt.Bills)
+        //        {
+        //            if (Date.Equals(bill.DueDate))
+        //            {
+        //                Console.WriteLine("bill added to calendar");
+        //                Bills.Add(new DayBoxBillViewModel(bt.CompanyName));
+        //            }
+        //        }
+        //    }
+
+        //}
+
+        public DayBoxViewModel() : this(default(DateTime))
         {
-            TestCommand = new DelegateCommand(OnTest, CanTest);
-            DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
 
-            Console.WriteLine("DayBoxViewModel called");
+        }
+
+        public DayBoxViewModel(DateTime date)
+        {
+            EditBillCommand = new DelegateCommand(OnEditBill, CanEditBill);
+
+            Date = date;
             foreach (var bt in BillTrackerManager.AllTrackers)
             {
                 foreach (var bill in bt.Bills)
                 {
                     if (Date.Equals(bill.DueDate))
                     {
-                        Console.WriteLine("bill added to calendar");
-                        Bills.Add(new DayBoxBillViewModel(bt.CompanyName));
+                        //Console.WriteLine("bill added to calendar");
+                        Bills.Add(new DayBoxBillViewModel(bt.CompanyName, bill));
                     }
                 }
             }
-            
+        }
+
+
+        #endregion
+
+        #region Commands
+        private bool CanEditBill()
+        {
+            return true;
+        }
+
+        private void OnEditBill()
+        {
+            if (!IsBVMOpen)
+            {
+                IsBVMOpen = true;
+            }
         }
 
         private void OnTest()
@@ -121,25 +215,13 @@ namespace BudgetApp.ViewModels
         {
             return true;
         }
+        #endregion
+        
 
 
 
 
-        public DayBoxViewModel(DateTime date)
-        {
-            Date = date;
-            foreach (var bt in BillTrackerManager.AllTrackers)
-            {
-                foreach (var bill in bt.Bills)
-                {
-                    if (Date.Equals(bill.DueDate))
-                    {
-                        Console.WriteLine("bill added to calendar");
-                        Bills.Add(new DayBoxBillViewModel(bt.CompanyName, bill));
-                    }
-                }
-            }
-        }
+        
 
 
 

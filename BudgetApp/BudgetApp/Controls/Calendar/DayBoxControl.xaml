@@ -51,10 +51,18 @@
         <ListBox Grid.Row="2" Grid.ColumnSpan="7"
                  Background="{Binding SelectStatus, Converter={local:DayBoxStatusColorConverter}}"
                  ItemsSource="{Binding Bills}"
+                 SelectedItem="{Binding SelectedBill}"
+                 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 IsHitTestVisible="True"
                  >
         </ListBox>
+
+        <!--<Popup IsOpen="{Binding IsBVMOpen}" StaysOpen="False"
+                   HorizontalOffset="70" VerticalOffset="-30">
+            <ContentControl Content="{Binding BVM}"/>
+        </Popup>-->
 
     </Grid>
 </UserControl>

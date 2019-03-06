@@ -25,38 +25,11 @@ namespace BudgetApp.ViewModels
             {
                 DayList.Add(new DayBoxViewModel(today.AddDays(i)));
             }
-            //{
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today,
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(1),
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(2),
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(3),
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(4),
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(5),
-            //    },
-            //    new DayBoxViewModel
-            //    {
-            //        Date = DateTime.Today.AddDays(6),
-            //    }
-            //};
 
-            
+            Accounts = new ObservableCollection<BankAccountBalanceViewModel>();
+            Accounts.Add(new BankAccountBalanceViewModel(new Models.BankAccount(1200, "1234567", "chase", "main account", "0000")));
+
+
         }
         #endregion
     }

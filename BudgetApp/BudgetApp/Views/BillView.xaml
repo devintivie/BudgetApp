@@ -35,12 +35,14 @@
             <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeEditIcon}" 
                     Command="{Binding OpenPopupCommand}"
                     />
-
+            
             <Popup IsOpen="{Binding IsCalendarOpen}" StaysOpen="False"
                    HorizontalOffset="70" VerticalOffset="-30">
-                <Calendar SelectedDate="{Binding DueDate}" DisplayDate="{Binding DueDate, Mode=OneWay}">
-                    
-                </Calendar>
+                <StackPanel Orientation="Vertical">
+                    <Calendar SelectedDate="{Binding DueDate}" DisplayDate="{Binding DueDate, Mode=OneWay}"/>
+                    <ComboBox ItemsSource="{Binding AccountOptions}" SelectedItem="{Binding SelectedAccount}"/>
+                </StackPanel>
+                
             </Popup>
         </StackPanel>
     </Border>

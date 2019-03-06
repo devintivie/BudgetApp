@@ -11,11 +11,13 @@
         <TextBlock x:Name="DisplayText" Text="{Binding CompanyName}" FontSize="10" Padding="2" TextTrimming="CharacterEllipsis"
                    HorizontalAlignment="Stretch">
             <TextBlock.ToolTip>
+                
                 <ToolTip>
                     <TextBlock Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"/>
                     <!--<ContentControl Content="{Binding BVM}"/>-->
                 </ToolTip>
             </TextBlock.ToolTip>
+            
         </TextBlock>
     </Border>
 </UserControl>

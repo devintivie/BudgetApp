@@ -16,6 +16,13 @@
                     TextAlignment="Left"
                    
                 />
+        <TextBlock Text="{Binding UniqueID}" 
+                    Grid.Column="1" 
+                    Padding="5"
+                    VerticalAlignment="Center" 
+                    TextAlignment="Left"
+                   
+                />
         <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
                     Grid.Column="0" Width="70"
                     BorderThickness="0 0"

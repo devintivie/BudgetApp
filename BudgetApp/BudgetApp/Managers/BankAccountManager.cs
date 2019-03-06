@@ -22,6 +22,7 @@ namespace BudgetApp.Managers
         #endregion Singleton
 
         public Dictionary<string, BankAccount> AccountsByNumber { get; set; } = new Dictionary<string, BankAccount>();
+        public Dictionary<string, BankAccount> AccountsByID { get; set; } = new Dictionary<string, BankAccount>();
         public List<BankAccount> AllAccounts { get; set; } = new List<BankAccount>();
 
         private BankAccount selectedAccount;
@@ -66,27 +67,32 @@ namespace BudgetApp.Managers
             {
                 Console.WriteLine("bank account added");
                 AccountsByNumber.Add(ba.Nickname, ba);
+                AccountsByID.Add(ba.UniqueID, ba);
                 AllAccounts.Add(ba);
                 Console.WriteLine($"all accounts add count {AllAccounts.Count}");
             }
             UpdateAccountCount();
         }
 
-        public void AddAccount(string name, string nickname, string acctNumber = "-", string bankName = "-")
+        public void AddAccount(string name, string nickname, string uid, string acctNumber = "-", string bankName = "-")
         {
             Console.WriteLine("bank account added");
-            if (!AccountsByNumber.ContainsKey(name))
+            if (!AccountsByNumber.ContainsKey(name) && !AccountsByID.ContainsKey(uid))
             {
                 Console.WriteLine("bank account added");
-                var acct = new BankAccount(0, acctNumber, bankName, nickname);
+                var acct = new BankAccount(0, acctNumber, bankName, nickname, uid);
+                AddAccount(acct);
             }
             UpdateAccountCount();
         }
+
+
 
         public void RemoveAccount(BankAccount ba)
         {
             AllAccounts.Remove(ba);
             AccountsByNumber.Remove(ba.AccountNumber);
+            AccountsByID.Remove(ba.UniqueID);
             UpdateAccountCount();
         }
 
@@ -102,6 +108,7 @@ namespace BudgetApp.Managers
         public void Reset()
         {
             AccountsByNumber.Clear();
+            AccountsByID.Clear();
             AllAccounts.Clear();
             SelectedAccount = null;
             UpdateAccountCount();

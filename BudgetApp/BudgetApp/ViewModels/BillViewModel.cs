@@ -2,6 +2,7 @@
 using IvieBaseClasses;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace BudgetApp.ViewModels
     public class BillViewModel : LocalBaseViewModel
     {
         public Bill Bill { get; set; }
+        public ObservableCollection<string> AccountOptions { get; set; } = new ObservableCollection<string>();
 
         public DateTime DueDate
         {
@@ -56,6 +58,29 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+
+        private string selectedAccount;
+        public string SelectedAccount
+        {
+            get { return selectedAccount; }
+            set
+            {
+                if (selectedAccount != value)
+                {
+                    selectedAccount = value;
+                    Bill.AccountID = BankAccountManager.AccountsByNumber[SelectedAccount].UniqueID;
+                    NotifyPropertyChanged();
+                    
+                }
+            }
+        }
+
+
+        //public string Account
+        //{
+        //    get { return BankAccountManager.AccountsByID; }
+        //}
+
 
         private bool isCalendarOpen = false;
         public bool IsCalendarOpen
@@ -106,15 +131,33 @@ namespace BudgetApp.ViewModels
         {
             Bill = iBill;
             OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
-        }
 
-        public BillViewModel()
-        {
-            Bill = new Bill();
-            OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
+            foreach( var acct in BankAccountManager.AllAccounts)
+            {
+                AccountOptions.Add(acct.Nickname);
+            }
+            try
+            {
+                SelectedAccount = BankAccountManager.AccountsByID[Bill.AccountID].Nickname;
+            }
+            catch
+            {
+                try
+                {
+                    SelectedAccount = BankAccountManager.AllAccounts[0].Nickname;
+                }
+                catch
+                {
 
+                }
+                
+            }
             
+
+
         }
+
+        public BillViewModel() : this(new Bill()) { }
 
         private bool CanOpenPopup()
         {

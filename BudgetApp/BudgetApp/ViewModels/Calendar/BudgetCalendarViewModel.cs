@@ -13,8 +13,10 @@ namespace BudgetApp.ViewModels
     public class BudgetCalendarViewModel : LocalBaseViewModel
     {
         public ObservableCollection<DayBoxViewModel> DayList { get; set; } = new ObservableCollection<DayBoxViewModel>();
+        public ObservableCollection<LocalBaseViewModel> TestItems { get; set; } = new ObservableCollection<LocalBaseViewModel>();
         public List<string> DayOfWeekString { get; set; } = new List<string>();
-        public ObservableCollection<BankAccountViewModel> Accounts { get; set; } = new ObservableCollection<BankAccountViewModel>();
+        public ObservableCollection<BankAccountBalanceViewModel> Accounts { get; set; } = new ObservableCollection<BankAccountBalanceViewModel>();
+        public ObservableCollection<DayBoxBillViewModel> Bills { get; set; } = new ObservableCollection<DayBoxBillViewModel>();
 
         public ICommand PrevTimeCommand { get; set; }
         public ICommand NextTimeCommand { get; set; }
@@ -198,8 +200,7 @@ namespace BudgetApp.ViewModels
             DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
             ConnectCommand = new DelegateCommand(OnConnect);
 
-            UpdateCalendar();
-            UpdateAccountList();
+            UpdateView();
         }
 
         private void OnConnect()
@@ -209,8 +210,10 @@ namespace BudgetApp.ViewModels
 
         public override void UpdateView()
         {
-            UpdateCalendar();
+
             UpdateAccountList();
+            UpdateCalendar();
+            
         }
 
         public void UpdateCalendar()
@@ -284,7 +287,6 @@ namespace BudgetApp.ViewModels
 
             MonthYear = MonthYear.AddDays(startDay);
             CalculatePaycheckTotal();
-            CalculateBalance();
         }
 
         private bool CanNextTime()
@@ -342,7 +344,11 @@ namespace BudgetApp.ViewModels
         private void CalculatePaycheckTotal()
         {
             double subtotal = 0;
-            foreach(var daybox in DayList)
+            foreach (var acct in Accounts)
+            {
+                acct.Deductions = 0;
+            }
+            foreach (var daybox in DayList)
             {
                 daybox.SelectStatus = false;
                 var startDate = CurrPaydate;
@@ -354,6 +360,13 @@ namespace BudgetApp.ViewModels
                     foreach(var bill in daybox.Bills)
                     {
                         subtotal += bill.AmountDue;
+                        foreach( var acct in Accounts)
+                        {
+                            if (acct.UniqueID.Equals(bill.AccountID))
+                            {
+                                acct.Deductions += bill.AmountDue;
+                            }
+                        }
                     }
                 }
             }
@@ -379,7 +392,7 @@ namespace BudgetApp.ViewModels
             }
             foreach (var b in tempList)
             {
-                Accounts.Add(new BankAccountViewModel(b));
+                Accounts.Add(new BankAccountBalanceViewModel(b));
             }
 
         }

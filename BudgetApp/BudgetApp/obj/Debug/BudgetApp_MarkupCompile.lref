@@ -1,9 +1,11 @@
-﻿D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BankAccounts\BankAccountBalanceView.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BankAccounts\BankAccountView.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BankAccounts\BankOverviewControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BillList\BillListControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\BudgetOverviewControl.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\CalendarTest.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxBillControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\DayBoxControl.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Controls\Calendar\BudgetCalendarControl.xaml;;
@@ -17,7 +19,7 @@ FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bu
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Colors.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Fonts.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\ListViews.xaml;;
-FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Mvvm.xaml;;
+FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\DataTemplates.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Styles\Texts.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Views\BillTrackerView.xaml;;
 FD:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\Views\BillView.xaml;;

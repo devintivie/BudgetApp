@@ -67,6 +67,23 @@ namespace BudgetApp.ViewModels
             }
         }
 
+
+
+        public string UniqueID
+        {
+            get { return BankAccount.UniqueID; }
+            set
+            {
+                if (BankAccount.UniqueID != value)
+                {
+                    BankAccount.UniqueID = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
         public BankAccountViewModel()
         {
             BankAccount = new BankAccount();

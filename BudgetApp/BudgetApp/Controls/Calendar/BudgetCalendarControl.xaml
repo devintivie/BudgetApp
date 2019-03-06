@@ -26,14 +26,15 @@
             
         </ObjectDataProvider>
     </UserControl.Resources>-->
-                        
+                      
+    
     <Grid VerticalAlignment="Stretch"
           d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}" Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -99,6 +100,7 @@
                      SelectedItem="{Binding SelectedDBVM}"
                      local:SelectorDoubleClickCommandBehavior.HandleDoubleClick="True"
                      local:SelectorDoubleClickCommandBehavior.DoubleClickCommand="{Binding DoubleClickCommand}"
+                     local:ListBoxHelper.SelectedItems="{Binding TestItems}"
                      
                      >
                 
@@ -145,6 +147,13 @@
                  MouseDoubleClick="TextBox_MouseDoubleClick"
                  local:FocusExtension.IsFocused="{Binding IsTextBoxFocused}"
                    Grid.Row="3" Grid.Column="1"/>-->
+        <ItemsControl Grid.Row="3" Grid.ColumnSpan="7" ItemsSource="{Binding Accounts}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 
         <TextBlock Text="Total Due" Grid.Row="4" Margin="5" VerticalAlignment="Center"/>
         <TextBlock Text="{Binding TotalDue, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
