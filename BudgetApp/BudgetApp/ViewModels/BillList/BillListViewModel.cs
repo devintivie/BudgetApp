@@ -103,6 +103,19 @@ namespace BudgetApp.ViewModels
                 }
             }
         }
+        private bool isEditPopupOpen;
+        public bool IsEditPopupOpen
+        {
+            get { return isEditPopupOpen; }
+            set
+            {
+                if (isEditPopupOpen != value)
+                {
+                    isEditPopupOpen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
 
         void OnMessage(Message message)
@@ -120,15 +133,19 @@ namespace BudgetApp.ViewModels
         #region Commands
         public ICommand AddCompanyCommand { get; set; }
         public ICommand RemoveCompanyCommand { get; set; }
+        public ICommand EditCompanyCommand { get; set; }
         public ICommand OpenPopupCommand { get; set; }
+        public ICommand OpenEditPopupCommand { get; set; }
         #endregion
 
         #region Constructors
         public BillListViewModel()
         {
             AddCompanyCommand = new DelegateCommand(OnAddCompany, CanAddCompany);
+            EditCompanyCommand = new DelegateCommand(OnEditCompany, CanEditCompany);
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
             OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
+            OpenEditPopupCommand = new DelegateCommand(OnEditOpenPopup, CanEditOpenPopup);
             Messenger.Default.Register<Message>(this, OnMessage);
 
             UpdateBTList();
@@ -249,6 +266,50 @@ namespace BudgetApp.ViewModels
             return true;
         }
 
+        private void OnEditCompany()
+        {
+            var found = false;
+            if (NewCompany != null)
+            {
+                //CurrentSelection.CompanyName = NewCompany;
+                var tempBT = CurrentSelection.BillTracker;
+                BillTrackerManager.RemoveTracker(tempBT);
+                tempBT.CompanyName = NewCompany;
+                BillTrackerManager.AddTracker(tempBT);
+                //BillTrackerManager.TrackersByCompany[CurrentSelection.CompanyName].CompanyName = NewCompany;
+                UpdateBTList();
+
+                //Console.WriteLine($"onaddcompany btlist count = {BTList.Count}");
+                //foreach (var b in BTList)
+                //{
+                //    if (b.CompanyName.Equals(NewCompany, StringComparison.CurrentCultureIgnoreCase))
+                //    {
+                //        found = true;
+                //    }
+                //}
+                //if (!found && NewCompany.Length > 0)
+                //{
+                //    var bt = new BillTracker
+                //    {
+                //        CompanyName = NewCompany
+                //    };
+
+                //    BillTrackerManager.AddTracker(bt);
+                //    Console.WriteLine($"bill tracker manager count {BillTrackerManager.AllTrackers.Count}");
+                //    UpdateBTList();
+                //}
+            }
+
+            NewCompany = "";
+
+
+        }
+
+        private bool CanEditCompany()
+        {
+            return CurrentSelection != null;
+        }
+
         private void OnOpenPopup()
         {
             if (!IsPopupOpen)
@@ -257,9 +318,23 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private void OnEditOpenPopup()
+        {
+            if (!IsEditPopupOpen)
+            {
+                IsEditPopupOpen = true;
+                NewCompany = CurrentSelection.CompanyName;
+            }
+        }
+
         private bool CanOpenPopup()
         {
             return true;
+        }
+
+        private bool CanEditOpenPopup()
+        {
+            return CurrentSelection != null;
         }
 
         #endregion

@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="BudgetApp.DebtOverviewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal" Height="Auto">
+        <StackPanel Orientation="Vertical">
+            <ListView x:Name="List" ItemsSource="{Binding DTList}"
+                      Visibility="Visible"
+                      SelectedItem="{Binding CurrentSelection}"
+                      Height="300"
+                      BorderBrush="Transparent">
+                
+            </ListView>
+
+            <Button Content="Add Account" Command="{Binding OpenPopupCommand}"
+                />
+            <Button Content="Remove Account" Command="{Binding RemoveAccountCommand}"/>
+
+            <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
+                   Focusable="False">
+                <StackPanel Width="{Binding ElementName=List, Path=ActualWidth}"
+                           Background="DarkGray">
+                    <TextBlock Text="Company Name  "
+                               x:Name="newNameText"
+                               VerticalAlignment="Center"
+                               FontSize="{StaticResource FontSizeSmall}"/>
+
+                    <TextBox x:Name="newAccountTextbox" Text="{Binding NewNickname}"
+                             Focusable="True"
+                             IsEnabled="True"
+                             Height="{Binding ElementName=newNameText, Path=ActualHeight}"
+                             FontSize="{StaticResource FontSizeSmall}"
+                             VerticalAlignment="Center"/>
+                    <TextBlock Text="Initial Balance  "
+                               x:Name="newBalanceText"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Height="20"
+                               FontSize="{StaticResource FontSizeSmall}"/>
+
+                    <TextBox x:Name="newCompanyTextbox" Text="{Binding NewAccountBalance, Converter={cvt:CurrencyConverter}}"
+                             Focusable="True"
+                             IsEnabled="True"
+                             Height="{Binding ElementName=newNameText, Path=ActualHeight}"
+                             Width="100"
+                             FontSize="{StaticResource FontSizeSmall}"
+                             MouseDoubleClick="newCompanyTextbox_MouseDoubleClick"
+                             VerticalAlignment="Center"/>
+
+                    <Button Content="{StaticResource FontAwesomeAddIcon}" 
+                        Style="{StaticResource IconButton}"
+                            Margin="5"
+                            Height="{Binding ElementName=newNameText, Path=ActualHeight}"
+                            Width="{Binding ElementName=newNameText, Path=ActualHeight}"
+                            FontFamily="{StaticResource FontAwesome}"
+                            Command="{Binding AddAccountCommand}"
+                            />
+                </StackPanel>
+            </Popup>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

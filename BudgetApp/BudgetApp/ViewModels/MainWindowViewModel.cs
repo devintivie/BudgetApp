@@ -16,11 +16,9 @@ namespace BudgetApp.ViewModels
 {
     public class MainWindowViewModel : LocalBaseViewModel
     {
-
-
         #region Fields
         private readonly DateTime firstPaydate = DateTime.Today;
-        private static string DEFAULT_FILENAME = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\new_budget.xml";
+        private static string DEFAULT_FILENAME = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\new_budget.xml"; //@"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\new_budget.xml";
         #endregion
 
         #region Properties
@@ -349,12 +347,12 @@ namespace BudgetApp.ViewModels
         public ICommand ShowCalendarCommand { get; set; }
         public ICommand ShowBillsCommand { get; set; }
         public ICommand ShowAccountsCommand { get; set; }
+        public ICommand ShowDebtsCommand { get; set; }
         #endregion
 
         #region Constructors
         public MainWindowViewModel()
         {
-
             AddCompanyCommand = new DelegateCommand(OnAddCompany, CanAddCompany);
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
             OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
@@ -376,6 +374,7 @@ namespace BudgetApp.ViewModels
             ShowCalendarCommand = new DelegateCommand( OnShowCalendar, CanShowCalendar);
             ShowBillsCommand = new DelegateCommand(OnShowBills, CanShowBills);
             ShowAccountsCommand = new DelegateCommand(OnShowAccount, CanShowAccounts);
+            ShowDebtsCommand = new DelegateCommand(OnShowDebts, CanShowDebts);
 
             //Use this for processes that may take time
             TestAsyncCommand = new DelegateCommand(async () => await OnTest(), CanTest);
@@ -385,6 +384,7 @@ namespace BudgetApp.ViewModels
 
 
             OnNew();
+            
 
         }
 
@@ -641,6 +641,7 @@ namespace BudgetApp.ViewModels
 
             //Filename = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\xml_test.xml";
 
+            //Filename = @"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\sample_budget.xml";
             ResetManagers();
             var bm = BudgetModel.Deserialize(Filename);
             foreach (BillTracker bt in bm.BudgetData)
@@ -660,6 +661,26 @@ namespace BudgetApp.ViewModels
             //BudgetCalendar = new BudgetCalendarViewModel();
 
 
+        }
+
+        public void OpenFile(string filename)
+        {
+            ResetManagers();
+            var bm = BudgetModel.Deserialize(filename);
+            foreach (BillTracker bt in bm.BudgetData)
+            {
+                BillTrackerManager.AddTracker(bt);
+            }
+
+            foreach (var acct in bm.BankAccounts)
+            {
+                BankAccountManager.AddAccount(acct);
+            }
+
+            PageViewModel.UpdateView();
+            //UpdateBTList();
+            //CurrentSelection = null;
+            IsNewBudget = false;
         }
 
         private bool CanOpen()
@@ -784,6 +805,7 @@ namespace BudgetApp.ViewModels
         {
             PageViewModel = new BudgetCalendarViewModel();
         }
+
         private bool CanShowCalendar()
         {
             if (PageViewModel is BudgetCalendarViewModel)
@@ -792,11 +814,11 @@ namespace BudgetApp.ViewModels
                 return true;
         }
         
-
         private void OnShowBills()
         {
             PageViewModel = new BillListViewModel();
         }
+
         private bool CanShowBills()
         {
             if (PageViewModel is BillListViewModel)
@@ -809,9 +831,23 @@ namespace BudgetApp.ViewModels
         {
             PageViewModel = new BillListViewModel();
         }
+
         private bool CanShowAccounts()
         {
             if (PageViewModel is BillListViewModel)
+                return false;
+            else
+                return true;
+        }
+
+        private void OnShowDebts()
+        {
+            PageViewModel = new DebtViewModel();
+        }
+
+        private bool CanShowDebts()
+        {
+            if (PageViewModel is DebtViewModel)
                 return false;
             else
                 return true;
@@ -830,13 +866,15 @@ namespace BudgetApp.ViewModels
                 case Navigation.BankOverview:
                     PageViewModel = new BankOverviewViewModel();
                     break;
+                case Navigation.DebtOverview:
+                    PageViewModel = new DebtOverviewViewModel();
+                    Console.WriteLine("debt overview");
+                    break;
                 default:
                     break;
             }
 
         }
-
-
 
         private void ExecuteClosing()
         {
@@ -850,12 +888,6 @@ namespace BudgetApp.ViewModels
         }
 
         #endregion
-
-
-
-
-
-        
 
     }
 }

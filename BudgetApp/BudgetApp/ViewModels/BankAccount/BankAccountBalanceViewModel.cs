@@ -4,12 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using IvieBaseClasses;
 
 namespace BudgetApp.ViewModels
 {
     public class BankAccountBalanceViewModel : LocalBaseViewModel
     {
         public BankAccount BankAccount;
+
+        public ICommand MoveLeftCommand { get; set; }
+        public ICommand MoveRightCommand { get; set; }
+
+        #region Properties
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                if (isSelected != value)
+                {
+                    isSelected = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         public double Balance
         {
@@ -101,18 +122,82 @@ namespace BudgetApp.ViewModels
 
         public double Remaining { get { return Balance - Deductions; } }
 
-        public BankAccountBalanceViewModel()
-        {
-            BankAccount = new BankAccount();
+        #endregion
 
-        }
+        #region Constructors
+        public BankAccountBalanceViewModel() : this(new BankAccount()) { }
 
         public BankAccountBalanceViewModel(BankAccount account)
         {
+            MoveLeftCommand = new DelegateCommand(OnMoveLeft, CanMoveLeft);
+            MoveRightCommand = new DelegateCommand(OnMoveRight, CanMoveRight);
+
             BankAccount = account;
+
+            
+        }
+        #endregion
+        
+
+        #region Methods
+        private void OnMoveRight()
+        {
+            var index = BankAccountManager.AllAccounts.IndexOf(BankAccount);
+            BankAccountManager.RemoveSelected(BankAccount);
+            BankAccountManager.AllAccounts.Insert(index + 1, BankAccount);
+            Messenger.Default.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
         }
 
-       
+        private bool CanMoveRight()
+        {
+            if (IsSelected)
+            {
+                if(BankAccountManager.AllAccounts.IndexOf(BankAccount) == BankAccountManager.AllAccounts.Count - 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void OnMoveLeft()
+        {
+            var index = BankAccountManager.AllAccounts.IndexOf(BankAccount);
+            BankAccountManager.RemoveSelected(BankAccount);
+            BankAccountManager.AllAccounts.Insert(index - 1, BankAccount);
+            Messenger.Default.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
+        }
+
+        private bool CanMoveLeft()
+        {
+            if (IsSelected)
+            {
+                if (BankAccountManager.AllAccounts.IndexOf(BankAccount) == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        
+
+        #endregion
+
 
 
 

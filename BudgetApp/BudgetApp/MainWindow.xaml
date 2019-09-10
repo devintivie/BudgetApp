@@ -9,7 +9,7 @@
         xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
         mc:Ignorable="d"
         x:Name="AppWindow"
-        Title="MainWindow" Height="850" Width="1500" >
+        Title="MainWindow" Height="1000" Width="1500" >
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -20,7 +20,7 @@
         <KeyBinding Command="{Binding LoseFocus}" Gesture="Enter"/>
     </Window.InputBindings>
 
-    <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}" Background="{StaticResource WordDarkBlueBrush}">
+    <DockPanel d:DataContext="{x:Static vms:MainWindowDesignModel.Instance}" Background="{StaticResource ForegroundLightBrush}">
         <Menu HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="New Budget..." Command="{Binding NewCommand}" InputGestureText="Ctrl+N"/>
@@ -49,13 +49,18 @@
             </ListView>-->
             <ListView ItemsSource="{Binding Source={local:EnumBindingSource  {x:Type local:Navigation}}}"
                       SelectedItem="{Binding PageDisplay}" 
+                      BorderThickness="0"
+                      BorderBrush="{StaticResource BackgroundLightBrush}"
                       Style="{StaticResource NavigationListView}"
                       ItemContainerStyle="{StaticResource NavigationItems}">
 
             </ListView>
 
         </Border>
-        <ContentControl Content="{Binding PageViewModel}" />
+        <ContentControl Content="{Binding PageViewModel}" HorizontalAlignment="Left"/>
+        <!--<Button DockPanel.Dock="Right" Content="TestButton" Command="{Binding TestAsyncCommand}"
+                local:IsBusyProperty.value="{Binding AsyncIsRunning}"/>-->
+
         <!--<Frame Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>-->
         <!--<Grid Background="{StaticResource BackgroundMainBrush}">
             <Grid.RowDefinitions>

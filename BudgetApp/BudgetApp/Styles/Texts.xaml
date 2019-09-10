@@ -134,7 +134,7 @@
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="CalendarDays" BasedOn="{StaticResource BaseTextBlockStyle}">
-        <Setter Property="FontSize" Value="9"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="2 0 0 2"/>

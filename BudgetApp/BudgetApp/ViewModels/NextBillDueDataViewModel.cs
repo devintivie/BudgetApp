@@ -101,7 +101,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
-       
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                if (isSelected != value)
+                {
+                    isSelected = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
         public NextBillDueDataViewModel()
         {

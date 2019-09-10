@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="BudgetApp.DebtListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:customs="clr-namespace:IvieCustomControls;assembly=IvieCustomControls"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             xmlns:local="clr-namespace:BudgetApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   
+    <Grid
+          Background="{StaticResource BackgroundMainBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
+                  Visibility="Visible"
+                  VerticalAlignment="Top"
+                  
+                  SelectedItem="{Binding CurrentSelection}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                  BorderBrush="Transparent"/>
+        <TextBlock Text="Add a company to start tracking debts."
+                   Visibility="{Binding IsEmptyBudget, Converter={cvt:BooleanToVisibilityConverter}}"
+                   Width="300"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   TextWrapping="Wrap"
+                   Margin="0 10 20 0"
+                   FontSize="20"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   />
+
+        <ContentControl Content="{Binding CurrentBT}"
+                        Grid.Row="0" Grid.Column="1"
+                            VerticalAlignment="Top"
+                        Visibility="{Binding ShowCurrentBT, Converter={cvt:BooleanToVisibilityConverter}}"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button x:Name="addButton" Content="Add Company" Command="{Binding OpenPopupCommand}"
+                        CommandParameter="{Binding ElementName=AppWindow}"
+                        Focusable="False"/>
+            <Button Content="Remove Company" Command="{Binding RemoveCompanyCommand}"/>
+            <Button Content="Edit Company Name" Command="{Binding OpenEditPopupCommand}"/>
+        </StackPanel>
+
+        <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
+                   Focusable="False"
+                   HorizontalOffset="0" VerticalOffset="-49"
+                   >
+            <DockPanel Width="{Binding ElementName=BudgetList, Path=ActualWidth}"
+                       Height="48"
+                           Background="DarkGray">
+                <TextBlock Text="Company Name  "
+                               x:Name="newCompanyText"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="{StaticResource FontSizeAverage}"/>
+                <Button Content="{StaticResource FontAwesomeAddIcon}" 
+                        Style="{StaticResource IconButton}"
+                            Margin="5"
+                            Height="{Binding ElementName=newCompanyText, Path=ActualHeight}"
+                            Width="{Binding ElementName=newCompanyText, Path=ActualHeight}"
+                            FontFamily="{StaticResource FontAwesome}"
+                            Command="{Binding AddCompanyCommand}"
+                            DockPanel.Dock="Right"/>
+
+                <TextBox x:Name="newCompanyTextbox" Text="{Binding NewCompany}"
+                             Focusable="True"
+                             IsEnabled="True"
+                             FontSize="{StaticResource FontSizeAverage}"
+                             VerticalAlignment="Center"/>
+
+            </DockPanel>
+        </Popup>
+        <Popup IsOpen="{Binding IsEditPopupOpen}" StaysOpen="False"
+                   Focusable="False"
+                   HorizontalOffset="0" VerticalOffset="-49"
+                   >
+            <DockPanel Width="{Binding ElementName=BudgetList, Path=ActualWidth}"
+                       Height="48"
+                           Background="DarkGray">
+                <TextBlock Text="Edit Name  "
+                               x:Name="editCompanyText"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="{StaticResource FontSizeAverage}"/>
+                <Button Content="{StaticResource FontAwesomeAddIcon}" 
+                        Style="{StaticResource IconButton}"
+                            Margin="5"
+                            Height="{Binding ElementName=editCompanyText, Path=ActualHeight}"
+                            Width="{Binding ElementName=editCompanyText, Path=ActualHeight}"
+                            FontFamily="{StaticResource FontAwesome}"
+                            Command="{Binding EditCompanyCommand}"
+                            DockPanel.Dock="Right"/>
+
+                <TextBox x:Name="editCompanyTextbox" Text="{Binding NewCompany}"
+                             Focusable="True"
+                             IsEnabled="True"
+                             FontSize="{StaticResource FontSizeAverage}"
+                             VerticalAlignment="Center"/>
+
+            </DockPanel>
+        </Popup>
+
+
+
+    </Grid>
+</UserControl>

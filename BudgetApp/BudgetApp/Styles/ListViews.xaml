@@ -11,7 +11,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="NavigationListView" TargetType="{x:Type ListView}">
-        <Setter Property="Background" Value="{StaticResource WordGreenBrush}"/>
+        <Setter Property="Background" Value="{StaticResource WordBlueBrush}"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -50,14 +50,14 @@
 
     <SolidColorBrush x:Key="Item.MouseOver.Background" Color="{StaticResource HoverColor}"/>
     <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
-    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="{StaticResource WordDarkBlue}"/>
+    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="{StaticResource WordBlue}"/>
     <!--<SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>-->
-    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="{StaticResource WordDarkBlue}"/>
+    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="{StaticResource WordBlue}"/>
     <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
     <Style x:Key="NavigationItems" TargetType="{x:Type ListViewItem}">
-        <Setter Property="Background" Value="{StaticResource WordGreenBrush}" />
+        <Setter Property="Background" Value="{StaticResource BackgroundLightBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundVeryDarkBrush}"/>
-        <Setter Property="BorderThickness" Value="2 2"/>
+        <Setter Property="BorderThickness" Value="2 0 2 2"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Height" Value="60"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}"/>
@@ -98,7 +98,7 @@
                         </MultiTrigger>
                         <Trigger Property="ListViewItem.IsSelected" Value="True">
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderThickness" Value="0 0 0 2"/>
                         </Trigger>
                         <!--<Trigger Property="IsEnabled" Value="False">
                             <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>

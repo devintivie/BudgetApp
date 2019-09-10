@@ -113,6 +113,25 @@ namespace BudgetApp.Managers
             SelectedAccount = null;
             UpdateAccountCount();
         }
+
+        public void SwapAccountOrder(BankAccount ba1, BankAccount ba2)
+        {
+            if(AllAccounts.Contains(ba1) && AllAccounts.Contains(ba2))
+            {
+                var index2 = AllAccounts.IndexOf(ba2);
+                AllAccounts.Remove(ba2);
+                var index1 = AllAccounts.IndexOf(ba1);
+                AllAccounts.Insert(index1, ba2);
+
+                AllAccounts.Insert(index2, ba1);
+            }
+
+        }
+
+        public void RemoveSelected(BankAccount ba)
+        {
+            AllAccounts.Remove(ba);
+        }
     }
 }
  

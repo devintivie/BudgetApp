@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="BudgetApp.DebtView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vms:DebtDesignModel, IsDesignTimeCreatable=True}">
+    <Border BorderBrush="Black" BorderThickness="2">
+        <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource Hoverless}"
+                    Content="{Binding Date, Converter={cvt:DateOnlyConverter}}"
+                    Width="100"/>
+            <TextBox Text="{Binding Total, Converter={cvt:CurrencyConverter}}"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Background="Transparent"
+                     Width="100"/>
+            <TextBlock Text="{Binding Delta, Converter={cvt:CurrencyConverter}}" Width="80"
+                       Margin="10 3"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       
+                       />
+
+        </StackPanel>
+    </Border>
+</UserControl>

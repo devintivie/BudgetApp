@@ -17,6 +17,8 @@ namespace BudgetApp.ViewModels
         #region Constructor
         public MainWindowDesignModel()
         {
+            
+            //PageDisplay = Navigation.BankOverview;
             BTList = new ObservableCollection<NextBillDueDataViewModel>
             {
                 new NextBillDueDataViewModel
@@ -171,6 +173,8 @@ namespace BudgetApp.ViewModels
             {
                 new Models.BankAccount()
             };
+
+            OpenFile(@"C:\Users\devin\OneDrive\Documents\VisualStudioFiles\devin_budget.xml");
 
         }
         #endregion

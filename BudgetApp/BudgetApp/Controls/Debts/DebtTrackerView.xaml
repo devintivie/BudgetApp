@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="BudgetApp.DebtTrackerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BudgetApp"
+             xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
+             xmlns:mscorlib="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vms:DebtTrackerDesignModel, IsDesignTimeCreatable=True}">
+
+    <Border x:Name="border" BorderBrush="Black" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>-->
+            
+            <TextBlock Text="{Binding CompanyName}" 
+                    Width="275" FontSize="30"
+                    TextAlignment="Center"
+                    HorizontalAlignment="Right"
+                    TextTrimming="CharacterEllipsis"
+                    Grid.Column="1"
+                />
+                
+            
+            
+            
+            <ListBox x:Name="BillListView" Height="250" ItemsSource="{Binding Debts}" 
+                      Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
+                      Grid.Row="1" Grid.Column="0"
+                      Grid.ColumnSpan="3"
+                      HorizontalAlignment="Center"
+                      HorizontalContentAlignment="Right"
+                      Background="Transparent"
+                      BorderBrush="Transparent"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      SelectedItem="{Binding CurrentBVM}">
+            </ListBox>
+
+            <TextBlock Text="No Bills To List..."
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="0 10 20 0"
+                       Visibility="{Binding IsContentAvailable, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
+                       
+                       FontSize="20"
+                       HorizontalAlignment="Right"
+                       />
+            <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                        Grid.Column="1" HorizontalAlignment="Center">
+                <Button Content="Add Debt Record" Command="{Binding OpenAddBillCommand}"/>
+                <Button Content="Remove Debt Record" Command="{Binding RemoveCommand}"/>
+            </StackPanel>
+
+            <Popup IsOpen="{Binding IsAddBillOpen}" StaysOpen="False"
+                   HorizontalOffset="0" VerticalOffset="-280">
+                <Grid Height="276" Width="180" 
+                      Background="{StaticResource BackgroundMainBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Balance" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                    <TextBox Text="{Binding AddDebtAmount, Converter={cvt:CurrencyConverter}}" Grid.Row="0" Grid.Column="1"
+                             Width="100" HorizontalAlignment="Left"
+                             MouseDoubleClick="TextBox_MouseDoubleClick"
+                             />
+                    <Viewbox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="170">
+                        <Calendar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                              SelectedDate="{Binding AddBillStartDate}" DisplayDate="{Binding AddBillStartDate, Mode=OneWay}"/>
+
+                    </Viewbox>
+
+                    <Button Grid.Row="3" Grid.Column="0" Content="Add" Command="{Binding AddCommand}"/>
+                </Grid>
+                      
+            </Popup>
+        </Grid>
+    </Border>
+</UserControl>
+
+
+<!--<UserControl.Template>
+    <ControlTemplate TargetType="UserControl">
+        <Border BorderBrush="Black" BorderThickness="2" Height="330">
+            <Grid d:DataContext="{x:Static vms:BillTrackerDesignModel.Instance}" Width="350">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                --><!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>--><!--
+
+                <TextBlock Text="{Binding CompanyName}" 
+                       Width="350" FontSize="30"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Right"
+                       TextTrimming="CharacterEllipsis"/>
+
+                <ListView x:Name="BillListView" Height="250" ItemsSource="{Binding Bills}" 
+                              Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
+                              Grid.Row="1" Grid.Column="0"
+                              HorizontalAlignment="Right"
+                              HorizontalContentAlignment="Right"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              SelectedItem="{Binding CurrentBVM}">
+                </ListView>
+
+                <TextBlock Text="No Bills To List..."
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="0 10 20 0"
+                               Visibility="{Binding IsContentAvailable, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
+                       
+                               FontSize="20"
+                               HorizontalAlignment="Right"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Add Bill" Command="{Binding AddCommand}"/>
+                    <Button Content="Remove Bill" Command="{Binding RemoveCommand}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+</UserControl.Template>-->

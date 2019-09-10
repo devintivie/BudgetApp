@@ -15,7 +15,6 @@ namespace BudgetApp.Managers
     {
         #region Singleton
         private static BillTrackerManager instance;
-
         public static BillTrackerManager Instance
         {
             get { return instance ?? (instance = new BillTrackerManager()); }

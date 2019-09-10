@@ -126,6 +126,8 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Deb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.manifest
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.application
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.dll
@@ -186,6 +188,18 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.cache
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe.manifest
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.application
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.baml

@@ -4,6 +4,8 @@
 
     <Color x:Key="BackgroundLight">#efefef</Color>
     <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
+    <Color x:Key="TestColor">Black</Color>
+    <SolidColorBrush x:Key="TestColorBrush" Color="{StaticResource TestColor}"/>
 
 
     <Color x:Key="BackgroundMain">#FFADD8E6</Color>

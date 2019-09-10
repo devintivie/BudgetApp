@@ -12,12 +12,14 @@ namespace BudgetApp.ViewModels
     public class LocalBaseViewModel : BaseViewModel
     {
         public BillTrackerManager BillTrackerManager => BillTrackerManager.Instance;
+        public DebtTrackerManager DebtTrackerManager => DebtTrackerManager.Instance;
         public BankAccountManager BankAccountManager => BankAccountManager.Instance;
 
         public void ResetManagers()
         {
             BillTrackerManager.Reset();
             BankAccountManager.Reset();
+            DebtTrackerManager.Reset();
         }
 
         public virtual void UpdateView() { }

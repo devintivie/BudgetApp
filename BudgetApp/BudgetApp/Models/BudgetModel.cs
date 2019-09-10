@@ -15,6 +15,7 @@ namespace BudgetApp.Models
         public List<BillTracker> BudgetData { get; set; } = new List<BillTracker>();
         public string FriendlyName { get; set; } = "sample";
         public List<BankAccount> BankAccounts { get; set; } = new List<BankAccount>();
+        public List<DebtTracker> Debts { get; set; } = new List<DebtTracker>();
         #endregion Properties
 
         #region Constructors
@@ -36,14 +37,33 @@ namespace BudgetApp.Models
 
         public void AddBankAccount(BankAccount nBA)
         {
-            if (!BankAccountExists(nBA)){
+            if (!BankAccountExists(nBA))
+            {
                 BankAccounts.Add(nBA);
             }
         }
 
-        public void RemoveBillTracker(BillTracker nBT)
+        public void AddDebtTracker(DebtTracker nDT)
         {
-            BudgetData.Remove(nBT);
+            if (!DebtTrackerExists(nDT))
+            {
+                Debts.Add(nDT);
+            }
+        }
+
+        public void RemoveBillTracker(BillTracker bt)
+        {
+            BudgetData.Remove(bt);
+        }
+
+        public void RemoveBankAccount(BankAccount ba)
+        {
+            BankAccounts.Remove(ba);
+        }
+
+        public void RemoveDebtTracker(DebtTracker dt)
+        {
+            Debts.Remove(dt);
         }
 
         public bool BillTrackerExists(BillTracker btCheck)
@@ -62,9 +82,21 @@ namespace BudgetApp.Models
 
         public bool BankAccountExists(BankAccount baCheck)
         {
-            foreach(var account in BudgetData)
+            foreach(var account in BankAccounts)
             {
                 if (baCheck.Equals(account))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool DebtTrackerExists(DebtTracker debtCheck)
+        {
+            foreach(var item in Debts)
+            {
+                if (debtCheck.Equals(item))
                 {
                     return true;
                 }
@@ -88,7 +120,10 @@ namespace BudgetApp.Models
         
 
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string tempString = "";
@@ -99,6 +134,10 @@ namespace BudgetApp.Models
             return tempString;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Filename"></param>
         public void Serialize(string Filename)
         {
             var xs = new XmlSerializer(typeof(BudgetModel));
@@ -119,6 +158,11 @@ namespace BudgetApp.Models
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Filename"></param>
+        /// <returns></returns>
         public static BudgetModel Deserialize(string Filename)
         {
             BudgetModel newBD = new BudgetModel();
@@ -148,6 +192,8 @@ namespace BudgetApp.Models
 
             return newBD;
         }
+
+
 
         #endregion Methods
     }

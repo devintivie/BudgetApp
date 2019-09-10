@@ -38,5 +38,20 @@
     <DataTemplate DataType="{x:Type vms:BankOverviewViewModel}">
         <local:BankOverviewControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DebtOverviewViewModel}">
+        <local:DebtOverviewControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:AveragesViewModel}">
+        <local:AveragesControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DebtViewModel}">
+        <local:DebtView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DebtTrackerViewModel}">
+        <local:DebtTrackerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:DebtListViewModel}">
+        <local:DebtListControl/>
+    </DataTemplate>
     
 </ResourceDictionary>

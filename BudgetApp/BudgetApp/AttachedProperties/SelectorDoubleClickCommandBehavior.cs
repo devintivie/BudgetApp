@@ -9,11 +9,12 @@ namespace BudgetApp
 {
     public class SelectorDoubleClickCommandBehavior
     {
-        public static readonly DependencyProperty HandleDoubleClickProperty = DependencyProperty.RegisterAttached(
-            "HandleDoubleClick",
-            typeof(bool),
-            typeof(SelectorDoubleClickCommandBehavior),
-            new FrameworkPropertyMetadata(false, new PropertyChangedCallback(OnHandleDoubleClickedChanged)));
+        public static readonly DependencyProperty HandleDoubleClickProperty = 
+            DependencyProperty.RegisterAttached(
+                "HandleDoubleClick",
+                typeof(bool),
+                typeof(SelectorDoubleClickCommandBehavior),
+                new FrameworkPropertyMetadata(false, new PropertyChangedCallback(OnHandleDoubleClickedChanged)));
 
         public static bool GetHandleDoubleClick(DependencyObject d)
         {
@@ -59,6 +60,7 @@ namespace BudgetApp
         
         private static void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Console.WriteLine("onmousedoubleclick low low level");
             ItemsControl listView = sender as ItemsControl;
             DependencyObject originalSender = e.OriginalSource as DependencyObject;
             if (listView == null || originalSender == null)

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
+             xmlns:customs="clr-namespace:IvieCustomControls;assembly=IvieCustomControls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              Width="844">
@@ -26,46 +27,48 @@
             
         </ObjectDataProvider>
     </UserControl.Resources>-->
-                      
     
     <Grid VerticalAlignment="Stretch"
-          d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}" Background="AliceBlue">
+        d:DataContext="{x:Static vms:BudgetCalendarDesignModel.Instance}" Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        <!--<ContentControl Content="{Binding BVM}" Grid.Row="5" Grid.Column="0" />-->
         <StackPanel Orientation="Horizontal" Background="AliceBlue"
-                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowLeftIcon}"
-                    Command="{Binding PrevTimeCommand}"/>
+                Command="{Binding PrevTimeCommand}"/>
             <Button FontFamily="{StaticResource FontAwesome}" Content="{StaticResource FontAwesomeArrowRightIcon}"
-                    Command="{Binding NextTimeCommand}"/>
+                Command="{Binding NextTimeCommand}"/>
             <TextBlock Text="{Binding MonthYear, Converter={cvt:MonthYearConverter}}" FontSize="14" FontFamily="Arial" VerticalAlignment="Center"/>
             <!--<ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:CalendarOptions}}}"  SelectedItem="{Binding SelectedOption}"
-                      Margin="5"/>-->
+                    Margin="5"/>-->
             <!--<ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding SelectedOption}"
-                      Margin="5"/>-->
+                    Margin="5"/>-->
             <StackPanel VerticalAlignment="Center" Margin="10 0 10 0">
                 <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=TwoWeek}">Bi-Weekly View</RadioButton>
                 <RadioButton IsChecked="{Binding Path=SelectedOption, Converter={cvt:EnumToBoolConverter}, ConverterParameter=FiveWeek}">Month View</RadioButton>
             </StackPanel>
-            
+
             <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:PayDateFrequencies}}}" 
-                      SelectedItem="{Binding PayDateFrequency}"
-                      VerticalAlignment="Center"/>
+                    SelectedItem="{Binding PayDateFrequency}"
+                    VerticalAlignment="Center"/>
             <TextBox Text="{Binding CurrPaydate, Converter={cvt:DateOnlyConverter}}"
-                     VerticalAlignment="Center" Height="22" BorderBrush="Blue" BorderThickness="1"/>
+                    VerticalAlignment="Center" Height="22" BorderBrush="Blue" BorderThickness="1"/>
         </StackPanel>
         <Grid Grid.Row="1" Background="AliceBlue" HorizontalAlignment="Stretch"
-              Grid.Column="0" Grid.ColumnSpan="3">
+            Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -83,7 +86,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock Grid.Column="0" Text="Sunday" Style="{StaticResource CalendarDays}" />
             <TextBlock Grid.Column="1" Text="Monday" Style="{StaticResource CalendarDays}"/>
             <TextBlock Grid.Column="2" Text="Tuesday" Style="{StaticResource CalendarDays}" />
@@ -94,16 +97,16 @@
 
 
             <ListBox Grid.Row="2" Grid.ColumnSpan="7" 
-                     ItemsSource="{Binding DayList}" Margin="0"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                     SelectedItem="{Binding SelectedDBVM}"
-                     local:SelectorDoubleClickCommandBehavior.HandleDoubleClick="True"
-                     local:SelectorDoubleClickCommandBehavior.DoubleClickCommand="{Binding DoubleClickCommand}"
-                     local:ListBoxHelper.SelectedItems="{Binding TestItems}"
+                    ItemsSource="{Binding DayList}" Margin="0"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                    SelectedItem="{Binding SelectedDBVM}"
+                    local:SelectorDoubleClickCommandBehavior.HandleDoubleClick="True"
+                    local:SelectorDoubleClickCommandBehavior.DoubleClickCommand="{Binding DoubleClickCommand}"
                      
-                     >
-                
+                     
+                    >
+
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Padding" Value="0"/>
@@ -120,7 +123,7 @@
                                             <Setter Property="Foreground" Value="{StaticResource BackgroundVeryLightBrush}"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
-                                    
+
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -130,45 +133,62 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
+                        <WrapPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
 
             </ListBox>
-            
+
             <!--<local:WeekOfDayControls Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7"/>
-            <local:WeekOfDayControls Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7"/>
-            <local:WeekOfDayControls Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7"/>
-            <local:WeekOfDayControls Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7"/>-->
-            
+        <local:WeekOfDayControls Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7"/>
+        <local:WeekOfDayControls Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7"/>
+        <local:WeekOfDayControls Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7"/>-->
+
         </Grid>
 
         <!--<TextBox Text="{Binding BankBalance, Converter={cvt:CurrencyConverter}}" VerticalAlignment="Center"
-                 MouseDoubleClick="TextBox_MouseDoubleClick"
-                 local:FocusExtension.IsFocused="{Binding IsTextBoxFocused}"
-                   Grid.Row="3" Grid.Column="1"/>-->
-        <ItemsControl Grid.Row="3" Grid.ColumnSpan="7" ItemsSource="{Binding Accounts}">
-            <ItemsControl.ItemsPanel>
+                MouseDoubleClick="TextBox_MouseDoubleClick"
+                local:FocusExtension.IsFocused="{Binding IsTextBoxFocused}"
+                Grid.Row="3" Grid.Column="1"/>-->
+        <ListBox Grid.Row="3" Grid.ColumnSpan="7" ItemsSource="{Binding Accounts}"  
+                Height="120">
+            <!--<ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>-->
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <!--<customs:BankAccountListBox Grid.Row="5" Grid.ColumnSpan="7" ItemsSource="{Binding Accounts}"
+                                    Background="Black" Height="120">-->
+            <!--<customs:BankAccountListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+            </customs:BankAccountListBox.ItemContainerStyle>-->
+
+
+        <!--</customs:BankAccountListBox>-->
 
         <TextBlock Text="Total Due" Grid.Row="4" Margin="5" VerticalAlignment="Center"/>
         <TextBlock Text="{Binding TotalDue, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
-                   Grid.Row="4" Grid.Column="1"/>
+                Grid.Row="4" Grid.Column="1"/>
         <TextBlock Text="{Binding RemainingBalance, Converter={cvt:CurrencyConverter}, Mode=OneWay}" VerticalAlignment="Center"
-                   Grid.Row="4" Grid.Column="2"/>
+                Grid.Row="4" Grid.Column="2"/>
         <!--<StackPanel x:Name="MonthViewStack" Grid.Row="2">
             
-        </StackPanel>-->
+    </StackPanel>-->
         <!--<Grid x:Name="MonthViewGrid" Grid.Row="2">
-            <Grid.RowDefinitions>
-            </Grid.RowDefinitions>
-        </Grid>-->
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+    </Grid>-->
 
-        
+
 
     </Grid>
+    
 </UserControl>

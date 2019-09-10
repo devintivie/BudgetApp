@@ -32,6 +32,7 @@ namespace BudgetApp
     {
         Weekly,
         Biweekly,
+        FirstAndMid,
     }
 
     [TypeConverter(typeof(EnumDescriptionTypeConverter))]
@@ -40,7 +41,10 @@ namespace BudgetApp
         Calendar,
         [Description("Bills List")]
         BillList,
+        [Description("Banking Overview")]
         BankOverview,
+        [Description("Debt Overview")]
+        DebtOverview
     }
 
 }

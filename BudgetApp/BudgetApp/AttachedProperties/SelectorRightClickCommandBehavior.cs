@@ -9,11 +9,12 @@ namespace BudgetApp
 {
     public class SelectorRightClickCommandBehavior
     {
-        public static readonly DependencyProperty HandleRightClickProperty = DependencyProperty.RegisterAttached(
-            "HandleRightClick",
-            typeof(bool),
-            typeof(SelectorRightClickCommandBehavior),
-            new FrameworkPropertyMetadata(false, new PropertyChangedCallback(OnHandleRightClickedChanged)));
+        public static readonly DependencyProperty HandleRightClickProperty = 
+            DependencyProperty.RegisterAttached(
+                "HandleRightClick",
+                typeof(bool),
+                typeof(SelectorRightClickCommandBehavior),
+                new FrameworkPropertyMetadata(false, new PropertyChangedCallback(OnHandleRightClickedChanged)));
 
         public static bool GetHandleRightClick(DependencyObject d)
         {
@@ -33,6 +34,7 @@ namespace BudgetApp
             {
                 if ((bool)e.NewValue)
                 {
+
                     selector.MouseRightButtonDown -= OnMouseRightClick;
 
                     selector.MouseRightButtonDown += OnMouseRightClick;
@@ -60,8 +62,6 @@ namespace BudgetApp
         private static void OnMouseRightClick(object sender, MouseButtonEventArgs e)
         {
             ItemsControl listView = sender as ItemsControl;
-
-
 
             DependencyObject originalSender = e.OriginalSource as DependencyObject;
             if (listView == null || originalSender == null)

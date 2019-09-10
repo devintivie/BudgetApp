@@ -12,6 +12,11 @@
              BorderThickness="0.5 0.5 1.5 1.5"
              d:DesignHeight="120" d:DesignWidth="120">
     <Grid d:DataContext="{x:Static vms:DayBoxDesignModel.Instance}">
+        <!--MouseDown="Grid_MouseDown"
+          MouseRightButtonDown="Grid_MouseRightButtonDown"
+          PreviewMouseRightButtonDown="Grid_PreviewMouseRightButtonDown"-->
+          
+          <!-->-->
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
@@ -20,6 +25,8 @@
         <Border x:Name="DayLabelRowBorder" CornerRadius="2" BorderBrush="{x:Null}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Background="{StaticResource WordOrangeBrush}">
+            <!--MouseRightButtonDown="DayLabelRowBorder_MouseDown"
+                >-->
             <!--<Label Content="1" FontWeight="Bold"/>-->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -55,8 +62,10 @@
                  
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 IsHitTestVisible="True"
-                 >
+                 IsHitTestVisible="True">
+            <!--MouseRightButtonDown="ListBox_MouseDown"-->
+                 
+                 <!-->-->
         </ListBox>
 
         <!--<Popup IsOpen="{Binding IsBVMOpen}" StaysOpen="False"

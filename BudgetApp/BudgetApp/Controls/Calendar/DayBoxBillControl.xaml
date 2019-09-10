@@ -9,7 +9,10 @@
              mc:Ignorable="d" >
     <Border d:DataContext="{x:Static vms:DayBoxBillDesignModel.Instance}" x:Name="BorderElement" CornerRadius="5" BorderBrush="DarkOliveGreen" Background="{Binding Status, Converter={local:NextBillColorConverter}}" BorderThickness="1" >
         <TextBlock x:Name="DisplayText" Text="{Binding CompanyName}" FontSize="10" Padding="2" TextTrimming="CharacterEllipsis"
-                   HorizontalAlignment="Stretch">
+                   HorizontalAlignment="Stretch"
+                   local:SelectorRightClickCommandBehavior.HandleRightClick="True"
+                   local:SelectorRightClickCommandBehavior.RightClickCommand="{Binding RightClickCommand}"
+                   >
             <TextBlock.ToolTip>
                 
                 <ToolTip>
@@ -17,7 +20,6 @@
                     <!--<ContentControl Content="{Binding BVM}"/>-->
                 </ToolTip>
             </TextBlock.ToolTip>
-            
         </TextBlock>
     </Border>
 </UserControl>

@@ -18,7 +18,7 @@
         </ObjectDataProvider>
     </UserControl.Resources>
 
-    <Border x:Name="border" BorderBrush="Black" BorderThickness="2" Height="330" Width="350">
+    <Border x:Name="border" BorderBrush="Black" BorderThickness="2" Height="330">
         <Grid d:DataContext="{x:Static vms:BillTrackerDesignModel.Instance}" 
               Background="{StaticResource BackgroundMainBrush}">
             <Grid.RowDefinitions>
@@ -28,7 +28,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--<Grid.ColumnDefinitions>
@@ -118,6 +118,7 @@
                     </Viewbox>
                     
                     <Button Grid.Row="3" Grid.Column="0" Content="Add" Command="{Binding AddCommand}"/>
+                    <Button Grid.Row="3" Grid.Column="2" Content="End of Year" Command="{Binding ThroughYearCommand}"/>
                 </Grid>
                       
             </Popup>

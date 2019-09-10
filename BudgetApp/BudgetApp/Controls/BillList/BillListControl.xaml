@@ -18,12 +18,13 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <ListView x:Name="BudgetList" ItemsSource="{Binding BTList}" Background="Transparent"
                   Visibility="Visible"
                   VerticalAlignment="Top"
+                  
                   SelectedItem="{Binding CurrentSelection}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto" 
@@ -50,6 +51,7 @@
                         CommandParameter="{Binding ElementName=AppWindow}"
                         Focusable="False"/>
             <Button Content="Remove Company" Command="{Binding RemoveCompanyCommand}"/>
+            <Button Content="Edit Company Name" Command="{Binding OpenEditPopupCommand}"/>
         </StackPanel>
 
         <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
@@ -81,7 +83,36 @@
 
             </DockPanel>
         </Popup>
-        <customs:Meter Grid.Column="1" Value=".5" VerticalAlignment="Top"
+        <Popup IsOpen="{Binding IsEditPopupOpen}" StaysOpen="False"
+                   Focusable="False"
+                   HorizontalOffset="0" VerticalOffset="-49"
+                   >
+            <DockPanel Width="{Binding ElementName=BudgetList, Path=ActualWidth}"
+                       Height="48"
+                           Background="DarkGray">
+                <TextBlock Text="Edit Name  "
+                               x:Name="editCompanyText"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="{StaticResource FontSizeAverage}"/>
+                <Button Content="{StaticResource FontAwesomeAddIcon}" 
+                        Style="{StaticResource IconButton}"
+                            Margin="5"
+                            Height="{Binding ElementName=editCompanyText, Path=ActualHeight}"
+                            Width="{Binding ElementName=editCompanyText, Path=ActualHeight}"
+                            FontFamily="{StaticResource FontAwesome}"
+                            Command="{Binding EditCompanyCommand}"
+                            DockPanel.Dock="Right"/>
+
+                <TextBox x:Name="editCompanyTextbox" Text="{Binding NewCompany}"
+                             Focusable="True"
+                             IsEnabled="True"
+                             FontSize="{StaticResource FontSizeAverage}"
+                             VerticalAlignment="Center"/>
+
+            </DockPanel>
+        </Popup>
+        <customs:Meter Grid.Column="2" Value=".5" VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        />
 

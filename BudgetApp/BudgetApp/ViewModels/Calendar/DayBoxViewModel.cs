@@ -124,15 +124,26 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        //public string Day => Date.Day.ToString();
+        public string Day
+        {
+            get
+            {
+                if(date.Day == 1)
+                {
+                    return Date.ToString("MMM d");
+                }
+                else
+                {
+                    
+                    return Date.Day.ToString();
+                }
+            }
+        }
 
 
-
-
-
-
-        public string Day => Date.Day.ToString();
         #endregion
-       
+
 
         #region Constructors
         //public DayBoxViewModel()

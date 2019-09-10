@@ -22,6 +22,7 @@ namespace BudgetApp.ViewModels
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public ICommand OpenAddBillCommand { get; set; }
+        public ICommand ThroughYearCommand { get; set; }
 
         private bool isContentAvailable;
         public bool IsContentAvailable
@@ -183,7 +184,10 @@ namespace BudgetApp.ViewModels
             AddCommand = new DelegateCommand(OnAdd, CanAdd);
             RemoveCommand = new DelegateCommand(OnRemove, CanRemove);
             OpenAddBillCommand = new DelegateCommand(OnOpenAddBill, CanOpenAddBill);
+            ThroughYearCommand = new DelegateCommand(OnThroughYear);
         }
+
+        
 
         public BillTrackerViewModel() : this(new BillTracker()) { }
         #endregion
@@ -399,8 +403,13 @@ namespace BudgetApp.ViewModels
             UpdateContentAvailable();
         }
 
+        private void OnThroughYear()
+        {
+            AddBillStopDate = new DateTime(DateTime.Today.Year, 12, 31);
+        }
+
         #endregion
-        
+
     }
 }
 

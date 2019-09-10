@@ -17,7 +17,7 @@ namespace BudgetApp.ViewModels
         public BankAccountBalanceDesignModel()
         {
             AccountNumber = "100025478";
-            Balance = 1500;
+            Balance = 1500000;
             BankName = "Chase";
             Nickname = "Main Account";
             Deductions = 900;

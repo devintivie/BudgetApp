@@ -13,7 +13,7 @@ namespace BudgetApp.ViewModels
     public class BudgetCalendarViewModel : LocalBaseViewModel
     {
         public ObservableCollection<DayBoxViewModel> DayList { get; set; } = new ObservableCollection<DayBoxViewModel>();
-        public ObservableCollection<LocalBaseViewModel> TestItems { get; set; } = new ObservableCollection<LocalBaseViewModel>();
+        public ObservableCollection<string> TestItems { get; set; } = new ObservableCollection<string>();
         public List<string> DayOfWeekString { get; set; } = new List<string>();
         public ObservableCollection<BankAccountBalanceViewModel> Accounts { get; set; } = new ObservableCollection<BankAccountBalanceViewModel>();
         public ObservableCollection<DayBoxBillViewModel> Bills { get; set; } = new ObservableCollection<DayBoxBillViewModel>();
@@ -21,6 +21,7 @@ namespace BudgetApp.ViewModels
         public ICommand PrevTimeCommand { get; set; }
         public ICommand NextTimeCommand { get; set; }
         public ICommand DoubleClickCommand { get; set; }
+        public ICommand RightClickCommand { get; set; }
         public ICommand ConnectCommand { get; set; }
 
         private DayBoxViewModel selectedDBVM;
@@ -32,6 +33,11 @@ namespace BudgetApp.ViewModels
                 if (selectedDBVM != value)
                 {
                     selectedDBVM = value;
+                    if(SelectedDBVM != null)
+                    {
+                        Console.WriteLine(SelectedDBVM.Date);
+                    }
+                    
                     NotifyPropertyChanged();
                     //if(SelectedDBVM != null)
                     //    MonthYear = SelectedDBVM.Date;
@@ -190,6 +196,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private BillViewModel bvm;
+        public BillViewModel BVM
+        {
+            get { return bvm; }
+            set
+            {
+                if (bvm != value)
+                {
+                    bvm = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
 
         public BudgetCalendarViewModel()
@@ -200,7 +221,22 @@ namespace BudgetApp.ViewModels
             DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
             ConnectCommand = new DelegateCommand(OnConnect);
 
+            Messenger.Default.Register<Message>(this, OnMessage);
+
+            TestItems.Add("hello");
+            TestItems.Add("it me");
+            TestItems.Add("Adele");
+
+            BVM = new BillViewModel();
             UpdateView();
+        }
+
+        private void OnMessage(Message message)
+        {
+            if (message.MessageType == MessageType.BankAccountBalanceViewModel)
+            {
+                UpdateAccountList();
+            }
         }
 
         private void OnConnect()
@@ -324,10 +360,10 @@ namespace BudgetApp.ViewModels
 
         private void OnRightClick()
         {
-            Console.WriteLine("Double Click attached property");
+            Console.WriteLine("Right Click attached property");
             //CurrPaydate
             //Console.WriteLine(SelectedDBVM.Date);
-            CurrPaydate = SelectedDBVM.Date;
+            //CurrPaydate = SelectedDBVM.Date;
         }
 
         private bool CanRightClick()

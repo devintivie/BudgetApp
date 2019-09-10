@@ -12,7 +12,6 @@ namespace BudgetApp
     public class ListBoxHelper
     {
         #region SelectedItems  
-
         ///  
         /// SelectedItems Attached Dependency Property  
         ///  
@@ -47,8 +46,7 @@ namespace BudgetApp
         /// </summary>  
         /// <param name="d"></param>  
         /// <param name="e"></param>  
-        private static void OnSelectedItemsChanged(DependencyObject d,
-                                                 DependencyPropertyChangedEventArgs e)
+        private static void OnSelectedItemsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var listBox = (ListBox)d;
             SetInternalSelectedItemsToPublic(listBox);
@@ -70,9 +68,7 @@ namespace BudgetApp
             };
         }
 
-
         #region Implementation  
-
         static bool _isChanging;
 
         private static void SetSelectedDataItemsToInternal(ListBox listBox)
@@ -131,6 +127,121 @@ namespace BudgetApp
         }
 
         #endregion
+
+        #endregion
+
+        #region DragAndDrop
+        public static readonly DependencyProperty DragSourceAdvisorProperty = DependencyProperty.RegisterAttached(
+            "DragSourceAdvisor",
+            typeof(IDragSourceAdvisor),
+            typeof(ListBoxHelper),
+            new FrameworkPropertyMetadata(new PropertyChangedCallback(OnDragSourceAdvisorChanged)));
+
+        public static readonly DependencyProperty DropTargetAdvisorProperty = DependencyProperty.RegisterAttached(
+            "DropTargetAdvisor",
+            typeof(IDropTargetAdvisor),
+            typeof(ListBoxHelper),
+            new FrameworkPropertyMetadata(new PropertyChangedCallback(OnDropTargetAdvisorChanged)));
+
+        public interface IDragSourceAdvisor
+        {
+            UIElement SourceUI { get; set; }
+            DragDropEffects SupportedEffects { get; }
+            DataObject GetDataObject(UIElement draggedElt);
+            void FinishDrag(UIElement draggedElt, DragDropEffects finalEffects);
+            bool IsDraggable(UIElement dragElt);
+            UIElement GetTopContainer();
+        }
+        public interface IDropTargetAdvisor
+        {
+            UIElement TargetUI { get; set; }
+            bool ApplyMouseOffset { get; }
+            bool IsValidDataObject(IDataObject obj);
+            void OnDropCompleted(IDataObject obj, Point dropPoint);
+            UIElement GetVisualFeedback(IDataObject obj);
+            UIElement GetTopContainer();
+        }
+
+        private static void OnDragSourceAdvisorChanged(DependencyObject depObj,
+DependencyPropertyChangedEventArgs args)
+        {
+            UIElement sourceElt = depObj as UIElement;
+            if (args.NewValue != null && args.OldValue == null)
+            {
+                sourceElt.PreviewMouseLeftButtonDown += DragSource_PreviewMouseLeftButtonDown;
+                sourceElt.PreviewMouseMove += DragSource_PreviewMouseMove;
+                sourceElt.PreviewMouseUp += DragSource_PreviewMouseUp;
+                // Set the Drag source UI
+                IDragSourceAdvisor advisor = args.NewValue as IDragSourceAdvisor;
+                advisor.SourceUI = sourceElt;
+            }
+            else if (args.NewValue == null && args.OldValue != null)
+            {
+                sourceElt.PreviewMouseLeftButtonDown -= DragSource_PreviewMouseLeftButtonDown;
+                sourceElt.PreviewMouseMove -= DragSource_PreviewMouseMove;
+                sourceElt.PreviewMouseUp -= DragSource_PreviewMouseUp;
+            }
+        }
+
+        private static void DragSource_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DragSource_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DragSource_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void OnDropTargetAdvisorChanged(DependencyObject depObj,
+        DependencyPropertyChangedEventArgs args)
+        {
+            UIElement targetElt = depObj as UIElement;
+            if (args.NewValue != null && args.OldValue == null)
+            {
+                targetElt.PreviewDragEnter += DropTarget_PreviewDragEnter;
+                targetElt.PreviewDragOver += DropTarget_PreviewDragOver;
+                targetElt.PreviewDragLeave += DropTarget_PreviewDragLeave;
+                targetElt.PreviewDrop += DropTarget_PreviewDrop;
+                targetElt.AllowDrop = true;
+                // Set the Drag source UI
+                IDropTargetAdvisor advisor = args.NewValue as IDropTargetAdvisor;
+                advisor.TargetUI = targetElt;
+            }
+            else if (args.NewValue == null && args.OldValue != null)
+            {
+                targetElt.PreviewDragEnter -= DropTarget_PreviewDragEnter;
+                targetElt.PreviewDragOver -= DropTarget_PreviewDragOver;
+                targetElt.PreviewDragLeave -= DropTarget_PreviewDragLeave;
+                targetElt.PreviewDrop -= DropTarget_PreviewDrop;
+                targetElt.AllowDrop = false;
+            }
+        }
+
+        private static void DropTarget_PreviewDrop(object sender, DragEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DropTarget_PreviewDragLeave(object sender, DragEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DropTarget_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DropTarget_PreviewDragEnter(object sender, DragEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

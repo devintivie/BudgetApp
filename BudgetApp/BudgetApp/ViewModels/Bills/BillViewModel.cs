@@ -30,8 +30,6 @@ namespace BudgetApp.ViewModels
             }
         }
 
-
-
         public BillStatus BillStatus
         {
             get { return Bill.BillStatus; }
@@ -169,6 +167,10 @@ namespace BudgetApp.ViewModels
             if (!IsCalendarOpen)
             {
                 IsCalendarOpen = true;
+            }
+            else
+            {
+                IsCalendarOpen = false;
             }
         }
 

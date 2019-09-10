@@ -1,15 +1,19 @@
 ﻿using BudgetApp.Models;
+using IvieBaseClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
     public class DayBoxBillViewModel : LocalBaseViewModel
     {
         public Bill Bill { get; private set; }
+
+        public ICommand RightClickCommand { get; set; }
 
         private string companyName;
         public string CompanyName
@@ -83,21 +87,22 @@ namespace BudgetApp.ViewModels
 
 
 
-        public DayBoxBillViewModel(string name)
-        {
-            CompanyName = name;
-            Bill = new Bill();
-            BVM = new BillViewModel(Bill);
 
-        }
+
+
+        public DayBoxBillViewModel(string name) : this(name, new Bill()) { }
 
         public DayBoxBillViewModel(string name, Bill iBill)
         {
             CompanyName = name;
             Bill = iBill;
             BVM = new BillViewModel(Bill);
+            RightClickCommand = new DelegateCommand(OnRightClick);
         }
 
-
+        private void OnRightClick()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

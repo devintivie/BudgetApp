@@ -37,6 +37,18 @@ namespace BudgetApp
             }
         }
 
+        private void ListBox_DragEnter(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("Drag enter");
+        }
+
+        private void ListBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine("fake mouse down");
+        }
+
+
+
         //private void CalendarDaysList_DoubleClick(object sender, EventArgs e)
         //{
         //    Console.WriteLine(CalendarDaysList.SelectedItem.ToString());

@@ -8,7 +8,7 @@
         <ResourceDictionary Source="Fonts.xaml"/>
         <ResourceDictionary Source="Texts.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
+    
     <!-- Regular Button -->
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource WordGreenBrush}"/>
@@ -70,6 +70,22 @@
                             <!-- 47:56-->
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Hoverless Button-->
+    <Style x:Key="Hoverless" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -7,23 +7,25 @@
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d" >
-    <Border BorderThickness="1" BorderBrush="Blue">
+    <!--<Border BorderThickness="1" BorderBrush="Blue">-->
         <StackPanel Orientation="Vertical" d:DataContext="{x:Static vms:BankAccountBalanceDesignModel.Instance}"
                 >
             <TextBlock Text="{Binding Nickname}"
                    HorizontalAlignment="Center"
                     Padding="5"
-        />
+            />
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Current Balance" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
-            BorderThickness="1"
-            BorderBrush="Black"
-            Margin="3"
-            Background="White" MouseDoubleClick="TextBox_MouseDoubleClick"
-        />
-            </StackPanel>
+            <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
+                BorderThickness="1"
+                BorderBrush="Black"
+                Margin="3"
+                     HorizontalContentAlignment="Right"
+                     Width="75"
+                Background="White" MouseDoubleClick="TextBox_MouseDoubleClick"
+            />
+        </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Expenses" VerticalAlignment="Center"/>
@@ -38,6 +40,10 @@
                         Margin="3"
                         Background="Transparent"/>
             </StackPanel>
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="left" Command="{Binding MoveLeftCommand}"/>
+                <Button Content="right" Command="{Binding MoveRightCommand}"/>
+            </StackPanel>-->
         </StackPanel>
-    </Border>
+    <!--</Border>-->
 </UserControl>

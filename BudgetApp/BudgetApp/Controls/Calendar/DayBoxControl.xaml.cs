@@ -24,5 +24,34 @@ namespace BudgetApp
         {
             InitializeComponent();
         }
+
+        //private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine("Grid_MouseDown");
+        //    e.Handled = false;
+        //}
+
+        //private void DayLabelRowBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine("border mouse down");
+        //}
+
+        //private void ListBox_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine("listbox right mouse down");
+        //    e.Handled = false;
+        //}
+
+        //private void Grid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine("Grid_MouseRightButtonDown");
+        //    e.Handled = false;
+        //}
+
+        //private void Grid_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    Console.WriteLine("Grid_PreviewMouseRightButtonDown");
+        //    e.Handled = false;
+        //}
     }
 }

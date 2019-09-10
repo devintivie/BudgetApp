@@ -6,37 +6,48 @@
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vms:BillDesignModel, IsDesignTimeCreatable=True}">
 
     <Border BorderBrush="Black" BorderThickness="2" Background="{Binding BillStatus, Converter={local:NextBillColorConverter}}">
-        <StackPanel Orientation="Horizontal" d:DataContext="{x:Static vms:BillDesignModel.Instance}">
+        <StackPanel Orientation="Horizontal">
             <CheckBox VerticalAlignment="Center" Padding="5"
                       HorizontalAlignment="Center"
                       IsChecked="{Binding IsPaid}"
                       />
             <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
-                     Grid.Column="0" Width="70"
+                     Grid.Column="0" Width="100"
+                     FontSize="{StaticResource FontSizeMedium}"
                      BorderThickness="2 0"
                      BorderBrush="Black"
                      Background="Transparent"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      MouseDoubleClick="TextBox_MouseDoubleClick"
-                     />
+                     >
+                <TextBox.ToolTip>
+                    <ToolTip>
+                        <TextBlock Text="{Binding SelectedAccount}"/>
+                                
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
 
-            <TextBlock Text="{Binding DueDate, Converter={cvt:DayDateConverter}}" 
-                        Grid.Column="1" 
-                        Padding="5"
+            <Button Style="{StaticResource Hoverless}"
+                    FontFamily="{StaticResource Segoe}"
+                    Content="{Binding DueDate, Converter={cvt:DayDateConverter}}" 
+                    Command="{Binding OpenPopupCommand}"
+                    Grid.Column="1" 
+                    Padding="5"
                         Width="180" 
-                        VerticalAlignment="Center" 
-                        TextAlignment="Left"
+                        VerticalAlignment="Center"
                    
                    />
-            <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeEditIcon}" 
+            <!--<Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeEditIcon}" 
                     Command="{Binding OpenPopupCommand}"
-                    />
+                    />-->
             
-            <Popup IsOpen="{Binding IsCalendarOpen}" StaysOpen="False"
+            <Popup IsOpen="{Binding IsCalendarOpen, Delay=200}" StaysOpen="False"
                    HorizontalOffset="70" VerticalOffset="-30">
                 <StackPanel Orientation="Vertical">
                     <Calendar SelectedDate="{Binding DueDate}" DisplayDate="{Binding DueDate, Mode=OneWay}"/>

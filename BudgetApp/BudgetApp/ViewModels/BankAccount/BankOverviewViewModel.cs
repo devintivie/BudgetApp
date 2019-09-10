@@ -72,6 +72,21 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private AveragesViewModel avm = new AveragesViewModel();
+        public AveragesViewModel AVM
+        {
+            get { return avm; }
+            set
+            {
+                if (avm != value)
+                {
+                    avm = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         #endregion
 
         #region Commands
@@ -123,6 +138,7 @@ namespace BudgetApp.ViewModels
         public override void UpdateView()
         {
             UpdateAccountList();
+            AVM.UpdateAvailableYears();
         }
 
         private void OnAddAccount()

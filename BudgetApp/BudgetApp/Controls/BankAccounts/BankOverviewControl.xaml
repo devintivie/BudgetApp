@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:local="clr-namespace:BudgetApp"
+             xmlns:customs="clr-namespace:IvieCustomControls;assembly=IvieCustomControls"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
              mc:Ignorable="d" >
     <StackPanel d:DataContext="{x:Static vms:BankOverviewDesignModel.Instance}"
-                Width="300"
-                Height="350">
-        <ListView x:Name="List" ItemsSource="{Binding BAList}" Background="Transparent"
+                Orientation="Horizontal"
+                Height="Auto">
+        <StackPanel Orientation="Vertical">
+            <ListView x:Name="List" ItemsSource="{Binding BAList}" Background="Transparent"
                   Visibility="Visible"
                   
                   VerticalAlignment="Top"
@@ -19,37 +21,36 @@
                   ScrollViewer.VerticalScrollBarVisibility="Auto" 
                   Height="300"
                   BorderBrush="Transparent">
-        </ListView>
-
-        <Button Content="Add Account" Command="{Binding OpenPopupCommand}"/>
+            </ListView>
+           
+        <Button Content="Add Account" Command="{Binding OpenPopupCommand}"
+                />
         <Button Content="Remove Account" Command="{Binding RemoveAccountCommand}"/>
 
-        <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
+            <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
                    Focusable="False"
                    >
-
-            <StackPanel Width="{Binding ElementName=List, Path=ActualWidth}"
+                <StackPanel Width="{Binding ElementName=List, Path=ActualWidth}"
                            Background="DarkGray">
-                <TextBlock Text="Account Nickname  "
+                    <TextBlock Text="Account Nickname  "
                                x:Name="newNameText"
                                VerticalAlignment="Center"
                                FontSize="{StaticResource FontSizeSmall}"/>
-                
 
-                <TextBox x:Name="newAccountTextbox" Text="{Binding NewNickname}"
+                    <TextBox x:Name="newAccountTextbox" Text="{Binding NewNickname}"
                              Focusable="True"
                              IsEnabled="True"
                              Height="{Binding ElementName=newNameText, Path=ActualHeight}"
                              FontSize="{StaticResource FontSizeSmall}"
                              VerticalAlignment="Center"/>
-                <TextBlock Text="Initial Balance  "
+                    <TextBlock Text="Initial Balance  "
                                x:Name="newBalanceText"
                                VerticalAlignment="Center"
                                DockPanel.Dock="Left"
                                Height="20"
                                FontSize="{StaticResource FontSizeSmall}"/>
 
-                <TextBox x:Name="newCompanyTextbox" Text="{Binding NewAccountBalance, Converter={cvt:CurrencyConverter}}"
+                    <TextBox x:Name="newCompanyTextbox" Text="{Binding NewAccountBalance, Converter={cvt:CurrencyConverter}}"
                              Focusable="True"
                              IsEnabled="True"
                              Height="{Binding ElementName=newNameText, Path=ActualHeight}"
@@ -57,7 +58,8 @@
                              FontSize="{StaticResource FontSizeSmall}"
                              MouseDoubleClick="newCompanyTextbox_MouseDoubleClick"
                              VerticalAlignment="Center"/>
-                <Button Content="{StaticResource FontAwesomeAddIcon}" 
+
+                    <Button Content="{StaticResource FontAwesomeAddIcon}" 
                         Style="{StaticResource IconButton}"
                             Margin="5"
                             Height="{Binding ElementName=newNameText, Path=ActualHeight}"
@@ -65,13 +67,14 @@
                             FontFamily="{StaticResource FontAwesome}"
                             Command="{Binding AddAccountCommand}"
                             />
-            </StackPanel>
+                </StackPanel>
+            </Popup>
+        </StackPanel>
+        <!--<Border BorderThickness="1" BorderBrush="Gray">
+            <customs:CustomCalendar/>
+        </Border>-->
+        <ContentControl Content="{Binding AVM}"/>
 
-
-
-
-            
-        </Popup>
 
     </StackPanel>
 </UserControl>
