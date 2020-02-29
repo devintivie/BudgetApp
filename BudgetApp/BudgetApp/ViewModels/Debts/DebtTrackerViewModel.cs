@@ -162,7 +162,34 @@ namespace BudgetApp.ViewModels
 
         private void OnAdd()
         {
-            
+            var newDebt = new Debt()
+            {
+                Date = AddDebtDate,
+                Balance = AddDebtAmount
+            };
+
+            var found = false;
+            foreach(var item in DebtTracker.Debts)
+            {
+                if (item.Date.Equals(newDebt.Date))
+                {
+                    found = true;
+                    break;
+
+                }
+            }
+
+            if (!found)
+            {
+                DebtTracker.Debts.Add(newDebt);
+            }
+
+            DebtTracker.Debts.Sort();
+            UpdateDebts();
+            IsAddDebtOpen = false;
+            AddDebtAmount = 0;
+
+
         }
 
         private bool CanAdd()
@@ -186,9 +213,20 @@ namespace BudgetApp.ViewModels
         public void UpdateDebts()
         {
             Debts.Clear();
-            foreach (var debt in DebtTracker.Debts)
+            foreach (var item in DebtTracker.Debts.Select( (value, index) => new { value, index }))
             {
-                Debts.Add(new DebtViewModel(debt));
+                if (item.value.Equals(DebtTracker.Debts.First()))
+                {
+                    Debts.Add(new DebtViewModel(item.value, item.value.Balance));
+                }
+                else
+                {
+                    var prevBal = DebtTracker.Debts[item.index-1].Balance;
+                    var delta = item.value.Balance - prevBal;
+
+                    Debts.Add(new DebtViewModel(item.value, delta));
+                }
+                
             }
             UpdateContentAvailable();
         }

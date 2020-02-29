@@ -49,6 +49,13 @@
                     TextTrimming="CharacterEllipsis"
                     Grid.Column="1"
                 />
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="AutoPay"/>
+                <CheckBox IsChecked="{Binding AutoPay}"
+                          HorizontalAlignment="Center"
+                      />
+            </StackPanel>
+            
                 
             
             

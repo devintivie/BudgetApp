@@ -25,7 +25,8 @@ namespace BudgetApp.ViewModels
                     Bill.DueDate = value;
                     NotifyPropertyChanged();
                     NotifyPropertyChanged(nameof(BillStatus));
-                    Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    //Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    Messenger.Send(new VMtoVM());
                 }
             }
         }
@@ -52,7 +53,8 @@ namespace BudgetApp.ViewModels
                 {
                     Bill.AmountDue = value;
                     NotifyPropertyChanged();
-                    Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    //Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    Messenger.Send(new VMtoVM());
                 }
             }
         }
@@ -119,7 +121,8 @@ namespace BudgetApp.ViewModels
                     Bill.IsPaid = value;
                     NotifyPropertyChanged();
                     NotifyPropertyChanged(nameof(BillStatus));
-                    Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    //Messenger.Default.Send(new Message(0, MessageType.BillViewModel));
+                    Messenger.Send(new VMtoVM());
 
                 }
             }

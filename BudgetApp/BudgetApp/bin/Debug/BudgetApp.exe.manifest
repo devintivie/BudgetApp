@@ -15,14 +15,14 @@
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
           UAC Manifest Options
-          If you want to change the Windows User Account Control level replace the 
+          If you want to change the Windows User Account Control level replace the
           requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         If you want to utilize File and Registry Virtualization for backward 
+         If you want to utilize File and Registry Virtualization for backward
          compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BudgetApp.exe" size="401888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BudgetApp.exe" size="407520">
       <assemblyIdentity name="BudgetApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>p9GU/4Tm6Stv96pXSR5oeeH1U1qmSYe+xSIzQbV3zkI=</dsig:DigestValue>
+        <dsig:DigestValue>w+WnYwjljEB9zJuDHNLhe5T6AEzj9Vt4/iiTivSYCYE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IvieBaseClasses.dll" size="14336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IvieBaseClasses.dll" size="13312">
       <assemblyIdentity name="IvieBaseClasses" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h7teaz5AMxnnyrTnu35sqEDNM3QFmp262rMYP7DfxWk=</dsig:DigestValue>
+        <dsig:DigestValue>Dl/5Wl6Amd1gs429QhzuC6lVvnx8ZMcvdmcnrBm8ZNs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,19 +73,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3e6GOB3PG6v5y7dDkz2LpbTYbCs1M49Nt4IfK23Rg34=</dsig:DigestValue>
+        <dsig:DigestValue>Rk/1m96S9XXamreB/uP7RNKEO8zwH0XQwQxwqk5RL2k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IvieCustomControls.dll" size="197120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IvieCustomControls.dll" size="196608">
       <assemblyIdentity name="IvieCustomControls" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AmyBB/HILuTUmjLELfpna7LtRdmLUSPoqMAB/++4yjA=</dsig:DigestValue>
+        <dsig:DigestValue>tr8FyUXldxy3UzciyBHBF238Mmc8IYJLV7xXOTYbh0E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

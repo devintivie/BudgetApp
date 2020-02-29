@@ -62,7 +62,7 @@ namespace BudgetApp.ViewModels
             }
             else
             {
-                CurrentBalance = dt.Last().Total;
+                CurrentBalance = dt.Last().Balance;
             }
             
         }

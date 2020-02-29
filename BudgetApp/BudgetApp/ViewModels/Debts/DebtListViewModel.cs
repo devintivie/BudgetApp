@@ -163,7 +163,7 @@ namespace BudgetApp.ViewModels
             Console.WriteLine(IsDebtFree);
         }
 
-        public override void UpdateView()
+        public void UpdateView()
         {
             UpdateDTList();
         }

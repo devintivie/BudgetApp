@@ -137,6 +137,7 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.pdb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieConverters.pdb
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountBalanceView.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountView.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankOverviewControl.g.cs
@@ -146,6 +147,10 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxBillControl.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxControl.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\BudgetCalendarControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.g.cs
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\MultipleCheckControl.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\WeekControl.g.cs
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\MainWindow.g.cs
@@ -160,6 +165,7 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\App.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountBalanceView.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountView.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankOverviewControl.baml
@@ -169,6 +175,10 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxBillControl.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxControl.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\BudgetCalendarControl.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.baml
+D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\MultipleCheckControl.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\WeekControl.baml
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\MainWindow.baml
@@ -193,13 +203,80 @@ D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\Bud
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.g.cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.baml
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.g.cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.baml
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.g.cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.baml
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.g.cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.baml
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.g.cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.manifest
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.application
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.dll
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieConverters.dll
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieCustomControls.dll
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieBaseClasses.pdb
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieConverters.pdb
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\bin\Debug\IvieCustomControls.pdb
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountBalanceView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankOverviewControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BillList\BillListControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BudgetOverviewControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\CalendarTest.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxBillControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\BudgetCalendarControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\MultipleCheckControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\WeekControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\MainWindow.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\NextBillDueDataControl.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\MainPage.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\Page1.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillView.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\App.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.cache
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp_MarkupCompile.lref
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\App.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\AveragesControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountBalanceView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankAccountView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BankAccounts\BankOverviewControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BillList\BillListControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\BudgetOverviewControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\CalendarTest.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxBillControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\DayBoxControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\BudgetCalendarControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtOverviewControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtListControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtTrackerView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Debts\DebtView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\MultipleCheckControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\Calendar\WeekControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\MainWindow.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Controls\NextBillDueDataControl.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\MainPage.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Pages\Page1.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Buttons.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Colors.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Fonts.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\ListViews.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\DataTemplates.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Styles\Texts.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillTrackerView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\BillView.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\Views\CalendarTwoWeek.baml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.g.resources
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.Properties.Resources.resources
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.GenerateResource.cache
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe.manifest
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.application
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb

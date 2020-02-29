@@ -54,6 +54,7 @@ namespace BudgetApp.Models
         [XmlIgnore]
         public BillStatus BillStatus { get; set; }
 
+
         #endregion Properties
 
         #region Constructors

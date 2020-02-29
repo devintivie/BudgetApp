@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="BudgetApp.exe.manifest" size="5413">
+    <dependentAssembly dependencyType="install" codebase="BudgetApp.exe.manifest" size="5411">
       <assemblyIdentity name="BudgetApp.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TuMmw4gGvvf47sZfstWWoWmJV5QrfL1LngQNWY9/qlU=</dsig:DigestValue>
+        <dsig:DigestValue>Y5P9CMpPueoRgeAKHL01qN716mVzG5KCY/yKQS/aqSQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

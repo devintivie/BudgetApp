@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\obj\Debug\
 BudgetApp
 none
 false
 DEBUG;TRACE
-D:\Users\devin\Documents\Visual Studio 2017\Projects\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml
+C:\Users\devin\OneDrive\Documents\source\repos\BudgetAppRepo\BudgetApp\BudgetApp\App.xaml
 291919270685
 
 1002081884427
-18-1436186537
+182113626302
 Controls\BankAccounts\AveragesControl.xaml;Controls\BankAccounts\BankAccountBalanceView.xaml;Controls\BankAccounts\BankAccountView.xaml;Controls\BankAccounts\BankOverviewControl.xaml;Controls\BillList\BillListControl.xaml;Controls\BudgetOverviewControl.xaml;Controls\Calendar\CalendarTest.xaml;Controls\Calendar\DayBoxBillControl.xaml;Controls\Calendar\DayBoxControl.xaml;Controls\Calendar\BudgetCalendarControl.xaml;Controls\Debts\DebtOverviewControl.xaml;Controls\Debts\DebtListControl.xaml;Controls\Debts\DebtTrackerView.xaml;Controls\Debts\DebtView.xaml;Controls\MultipleCheckControl.xaml;Controls\Calendar\WeekControl.xaml;MainWindow.xaml;Controls\NextBillDueDataControl.xaml;Pages\MainPage.xaml;Pages\Page1.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\ListViews.xaml;Styles\DataTemplates.xaml;Styles\Texts.xaml;Views\BillTrackerView.xaml;Views\BillView.xaml;Views\CalendarTwoWeek.xaml;
 
 False

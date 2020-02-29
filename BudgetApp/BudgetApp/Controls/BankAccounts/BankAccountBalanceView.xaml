@@ -17,7 +17,9 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Current Balance" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
+            <!--, Converter={cvt:CurrencyConverter}-->
+            <TextBox Text="{Binding Balance}"
+                     
                 BorderThickness="1"
                 BorderBrush="Black"
                 Margin="3"
@@ -27,9 +29,10 @@
             />
         </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <!--, Converter={cvt:CurrencyConverter}-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Expenses" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Deductions, Converter={cvt:CurrencyConverter}}"
+                <TextBlock Text="{Binding Deductions}"
                 Margin="3"
                 Background="Transparent"/>
             </StackPanel>

@@ -30,6 +30,8 @@ namespace BudgetApp
                     return Brushes.Transparent;
                 case BillStatus.NoneDue:
                     return Brushes.LightGreen;
+                case BillStatus.AutoPay:
+                    return Brushes.DarkBlue;
                 default:
                     return Brushes.White;
             }

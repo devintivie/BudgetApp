@@ -390,17 +390,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\IvieBaseClasses\IvieBaseClasses.csproj">
+      <Project>{66bdaa12-4a20-4cb1-a33d-60e7230d33d9}</Project>
+      <Name>IvieBaseClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\IvieConverters\IvieConverters.csproj">
+      <Project>{530339b4-b662-4706-9734-3119867da34c}</Project>
+      <Name>IvieConverters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\IvieCustomControls\IvieCustomControls.csproj">
       <Project>{ca1fe905-a7fb-477f-8f38-64d801fe526c}</Project>
       <Name>IvieCustomControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieBaseClasses\IvieBaseClasses.csproj">
-      <Project>{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}</Project>
-      <Name>IvieBaseClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieConverters\IvieConverters.csproj">
-      <Project>{530339b4-b662-4706-9734-3119867da34c}</Project>
-      <Name>IvieConverters</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

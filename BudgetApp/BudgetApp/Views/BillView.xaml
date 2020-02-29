@@ -15,7 +15,9 @@
                       HorizontalAlignment="Center"
                       IsChecked="{Binding IsPaid}"
                       />
-            <TextBox Text="{Binding AmountDue, Converter={cvt:CurrencyConverter}}"
+            <!--, Converter={cvt:CurrencyConverter}-->
+            <TextBox Text="{Binding AmountDue}"
+                     
                      Grid.Column="0" Width="100"
                      FontSize="{StaticResource FontSizeMedium}"
                      BorderThickness="2 0"

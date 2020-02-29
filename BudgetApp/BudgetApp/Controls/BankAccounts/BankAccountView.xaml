@@ -23,7 +23,8 @@
                     TextAlignment="Left"
                    
                 />
-        <TextBox Text="{Binding Balance, Converter={cvt:CurrencyConverter}}"
+        <!--, Converter={cvt:CurrencyConverter}-->
+        <TextBox Text="{Binding Balance}"
                     Grid.Column="0" Width="70"
                     BorderThickness="0 0"
                     BorderBrush="Black"

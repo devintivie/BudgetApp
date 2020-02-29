@@ -15,6 +15,7 @@ namespace BudgetApp
         DueWithinTwoWeeks,
         DueWithinOneMonth,
         DueInOverOneMonth,
+        AutoPay,
         NoneDue,
     }
 }

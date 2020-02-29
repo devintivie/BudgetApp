@@ -15,15 +15,19 @@ namespace BudgetApp.Models
 
         public string CompanyName { get; set; }
 
+        public bool AutoPay { get; set; }
+
         public BillTracker()
         {
             CompanyName = "No Name";
+            AutoPay = false;
         }
 
         public BillTracker(string name, Bill firstBill)
         {
             CompanyName = name;
             Bills.Add(firstBill);
+            AutoPay = false;
         }
 
         public BillTracker(string name, List<Bill> list)
@@ -31,6 +35,7 @@ namespace BudgetApp.Models
             Bills = new List<Bill>();
             CompanyName = name;
             Bills.Clear();
+            AutoPay = false;
             foreach (var b in list)
             {
                 Bills.Add(b);

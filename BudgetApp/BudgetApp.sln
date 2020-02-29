@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieBaseClasses", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieBaseClasses\IvieBaseClasses.csproj", "{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieConverters", "D:\Users\devin\Documents\Visual Studio 2017\Projects\IvieConverters\IvieConverters.csproj", "{530339B4-B662-4706-9734-3119867DA34C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetApp", "BudgetApp\BudgetApp.csproj", "{76C319A4-C587-40C9-AE30-5006EAE5BFED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieCustomControls", "..\..\IvieCustomControls\IvieCustomControls.csproj", "{CA1FE905-A7FB-477F-8F38-64D801FE526C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieBaseClasses", "..\..\IvieBaseClasses\IvieBaseClasses.csproj", "{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvieInterfaces", "..\..\IvieInterfaces\IvieInterfaces.csproj", "{E27471C2-4B94-461C-98AC-F17C5FB44486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvieConverters", "..\..\IvieConverters\IvieConverters.csproj", "{530339B4-B662-4706-9734-3119867DA34C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76C319A4-C587-40C9-AE30-5006EAE5BFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +27,18 @@ Global
 		{CA1FE905-A7FB-477F-8F38-64D801FE526C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1FE905-A7FB-477F-8F38-64D801FE526C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA1FE905-A7FB-477F-8F38-64D801FE526C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BDAA12-4A20-4CB1-A33D-60E7230D33D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27471C2-4B94-461C-98AC-F17C5FB44486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27471C2-4B94-461C-98AC-F17C5FB44486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27471C2-4B94-461C-98AC-F17C5FB44486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27471C2-4B94-461C-98AC-F17C5FB44486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530339B4-B662-4706-9734-3119867DA34C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

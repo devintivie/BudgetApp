@@ -17,11 +17,13 @@
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      Background="Transparent"
+                     FontSize="{StaticResource FontSizeSmall}"
                      Width="100"/>
             <TextBlock Text="{Binding Delta, Converter={cvt:CurrencyConverter}}" Width="80"
                        Margin="10 3"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
+                       FontSize="{StaticResource FontSizeSmall}"
                        
                        />
 

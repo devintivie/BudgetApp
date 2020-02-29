@@ -27,12 +27,12 @@ namespace BudgetApp.ViewModels
 
         public double Total
         {
-            get { return Debt.Total; }
+            get { return Debt.Balance; }
             set
             {
-                if (Debt.Total != value)
+                if (Debt.Balance != value)
                 {
-                    Debt.Total = value;
+                    Debt.Balance = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -55,11 +55,11 @@ namespace BudgetApp.ViewModels
         #endregion
 
         #region Constructors
-        public DebtViewModel(Debt debt)
+        public DebtViewModel(Debt debt, double delta = 0.0)
         {
             Debt = debt;
-            Console.WriteLine("debt view model constructor");
-
+            Delta = delta;
+            //Console.WriteLine("debt view model constructor");
         }
 
         public DebtViewModel() : this(new Debt()) { }

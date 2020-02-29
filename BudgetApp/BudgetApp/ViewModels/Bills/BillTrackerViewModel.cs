@@ -51,6 +51,22 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        public bool AutoPay
+        {
+            get { return BillTracker.AutoPay; }
+            set
+            {
+                if (BillTracker.AutoPay != value)
+                {
+                    BillTracker.AutoPay = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+
         private BillViewModel currentBVM;
         public BillViewModel CurrentBVM
         {
@@ -405,7 +421,7 @@ namespace BudgetApp.ViewModels
 
         private void OnThroughYear()
         {
-            AddBillStopDate = new DateTime(DateTime.Today.Year, 12, 31);
+            AddBillStopDate = new DateTime(AddBillStartDate.Year, 12, 31);
         }
 
         #endregion

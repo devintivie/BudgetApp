@@ -17,7 +17,7 @@ namespace BudgetApp.Models
 
         #region Properties
         public DateTime Date { get; set; }
-        public double Total { get; set; }
+        public double Balance { get; set; }
         #endregion Properties
 
         #region Constructors
@@ -54,7 +54,6 @@ namespace BudgetApp.Models
         {
             var dateCompare = (debt1.Date - debt2.Date).TotalDays;
             return (int)dateCompare;
-
         }
 
         /// <summary>
@@ -69,8 +68,8 @@ namespace BudgetApp.Models
 
         override public string ToString()
         {
-            string amountString = Total.ToString("C", CultureInfo.CurrentCulture);
-            string tempString = String.Format("{0} is due on {1:D}", Total.ToString("C", CultureInfo.CurrentCulture), Date);
+            string amountString = Balance.ToString("C", CultureInfo.CurrentCulture);
+            string tempString = String.Format("{0} is due on {1:D}", Balance.ToString("C", CultureInfo.CurrentCulture), Date);
 
             return tempString;
         }

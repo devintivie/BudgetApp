@@ -24,7 +24,7 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        private int selectedYear;
+        private int selectedYear = DateTime.Now.Year;
         public int SelectedYear
         {
             get { return selectedYear; }
@@ -33,6 +33,7 @@ namespace BudgetApp.ViewModels
                 if (selectedYear != value)
                 {
                     selectedYear = value;
+                    UpdateAverages();
                     NotifyPropertyChanged();
                 }
             }
@@ -99,8 +100,7 @@ namespace BudgetApp.ViewModels
         public AveragesViewModel()
         {
             UpdateAvailableYears();
-            UpdateMonthlyAverage();
-            UpdatePaycheckAverage();
+            UpdateAverages();
         }
 
         public void UpdateAvailableYears()
@@ -120,6 +120,12 @@ namespace BudgetApp.ViewModels
             }
         }
 
+        private void UpdateAverages()
+        {
+            UpdateMonthlyAverage();
+            UpdatePaycheckAverage();
+        }
+
         public void UpdateMonthlyAverage()
         {
             var monthlyTotals = Enumerable.Repeat(0.0, 12).ToArray();
@@ -134,11 +140,69 @@ namespace BudgetApp.ViewModels
                 }
             }
 
-            MonthlyAverage = monthlyTotals.Average();
+            var tempSum = 0.0;
+            var tempCount = 0;
+            foreach(var amount in monthlyTotals)
+            {
+                if(amount > 0)
+                {
+                    tempCount++;
+                    tempSum += amount;
+                }
+            }
+
+            MonthlyAverage = tempSum / tempCount;// monthlyTotals.Average();
         }
 
         public void UpdatePaycheckAverage()
         {
+            var paycheckTotals = Enumerable.Repeat(0.0, 26).ToArray();
+            var payDates = new DateTime[26];
+            Console.WriteLine(selectedYear);
+            var firstPaydate = new DateTime(SelectedYear, 1, 1);
+
+            for(int i = 0; i < 26; i++)
+            {
+                if(i == 0)
+                {
+                    payDates[i] = firstPaydate;
+                }
+                else
+                {
+                    payDates[i] = payDates[i - 1].AddDays(14);
+                }
+            }
+            foreach( var item in BillTrackerManager.AllTrackers)
+            {
+                foreach(var bill in item.Bills)
+                {
+                    if (bill.DueDate.Year == SelectedYear)
+                    {
+                        var daysSinceFirst = (int)(bill.DueDate - firstPaydate).TotalDays;
+                        var insertIndex = daysSinceFirst / 14;
+                        if (insertIndex < 26)
+                        {
+                            paycheckTotals[insertIndex] = paycheckTotals[insertIndex] + bill.AmountDue;
+                        }
+                    }
+                   
+                }
+            }
+
+            var tempSum = 0.0;
+            var tempCount = 0;
+            foreach (var amount in paycheckTotals)
+            {
+                if (amount > 0)
+                {
+                    tempCount++;
+                    tempSum += amount;
+                }
+            }
+
+            PaycheckAverage = tempSum / tempCount;// monthlyTotals.Average();
+
+
 
         }
 

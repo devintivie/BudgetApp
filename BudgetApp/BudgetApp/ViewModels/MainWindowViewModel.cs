@@ -27,8 +27,8 @@ namespace BudgetApp.ViewModels
         public ObservableCollection<MultiplePaycheckViewModel> BudgetDisplay { get; set; } = new ObservableCollection<MultiplePaycheckViewModel>();
         public ObservableCollection<BankAccount> BAList { get; set; } = new ObservableCollection<BankAccount>();
 
-        private LocalBaseViewModel pageViewModel;
-        public LocalBaseViewModel PageViewModel
+        private INavigationViewModel pageViewModel;
+        public INavigationViewModel PageViewModel
         {
             get { return pageViewModel; }
             set
@@ -306,7 +306,7 @@ namespace BudgetApp.ViewModels
             get { return BillTrackerManager.AllTrackers.Count == 0; }
         }
 
-        private Navigation pageDisplay = default(Navigation);
+        private Navigation pageDisplay;
         public Navigation PageDisplay
         {
             get { return pageDisplay; }
@@ -371,15 +371,17 @@ namespace BudgetApp.ViewModels
             ClosingCommand = new DelegateCommand(ExecuteClosing, CanExecuteClosing);
             UpdateBTListCommand = new DelegateCommand(OnUpdateBTList, CanUpdateBTList);
 
-            ShowCalendarCommand = new DelegateCommand( OnShowCalendar, CanShowCalendar);
-            ShowBillsCommand = new DelegateCommand(OnShowBills, CanShowBills);
-            ShowAccountsCommand = new DelegateCommand(OnShowAccount, CanShowAccounts);
-            ShowDebtsCommand = new DelegateCommand(OnShowDebts, CanShowDebts);
+            //ShowCalendarCommand = new DelegateCommand( OnShowCalendar, CanShowCalendar);
+            //ShowBillsCommand = new DelegateCommand(OnShowBills, CanShowBills);
+            //ShowAccountsCommand = new DelegateCommand(OnShowAccount, CanShowAccounts);
+            //ShowDebtsCommand = new DelegateCommand(OnShowDebts, CanShowDebts);
 
             //Use this for processes that may take time
             TestAsyncCommand = new DelegateCommand(async () => await OnTest(), CanTest);
 
             MPVM = new MultiplePaycheckViewModel();
+
+            Messenger.Register<NavigationMessage>(this, x => PageViewModel = x.NavigateToViewModel);
 
 
 
@@ -564,6 +566,11 @@ namespace BudgetApp.ViewModels
                 bm.AddBankAccount(ba);
             }
 
+            foreach(var dt in DebtTrackerManager.AllTrackers)
+            {
+                bm.AddDebtTracker(dt);
+            }
+
             bm.Serialize(Filename);
             IsNewBudget = false;
 
@@ -652,6 +659,11 @@ namespace BudgetApp.ViewModels
             foreach (var acct in bm.BankAccounts)
             {
                 BankAccountManager.AddAccount(acct);
+            }
+
+            foreach(var dt in bm.Debts)
+            {
+                DebtTrackerManager.AddTracker(dt);
             }
 
             PageViewModel.UpdateView();
@@ -801,79 +813,83 @@ namespace BudgetApp.ViewModels
             return true;
         }
 
-        private void OnShowCalendar()
-        {
-            PageViewModel = new BudgetCalendarViewModel();
-        }
+        //private void OnShowCalendar()
+        //{
+        //    PageViewModel = new BudgetCalendarViewModel();
+        //}
 
-        private bool CanShowCalendar()
-        {
-            if (PageViewModel is BudgetCalendarViewModel)
-                return false;
-            else
-                return true;
-        }
-        
-        private void OnShowBills()
-        {
-            PageViewModel = new BillListViewModel();
-        }
+        //private bool CanShowCalendar()
+        //{
+        //    if (PageViewModel is BudgetCalendarViewModel)
+        //        return false;
+        //    else
+        //        return true;
+        //}
 
-        private bool CanShowBills()
-        {
-            if (PageViewModel is BillListViewModel)
-                return false;
-            else
-                return true;
-        }
+        //private void OnShowBills()
+        //{
+        //    PageViewModel = new BillListViewModel();
+        //}
 
-        private void OnShowAccount()
-        {
-            PageViewModel = new BillListViewModel();
-        }
+        //private bool CanShowBills()
+        //{
+        //    if (PageViewModel is BillListViewModel)
+        //        return false;
+        //    else
+        //        return true;
+        //}
 
-        private bool CanShowAccounts()
-        {
-            if (PageViewModel is BillListViewModel)
-                return false;
-            else
-                return true;
-        }
+        //private void OnShowAccount()
+        //{
+        //    PageViewModel = new BillListViewModel();
+        //}
 
-        private void OnShowDebts()
-        {
-            PageViewModel = new DebtViewModel();
-        }
+        //private bool CanShowAccounts()
+        //{
+        //    if (PageViewModel is BillListViewModel)
+        //        return false;
+        //    else
+        //        return true;
+        //}
 
-        private bool CanShowDebts()
-        {
-            if (PageViewModel is DebtViewModel)
-                return false;
-            else
-                return true;
-        }
+        //private void OnShowDebts()
+        //{
+        //    PageViewModel = new DebtViewModel();
+        //}
+
+        //private bool CanShowDebts()
+        //{
+        //    if (PageViewModel is DebtViewModel)
+        //        return false;
+        //    else
+        //        return true;
+        //}
+
 
         private void ShowPage()
         {
             switch (PageDisplay)
             {
                 case Navigation.Calendar:
-                    PageViewModel = new BudgetCalendarViewModel();
+                    ToBudgetCalendarVM();
+                    //PageViewModel = new BudgetCalendarViewModel();
                     break;
                 case Navigation.BillList:
-                    PageViewModel = new BillListViewModel();
+                    ToBillListVM();
+                    //PageViewModel = new BillListViewModel();
                     break;
                 case Navigation.BankOverview:
-                    PageViewModel = new BankOverviewViewModel();
+                    ToBankOverviewVM();
+                    //PageViewModel = new BankOverviewViewModel();
                     break;
                 case Navigation.DebtOverview:
-                    PageViewModel = new DebtOverviewViewModel();
-                    Console.WriteLine("debt overview");
+                    ToDebtOverviewVM();
+                    //PageViewModel = new DebtOverviewViewModel();
+                    //Console.WriteLine("debt overview");
                     break;
                 default:
                     break;
             }
-
         }
 
         private void ExecuteClosing()

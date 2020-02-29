@@ -6,8 +6,7 @@
              xmlns:cvt="clr-namespace:IvieConverters;assembly=IvieConverters"
              xmlns:local="clr-namespace:BudgetApp"
              xmlns:vms="clr-namespace:BudgetApp.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="800">
+             mc:Ignorable="d" >
     <StackPanel Orientation="Horizontal" Height="Auto">
         <StackPanel Orientation="Vertical">
             <ListView x:Name="List" ItemsSource="{Binding DTList}"
@@ -15,7 +14,6 @@
                       SelectedItem="{Binding CurrentSelection}"
                       Height="300"
                       BorderBrush="Transparent">
-                
             </ListView>
 
             <Button Content="Add Account" Command="{Binding OpenPopupCommand}"
@@ -23,7 +21,11 @@
             <Button Content="Remove Account" Command="{Binding RemoveAccountCommand}"/>
 
             <Popup IsOpen="{Binding IsPopupOpen}" StaysOpen="False"
-                   Focusable="False">
+                   Focusable="False"
+                   HorizontalOffset="0"
+                   PlacementTarget="{Binding ElementName=List}"
+                   VerticalOffset="-15"
+                   Placement="Bottom">
                 <StackPanel Width="{Binding ElementName=List, Path=ActualWidth}"
                            Background="DarkGray">
                     <TextBlock Text="Company Name  "
@@ -31,27 +33,27 @@
                                VerticalAlignment="Center"
                                FontSize="{StaticResource FontSizeSmall}"/>
 
-                    <TextBox x:Name="newAccountTextbox" Text="{Binding NewNickname}"
+                    <TextBox x:Name="newAccountTextbox" Text="{Binding CompanyName}"
                              Focusable="True"
                              IsEnabled="True"
                              Height="{Binding ElementName=newNameText, Path=ActualHeight}"
                              FontSize="{StaticResource FontSizeSmall}"
                              VerticalAlignment="Center"/>
-                    <TextBlock Text="Initial Balance  "
+                    <!--<TextBlock Text="Initial Balance  "
                                x:Name="newBalanceText"
                                VerticalAlignment="Center"
                                DockPanel.Dock="Left"
                                Height="20"
                                FontSize="{StaticResource FontSizeSmall}"/>
 
-                    <TextBox x:Name="newCompanyTextbox" Text="{Binding NewAccountBalance, Converter={cvt:CurrencyConverter}}"
+                    <TextBox x:Name="newCompanyTextbox" Text="{Binding InitialBalance, Converter={cvt:CurrencyConverter}}"
                              Focusable="True"
                              IsEnabled="True"
                              Height="{Binding ElementName=newNameText, Path=ActualHeight}"
                              Width="100"
                              FontSize="{StaticResource FontSizeSmall}"
                              MouseDoubleClick="newCompanyTextbox_MouseDoubleClick"
-                             VerticalAlignment="Center"/>
+                             VerticalAlignment="Center"/>-->
 
                     <Button Content="{StaticResource FontAwesomeAddIcon}" 
                         Style="{StaticResource IconButton}"
@@ -64,5 +66,9 @@
                 </StackPanel>
             </Popup>
         </StackPanel>
+        <StackPanel>
+            <ContentControl Content="{Binding CurrentDT}"/>
+        </StackPanel>
+        
     </StackPanel>
 </UserControl>

@@ -9,7 +9,7 @@ using IvieBaseClasses;
 
 namespace BudgetApp.ViewModels
 {
-    public class BankAccountBalanceViewModel : LocalBaseViewModel
+    public class BankAccountBalanceViewModel : LocalBaseViewModel, INavigationViewModel
     {
         public BankAccount BankAccount;
 
@@ -145,7 +145,8 @@ namespace BudgetApp.ViewModels
             var index = BankAccountManager.AllAccounts.IndexOf(BankAccount);
             BankAccountManager.RemoveSelected(BankAccount);
             BankAccountManager.AllAccounts.Insert(index + 1, BankAccount);
-            Messenger.Default.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
+            //Messenger.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
+            Messenger.Send(new NavigationMessage(new BankAccountBalanceViewModel()));
         }
 
         private bool CanMoveRight()
@@ -172,7 +173,8 @@ namespace BudgetApp.ViewModels
             var index = BankAccountManager.AllAccounts.IndexOf(BankAccount);
             BankAccountManager.RemoveSelected(BankAccount);
             BankAccountManager.AllAccounts.Insert(index - 1, BankAccount);
-            Messenger.Default.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
+            //Messenger.Default.Send(new Message(1, MessageType.BankAccountBalanceViewModel));
+            Messenger.Send(new NavigationMessage(new BankAccountBalanceViewModel()));
         }
 
         private bool CanMoveLeft()
@@ -194,7 +196,12 @@ namespace BudgetApp.ViewModels
             }
         }
 
-        
+        public void UpdateView()
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
 

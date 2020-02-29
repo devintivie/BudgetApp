@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
-    public class BudgetCalendarViewModel : LocalBaseViewModel
+    public class BudgetCalendarViewModel : LocalBaseViewModel, INavigationViewModel
     {
         public ObservableCollection<DayBoxViewModel> DayList { get; set; } = new ObservableCollection<DayBoxViewModel>();
         public ObservableCollection<string> TestItems { get; set; } = new ObservableCollection<string>();
@@ -221,7 +221,9 @@ namespace BudgetApp.ViewModels
             DoubleClickCommand = new DelegateCommand(OnDoubleClick, CanDoubleClick);
             ConnectCommand = new DelegateCommand(OnConnect);
 
-            Messenger.Default.Register<Message>(this, OnMessage);
+            Messenger.Register<StringMessage>(this, x => UpdateAccountList());
+
+            //Messenger.Default.Register<Message>(this, OnMessage);
 
             TestItems.Add("hello");
             TestItems.Add("it me");
@@ -231,20 +233,20 @@ namespace BudgetApp.ViewModels
             UpdateView();
         }
 
-        private void OnMessage(Message message)
-        {
-            if (message.MessageType == MessageType.BankAccountBalanceViewModel)
-            {
-                UpdateAccountList();
-            }
-        }
+        //private void OnMessage(Message message)
+        //{
+        //    if (message.MessageType == MessageType.BankAccountBalanceViewModel)
+        //    {
+        //        UpdateAccountList();
+        //    }
+        //}
 
         private void OnConnect()
         {
             TestConnected = true;
         }
 
-        public override void UpdateView()
+        public void UpdateView()//was an override before
         {
 
             UpdateAccountList();

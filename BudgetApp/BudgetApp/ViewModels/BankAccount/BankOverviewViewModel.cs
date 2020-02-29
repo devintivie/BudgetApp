@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
-    public class BankOverviewViewModel : LocalBaseViewModel
+    public class BankOverviewViewModel : LocalBaseViewModel, INavigationViewModel
     {
         #region Properties
         public ObservableCollection<BankAccountViewModel> BAList { get; set; } = new ObservableCollection<BankAccountViewModel>();
@@ -135,7 +135,7 @@ namespace BudgetApp.ViewModels
 
         }
 
-        public override void UpdateView()
+        public void UpdateView()//was an override before
         {
             UpdateAccountList();
             AVM.UpdateAvailableYears();

@@ -12,11 +12,13 @@
         <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}"/>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Monthly Average" Margin="5"/>
-            <TextBlock Text="{Binding MonthlyAverage, Converter={cvt:CurrencyConverter}}"/>
+            <TextBlock Text="{Binding MonthlyAverage}"/>
+            <!--, Converter={cvt:CurrencyConverter}}-->
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Paycheck Average" Margin="5"/>
-            <TextBlock Text="{Binding PaycheckAverage, Converter={cvt:CurrencyConverter}}"/>
+            <TextBlock Text="{Binding PaycheckAverage}"/>
+            <!--, Converter={cvt:CurrencyConverter}-->
         </StackPanel>
         <!--<ListView ItemsSource="{Binding Stuff}">
             <ListView.ItemContainerStyle>

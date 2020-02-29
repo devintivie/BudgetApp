@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace BudgetApp.ViewModels
 {
-    class BillListViewModel : LocalBaseViewModel
+    class BillListViewModel : LocalBaseViewModel, INavigationViewModel
     {
         #region Properties
         public ObservableCollection<NextBillDueDataViewModel> BTList { get; set; } = new ObservableCollection<NextBillDueDataViewModel>();
@@ -118,13 +118,22 @@ namespace BudgetApp.ViewModels
         }
 
 
-        void OnMessage(Message message)
+        //void OnMessage(Message message)
+        //{
+        //    if (message.MessageType == MessageType.BillViewModel)
+        //    {
+        //        //UpdateBTList();
+        //        if(CurrentSelection != null)
+        //            CurrentSelection.UpdateNextBill();
+        //        Console.WriteLine("UpdateBTList from BillViewModel");
+        //    }
+        //}
+
+        void OnVMUpdate()
         {
-            if (message.MessageType == MessageType.BillViewModel)
+            if(CurrentSelection != null)
             {
-                //UpdateBTList();
-                if(CurrentSelection != null)
-                    CurrentSelection.UpdateNextBill();
+                CurrentSelection.UpdateNextBill();
                 Console.WriteLine("UpdateBTList from BillViewModel");
             }
         }
@@ -146,11 +155,11 @@ namespace BudgetApp.ViewModels
             RemoveCompanyCommand = new DelegateCommand(OnRemoveCompany, CanRemoveCompany);
             OpenPopupCommand = new DelegateCommand(OnOpenPopup, CanOpenPopup);
             OpenEditPopupCommand = new DelegateCommand(OnEditOpenPopup, CanEditOpenPopup);
-            Messenger.Default.Register<Message>(this, OnMessage);
+            //Messenger.Default.Register<Message>(this, OnMessage);
+            Messenger.Register<VMtoVM>(this, x=> OnVMUpdate());
 
             UpdateBTList();
         }
-
         #endregion
 
 
@@ -175,7 +184,7 @@ namespace BudgetApp.ViewModels
             Console.WriteLine(IsEmptyBudget);
         }
 
-        public override void UpdateView()
+        public void UpdateView()//was an override before
         {
             UpdateBTList();
         }

@@ -14,6 +14,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
@@ -34,24 +35,44 @@
                     TextTrimming="CharacterEllipsis"
                     Grid.Column="1"
                 />
+            <Border x:Name="LabelBorder" Grid.Row="1" Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    Width="320"
+                    Margin="8 2 25 2">
+                <Grid HorizontalAlignment="Center"
+                      Width="{Binding ElementName=LabelBorder, Path=ActualWidth}"
+                      >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Date" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Balance" Grid.Column="1" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Delta" Grid.Column="2" HorizontalAlignment="Center"/>
+                </Grid>
+                
+            </Border>
                 
             
             
             
             <ListBox x:Name="BillListView" Height="250" ItemsSource="{Binding Debts}" 
                       Visibility="{Binding IsContentAvailable,Converter={cvt:BooleanToVisibilityConverter}}"
-                      Grid.Row="1" Grid.Column="0"
+                      Grid.Row="2" Grid.Column="0"
                       Grid.ColumnSpan="3"
                       HorizontalAlignment="Center"
                       HorizontalContentAlignment="Right"
                       Background="Transparent"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      SelectedItem="{Binding CurrentBVM}">
+                      SelectedItem="{Binding CurrentDVM}">
             </ListBox>
 
             <TextBlock Text="No Bills To List..."
-                       Grid.Row="1"
+                       Grid.Row="2"
                        Grid.Column="1"
                        Margin="0 10 20 0"
                        Visibility="{Binding IsContentAvailable, Converter={cvt:BooleanToVisibilityConverter}, ConverterParameter=Invert}"
@@ -59,13 +80,13 @@
                        FontSize="20"
                        HorizontalAlignment="Right"
                        />
-            <StackPanel Grid.Row="2" Orientation="Horizontal" 
+            <StackPanel Grid.Row="3" Orientation="Horizontal" 
                         Grid.Column="1" HorizontalAlignment="Center">
-                <Button Content="Add Debt Record" Command="{Binding OpenAddBillCommand}"/>
+                <Button Content="Add Debt Record" Command="{Binding OpenAddDebtCommand}"/>
                 <Button Content="Remove Debt Record" Command="{Binding RemoveCommand}"/>
             </StackPanel>
 
-            <Popup IsOpen="{Binding IsAddBillOpen}" StaysOpen="False"
+            <Popup IsOpen="{Binding IsAddDebtOpen}" StaysOpen="False"
                    HorizontalOffset="0" VerticalOffset="-280">
                 <Grid Height="276" Width="180" 
                       Background="{StaticResource BackgroundMainBrush}">
@@ -89,7 +110,7 @@
                              />
                     <Viewbox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="170">
                         <Calendar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                              SelectedDate="{Binding AddBillStartDate}" DisplayDate="{Binding AddBillStartDate, Mode=OneWay}"/>
+                              SelectedDate="{Binding AddDebtDate}" DisplayDate="{Binding AddDebtDate, Mode=OneWay}"/>
 
                     </Viewbox>
 
